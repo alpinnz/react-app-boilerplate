@@ -48,25 +48,32 @@ Designed for developers who prefer **feature-based architecture** and lightweigh
 
 ```
 src/
-├── app/                # Root app, router, and layout structure
+├── core/               # Root app, router, and layout structure
+│   ├── router/         # Application routing configuration
+│   ├── providers/      # App-wide providers (theme, i18n, etc.)
+│   └── layout/         # Global layout templates
+│
 ├── features/           # Feature-based modules (auth, dashboard, etc.)
 │   ├── auth/
-│   │   ├── pages/
-│   │   ├── store/
-│   │   ├── services/
-│   │   └── repositories/
+│   │   ├── pages/          # Auth-related UI pages (Login, Register, etc.)
+│   │   ├── store/          # Zustand stores for Auth feature
+│   │   ├── services/       # Business logic and orchestration
+│   │   └── repositories/   # API/data access layer (e.g. userRepository.ts)
 │   └── dashboard/
 │       ├── pages/
 │       ├── store/
 │       ├── services/
 │       └── repositories/
+│
 ├── shared/             # Common reusable logic & UI
-│   ├── components/
-│   ├── hooks/
-│   ├── utils/
-│   ├── store/
-│   └── types/
+│   ├── components/     # Reusable UI components
+│   ├── hooks/          # Custom React hooks
+│   ├── utils/          # Helper functions
+│   ├── store/          # Shared Zustand stores (global theme, etc.)
+│   └── types/          # Shared TypeScript types/interfaces
+│
 └── assets/             # Static assets (images, fonts, SVGs)
+
 ```
 
 ---
@@ -142,9 +149,9 @@ VITE_API_URL=https://api.example.com
 
 ```markdown
 resolve: {
-    alias: {
-        '@': path.resolve(__dirname, './src'),
-    },
+alias: {
+'@': path.resolve(__dirname, './src'),
+},
 },
 ```
 
