@@ -1,0 +1,43 @@
+{
+  "common": {
+    "view_profile": "Lihat Profil",
+    "theme_toggle_light": "Tema Terang",
+    "theme_toggle_dark": "Tema Gelap",
+    "language_id": "Bahasa: Indonesia",
+    "language_en": "Bahasa: Inggris",
+    "logout": "Keluar"
+  },
+  "sidebar": {
+    "main": "Utama",
+    "dashboard": "Dasbor",
+
+    "modules": "Modul",
+    "moduleA": "Modul A",
+    "moduleA.list": "Daftar",
+    "moduleA.create": "Buat Baru",
+    "moduleA.categories": "Kategori",
+
+    "moduleB": "Modul B",
+    "moduleB.active": "Aktif",
+    "moduleB.archived": "Diarsipkan",
+
+    "moduleC": "Modul C",
+    "moduleC.upcoming": "Akan Datang",
+    "moduleC.history": "Riwayat",
+
+    "community": "Komunitas",
+    "users": "Pengguna",
+    "users.list": "Semua Pengguna",
+    "users.stats": "Statistik",
+
+    "events": "Acara",
+    "events.calendar": "Kalender",
+    "events.webinars": "Webinar",
+
+    "account": "Akun",
+    "profile": "Profil",
+    "settings": "Pengaturan",
+    "account.settings": "Pengaturan Akun",
+    "account.preferences": "Preferensi"
+  }
+}

@@ -1,0 +1,374 @@
+@theme {
+  /* Neutral (White / Gray / Black) – Used for backgrounds, text, and borders */
+  --color-neutral-50: #ffffff; /* Pure white – main background */
+  --color-neutral-100: #f7f7f7; /* Off-white – secondary background / surfaces */
+  --color-neutral-200: #e8e8e8; /* Light gray – disabled borders, dividers */
+  --color-neutral-300: #d1d1d1; /* Soft gray – secondary text */
+  --color-neutral-400: #9e9e9e; /* Medium gray – default text */
+  --color-neutral-500: #7d7d7d; /* Darker gray – dark mode text */
+  --color-neutral-600: #616161; /* Deeper gray – icons, low-priority text */
+  --color-neutral-700: #424242; /* Very dark gray – dark theme headings */
+  --color-neutral-800: #212121; /* Almost black – dark mode backgrounds */
+  --color-neutral-900: #000000; /* Pure black – high contrast text */
+  /* Primary (Blue) – Used for branding, primary buttons, and links */
+  --color-primary-50: #eff6ff; /* Lightest blue – hover background */
+  --color-primary-100: #dbeafe; /* Very light blue – active backgrounds */
+  --color-primary-200: #bfdbfe; /* Soft blue – surface, tags */
+  --color-primary-300: #93c5fd; /* Medium light blue – button hover */
+  --color-primary-400: #60a5fa; /* Bright blue – icons, badges */
+  --color-primary-500: #3b82f6; /* Primary blue – buttons, links */
+  --color-primary-600: #2563eb; /* Strong blue – focus rings */
+  --color-primary-700: #1d4ed8; /* Deep blue – active text or links */
+  --color-primary-800: #1e40af; /* Dark navy – emphasized elements */
+  --color-primary-900: #1e3a8a; /* Darkest blue – strong visual emphasis */
+  /* Secondary (Warm Yellow) – Used as accent, secondary brand */
+  --color-secondary-50: #fff9e6; /* Pale yellow – subtle highlights */
+  --color-secondary-100: #fff2cc; /* Light yellow – surfaces */
+  --color-secondary-200: #ffe699; /* Soft yellow – tags, badges */
+  --color-secondary-300: #ffd966; /* Medium yellow – hover accent */
+  --color-secondary-400: #ffcc33; /* Bright yellow – secondary CTA */
+  --color-secondary-500: #ffbf00; /* Primary accent yellow – icons, actions */
+  --color-secondary-600: #e6a700; /* Dark yellow – focus states */
+  --color-secondary-700: #b37700; /* Gold brown – strong emphasis */
+  --color-secondary-800: #804f00; /* Brown yellow – shadows */
+  --color-secondary-900: #4d2900; /* Dark brown – strong contrast */
+  /* Danger (Red) – Used for dangers, destructive actions */
+  --color-danger-50: #ffecec; /* Lightest red – danger background */
+  --color-danger-100: #f8c1c1; /* Soft red – danger surfaces */
+  --color-danger-200: #ef7b7b; /* Medium light red – warning borders */
+  --color-danger-300: #ec6868; /* Bright red – button hover */
+  --color-danger-400: #e63b3b; /* Strong red – icons, alerts */
+  --color-danger-500: #cf1f1f; /* Primary red – delete buttons, danger text */
+  --color-danger-600: #af1a1a; /* Dark red – critical emphasis */
+  --color-danger-700: #871515; /* Deeper red – headings, strong warnings */
+  --color-danger-800: #610e0e; /* Maroon – shadows, overlays */
+  --color-danger-900: #430a0a; /* Deep maroon – strong contrast background */
+  /* Info (Light Blue) – Used for notifications and info banners */
+  --color-info-50: #f0f7ff; /* Very light blue – info background */
+  --color-info-100: #dbefff; /* Light blue – surfaces */
+  --color-info-200: #a6d1ff; /* Soft blue – badges, tags */
+  --color-info-300: #66b3ff; /* Medium blue – icons */
+  --color-info-400: #3399ff; /* Bright blue – border, emphasis */
+  --color-info-500: #007fff; /* Primary info blue – text or links */
+  --color-info-600: #0066cc; /* Darker info – hover or focus */
+  --color-info-700: #004c99; /* Deep info – active state */
+  --color-info-800: #003366; /* Navy blue – shadows */
+  --color-info-900: #001933; /* Very dark blue – strong contrast text */
+  /* Success (Green) – Used for success messages, confirmations */
+  --color-success-50: #f0fff0; /* Very light green – success background */
+  --color-success-100: #ccf7cc; /* Light green – border, surface */
+  --color-success-200: #86e686; /* Soft green – badge, tag */
+  --color-success-300: #56d956; /* Bright green – icons */
+  --color-success-400: #33dd33; /* Vivid green – button hover */
+  --color-success-500: #00d500; /* Primary green – confirm action */
+  --color-success-600: #00aa00; /* Strong green – focus, border */
+  --color-success-700: #008000; /* Deep green – active text */
+  --color-success-800: #005500; /* Dark green – shadows */
+  --color-success-900: #003300; /* Very dark green – background emphasis */
+  /* Warning (Yellow) – Used for alerts and warnings */
+  --color-warning-50: #fff9e6; /* Pale yellow – warning background */
+  --color-warning-100: #fff2cc; /* Light yellow – warning surface */
+  --color-warning-200: #ffe699; /* Soft yellow – tag, badge */
+  --color-warning-300: #ffdb66; /* Medium yellow – icon hover */
+  --color-warning-400: #ffcf33; /* Bright yellow – alert emphasis */
+  --color-warning-500: #ffc400; /* Primary yellow – warning label */
+  --color-warning-600: #cc9d00; /* Strong yellow – border warning */
+  --color-warning-700: #997700; /* Golden brown – text warning */
+  --color-warning-800: #665000; /* Brown – shadow, border */
+  --color-warning-900: #332800; /* Dark brown – background warning */
+}
+@layer components {
+  /* ======= BACKGROUND COLORS ======= */
+  .bg-app-default {
+    @apply bg-neutral-50 dark:bg-neutral-900;
+  }
+
+  .bg-app-muted {
+    @apply bg-neutral-100 dark:bg-neutral-800;
+  }
+
+  .bg-app-subtle {
+    @apply bg-neutral-200 dark:bg-neutral-700;
+  }
+
+  .bg-app-inverted {
+    @apply bg-neutral-900 dark:bg-neutral-50;
+  }
+
+  .bg-app-disabled {
+    @apply bg-neutral-100 dark:bg-neutral-700;
+  }
+
+  /* ======= SURFACE COLORS ======= */
+  .bg-app-surface-default {
+    @apply bg-neutral-100 dark:bg-neutral-800;
+  }
+
+  .bg-app-surface-elevated {
+    @apply bg-neutral-50 dark:bg-neutral-700;
+  }
+
+  .bg-app-surface-muted {
+    @apply bg-neutral-200 dark:bg-neutral-600;
+  }
+
+  .bg-app-surface-inverted {
+    @apply bg-neutral-800 dark:bg-neutral-100;
+  }
+
+  /* ======= BORDER COLORS ======= */
+  .border-app-default {
+    @apply border-neutral-200 dark:border-neutral-700;
+  }
+
+  .border-app-muted {
+    @apply border-neutral-300 dark:border-neutral-600;
+  }
+
+  .border-app-hover {
+    @apply border-primary-400 dark:border-primary-300;
+  }
+
+  .border-app-focused {
+    @apply border-primary-500 dark:border-primary-400;
+  }
+
+  .border-app-danger {
+    @apply border-danger-500 dark:border-danger-400;
+  }
+
+  .border-app-success {
+    @apply border-success-500 dark:border-success-400;
+  }
+
+  .border-app-warning {
+    @apply border-warning-500 dark:border-warning-400;
+  }
+
+  .border-app-disabled {
+    @apply border-neutral-200 dark:border-neutral-600;
+  }
+
+  .border-app-inverted {
+    @apply border-neutral-700 dark:border-neutral-200;
+  }
+
+  .divider-app {
+    @apply border-t border-neutral-200 dark:border-neutral-700;
+  }
+
+  /* ======= TEXT COLORS ======= */
+  .text-app-primary {
+    @apply text-neutral-900 dark:text-neutral-50;
+  }
+
+  .text-app-secondary {
+    @apply text-neutral-500 dark:text-neutral-400;
+  }
+
+  .text-app-tertiary {
+    @apply text-neutral-300 dark:text-neutral-400;
+  }
+
+  .text-app-inverted {
+    @apply text-neutral-50 dark:text-neutral-900;
+  }
+
+  .text-app-disabled {
+    @apply text-neutral-300 dark:text-neutral-500;
+  }
+
+  .text-app-link {
+    @apply text-primary-500 dark:text-primary-400;
+  }
+
+  .text-app-danger {
+    @apply text-danger-600 dark:text-danger-400;
+  }
+
+  .text-app-success {
+    @apply text-success-600 dark:text-success-400;
+  }
+
+  .text-app-warning {
+    @apply text-warning-600 dark:text-warning-400;
+  }
+
+  .text-variant-neutral {
+    @apply text-neutral-700 dark:text-neutral-300;
+  }
+
+  .text-variant-primary {
+    @apply text-primary-700 dark:text-primary-300;
+  }
+
+  .text-variant-secondary {
+    @apply text-secondary-700 dark:text-secondary-300;
+  }
+
+  .text-variant-danger {
+    @apply text-danger-700 dark:text-danger-300;
+  }
+
+  .text-variant-success {
+    @apply text-success-700 dark:text-success-300;
+  }
+
+  .text-variant-warning {
+    @apply text-warning-700 dark:text-warning-300;
+  }
+
+  .text-variant-info {
+    @apply text-info-700 dark:text-info-300;
+  }
+
+  /* ======= SHADOW COLORS ======= */
+  .shadow-app-default {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-app-heavy {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .shadow-app-inset {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .shadow-app-primary {
+    @apply shadow-primary-200 dark:shadow-primary-800;
+  }
+
+  /* ======= OVERLAY COLORS ======= */
+  .overlay-app-light {
+    @apply bg-white/70 dark:bg-black/20;
+  }
+
+  .overlay-app-dark {
+    @apply bg-black/50 dark:bg-white/20;
+  }
+
+  /* ======= FEEDBACK COLORS ======= */
+  .feedback-app-success-bg {
+    @apply bg-success-50 dark:bg-success-900;
+  }
+
+  .feedback-app-success-text {
+    @apply text-success-700 dark:text-success-300;
+  }
+
+  .feedback-app-success-border {
+    @apply border-success-400 dark:border-success-300;
+  }
+
+  .feedback-app-success-icon {
+    @apply text-success-600 dark:text-success-400;
+  }
+
+  .feedback-app-danger-bg {
+    @apply bg-danger-50 dark:bg-danger-900;
+  }
+
+  .feedback-app-danger-text {
+    @apply text-danger-700 dark:text-danger-300;
+  }
+
+  .feedback-app-danger-border {
+    @apply border-danger-400 dark:border-danger-300;
+  }
+
+  .feedback-app-danger-icon {
+    @apply text-danger-600 dark:text-danger-400;
+  }
+
+  .feedback-app-warning-bg {
+    @apply bg-warning-50 dark:bg-warning-900;
+  }
+
+  .feedback-app-warning-text {
+    @apply text-warning-700 dark:text-warning-300;
+  }
+
+  .feedback-app-warning-border {
+    @apply border-warning-400 dark:border-warning-300;
+  }
+
+  .feedback-app-warning-icon {
+    @apply text-warning-600 dark:text-warning-400;
+  }
+
+  .feedback-app-info-bg {
+    @apply bg-info-50 dark:bg-info-900;
+  }
+
+  .feedback-app-info-text {
+    @apply text-info-700 dark:text-info-300;
+  }
+
+  .feedback-app-info-border {
+    @apply border-info-400 dark:border-info-300;
+  }
+
+  .feedback-app-info-icon {
+    @apply text-info-600 dark:text-info-400;
+  }
+
+  .feedback-app-neutral-bg {
+    @apply bg-neutral-50 dark:bg-neutral-900;
+  }
+
+  .feedback-app-neutral-text {
+    @apply text-neutral-900 dark:text-neutral-100;
+  }
+
+  .feedback-app-neutral-border {
+    @apply border-neutral-300 dark:border-neutral-600;
+  }
+
+  .feedback-app-neutral-icon {
+    @apply text-neutral-500 dark:text-neutral-300;
+  }
+
+  .ring-app-neutral {
+    @apply ring-neutral-200 dark:ring-neutral-700;
+  }
+
+  .ring-app-primary {
+    @apply ring-primary-200 dark:ring-primary-700;
+  }
+
+  .ring-app-secondary {
+    @apply ring-secondary-200 dark:ring-secondary-700;
+  }
+
+  .ring-app-danger {
+    @apply ring-danger-200 dark:ring-danger-700;
+  }
+
+  .ring-app-success {
+    @apply ring-success-200 dark:ring-success-700;
+  }
+
+  .ring-app-warning {
+    @apply ring-warning-200 dark:ring-warning-700;
+  }
+
+  .ring-app-info {
+    @apply ring-info-200 dark:ring-info-700;
+  }
+
+  /* ======= SCROLLBAR (for modern browsers) ======= */
+  .scrollbar-app {
+    scrollbar-width: thin;
+    scrollbar-color: theme("colors.neutral.300") transparent;
+  }
+
+  .scrollbar-app::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-app::-webkit-scrollbar-thumb {
+    background-color: theme("colors.neutral.300");
+    border-radius: 8px;
+  }
+}

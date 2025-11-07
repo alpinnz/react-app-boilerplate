@@ -1,0 +1,68 @@
+{
+  "login": {
+    "page_title": "Login",
+    "form_title": "Login to your account",
+    "button": "Login",
+    "no_account": "Don't have an account?",
+    "register_now": "Register now",
+    "email_label": "Email",
+    "email_placeholder": "example@domain.com",
+    "password_label": "Password",
+    "password_placeholder": "password",
+    "forgot_password": "Forgot Password?",
+    "success_message": "You have successfully logged in.",
+    "failure_message": "Login failed. Please check your credentials and try again."
+  },
+  "register": {
+    "page_title": "Register",
+    "form_title": "Register to your account",
+    "button": "Register",
+    "have_account": "Have an account?",
+    "login_now": "Login now",
+    "first_name_label": "First Name",
+    "first_name_placeholder": "Input First Name",
+    "last_name_label": "Last Name",
+    "last_name_placeholder": "Input Last Name",
+    "email_label": "Email",
+    "email_placeholder": "Input Email",
+    "password_label": "Password",
+    "password_placeholder": "Input Password",
+    "password_repeat_label": "Password Repeat",
+    "password_repeat_placeholder": "Input Password Repeat",
+    "success_message": "Your account has been successfully created. Please check your email to activate it.",
+    "failure_message": "Registration failed. Please try again later."
+  },
+  "forgot_password": {
+    "page_title": "Forgot Password",
+    "form_title": "Forgot Password",
+    "email_label": "Email Address",
+    "email_placeholder": "Enter your email",
+    "button": "Send Reset Link",
+    "remember_password": "Remember your password?",
+    "login_now": "Login now",
+    "success_message": "We've sent a password reset link to your email.",
+    "failure_message": "Failed to send password reset link. Please try again later."
+  },
+  "account_activation": {
+    "page_title": "Account Activated",
+    "form_title": "Account Activated",
+    "login_button": "Go to Login",
+    "success_message": "Your account has been successfully activated. You can now log in.",
+    "failure_message": "Account activation failed. Please try again later."
+  },
+  "reset_password": {
+    "page_title": "New Password",
+    "form_title": "New Password",
+    "email_label": "Email Address",
+    "email_placeholder": "Enter your email",
+    "password_label": "New Password",
+    "password_placeholder": "Enter your new password",
+    "password_repeat_label": "Confirm New Password",
+    "password_repeat_placeholder": "Re-enter your new password",
+    "button": "Reset Password",
+    "have_account": "Remembered your password?",
+    "login_now": "Login now",
+    "success_message": "Your password has been successfully reset.",
+    "failure_message": "Password reset failed. Please try again later."
+  }
+}

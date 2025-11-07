@@ -1,189 +1,258 @@
-# React + TypeScript + Vite Boilerplate
+# React App Boilerplate
 
-A modern, scalable, and modular React boilerplate built with **Vite**, **TypeScript**, **TailwindCSS**, and **Zustand**.
-Designed for developers who prefer **feature-based architecture** and lightweight state management per page or module.
+A scalable, modular, and maintainable **React + TypeScript** boilerplate designed for building production-ready frontend
+applications.  
+Implements clean separation between `core`, `features`, and `shared` layers — inspired by Clean Architecture and
+Domain-Driven Design principles.
 
 ---
 
 ## Tech Stack
 
-| Layer            | Library / Tool                                                      | Description                                     |
-| ---------------- | ------------------------------------------------------------------- | ----------------------------------------------- |
-| Framework        | [React 18+](https://react.dev/)                                     | Modern component-based UI library               |
-| Build Tool       | [Vite 6+](https://vitejs.dev/)                                      | Fast development server and lightweight bundler |
-| Language         | [TypeScript](https://www.typescriptlang.org/)                       | Static typing and better developer experience   |
-| Styling          | [Tailwind CSS](https://tailwindcss.com/)                            | Utility-first CSS framework                     |
-| Compiler         | [SWC](https://swc.rs/)                                              | High-speed Rust-based transpiler                |
-| State Management | [Zustand](https://zustand-demo.pmnd.rs/)                            | Lightweight and modular global store            |
-| Testing          | [Vitest](https://vitest.dev/) + [RTL](https://testing-library.com/) | Unit testing setup for React components         |
-| Animation        | [Framer Motion](https://www.framer.com/motion/) _(optional)_        | Declarative motion and animation library        |
+| Category             | Tools / Libraries                                |
+| -------------------- | ------------------------------------------------ |
+| Framework            | React 19 + Vite 7 + TypeScript 5                 |
+| UI & Styling         | TailwindCSS 4, HeadlessUI, Lucide React Icons    |
+| State Management     | Zustand (modular per-feature store)              |
+| Routing              | React Router DOM v7                              |
+| Networking           | Axios (with global interceptors & configuration) |
+| i18n                 | i18next + HTTP backend (EN/ID multi-language)    |
+| Form Handling        | React Hook Form                                  |
+| Data Visualization   | Recharts                                         |
+| Dependency Injection | Awilix                                           |
+| Linting & Quality    | ESLint, Prettier, Husky, Commitlint              |
+| Build Tools          | Vite + TypeScript Compiler                       |
+| Testing (optional)   | Vitest / React Testing Library (ready to extend) |
 
 ---
 
-## Feature Overview
-
-| Category             | Feature                  | Description                                                              | Status | Key Config / Params                              |
-| -------------------- | ------------------------ | ------------------------------------------------------------------------ | ------ | ------------------------------------------------ |
-| **Core**             | Project Configuration    | Ready setup: Vite, TypeScript, Tailwind, ESLint, Prettier, SWC           | ⏳     | `vite.config.ts`, `tsconfig.json`                |
-|                      | Environment Variables    | `.env` and `.env.local` support for runtime configuration                | ⏳     | `VITE_API_URL`, `VITE_APP_NAME`, `VITE_ENV`      |
-| **Architecture**     | Feature-Based Modules    | Each feature (e.g. Auth, Dashboard) has isolated logic, store, and pages | ⏳     | `src/features/*`                                 |
-| **State Management** | Zustand per Feature      | Localized store per page/module instead of one large global store        | ⏳     | `storePath`, `persist`, `devtools`               |
-| **Data Layer**       | API Service Layer        | Simple fetch/axios abstraction with token and error handling             | ⏳     | `baseUrl`, `timeout`, `tokenKey`                 |
-| **Authentication**   | Auth System              | Basic auth flow (login/register/logout, token storage)                   | ⏳     | `authMethod`, `storageKey`                       |
-|                      | Role-Based Access (RBAC) | Optional route guards based on roles or permissions                      | ⏳     | `roles[]`, `protectedRoutes`                     |
-| **UI / Theming**     | UI Components Library    | Reusable and composable UI elements (Button, Modal, Input, etc.)         | ⏳     | `variant`, `size`, `color`                       |
-|                      | Layout System            | Layout templates for dashboard, auth, or landing pages                   | ⏳     | `layoutType`, `containerWidth`, `navbarPosition` |
-|                      | Dark Mode Toggle         | Switch between light and dark themes with persistence                    | ⏳     | `defaultTheme`, `themeStorageKey`                |
-| **Localization**     | Multi-language (i18n)    | Multi-language support with i18next or custom context                    | ⏳     | `defaultLang`, `languages[]`                     |
-| **Developer Tools**  | Absolute Imports         | Use `@/` alias for cleaner imports                                       | ⏳     | `vite.config.ts`                                 |
-|                      | Linting & Formatting     | ESLint + Prettier configuration for consistent code style                | ⏳     | `.eslintrc`, `.prettierrc`                       |
-|                      | Git Hooks                | Pre-commit validation using Husky + lint-staged                          | ⏳     | `husky.config.js`                                |
-| **Testing**          | Unit Testing             | Vitest + React Testing Library setup for isolated testing                | ⏳     | `testPath`, `coverageThreshold`                  |
-| **Optimization**     | Build Optimization       | SWC transpilation, code splitting, and asset compression                 | ⏳     | `swc`, `minify`, `chunkSplit`                    |
-| **CI/CD**            | Deployment Pipeline      | Ready for GitHub Actions, Vercel, or Netlify deployment                  | ⏳     | `env`, `branch`, `deployScript`                  |
-
----
-
-## Project Architecture
+## Project Structure
 
 ```
-react-ts-vite-boilerplate/
-├── .husky/                     # Husky Git hooks
-│   ├── _/                      # Husky internal helper scripts
-│   └── pre-commit              # Hook to run lint-staged before commit
-│
-├── src/
-│   ├── core/                   # Root app, router, and layout structure
-│   │   ├── router/             # Application routing configuration
-│   │   ├── providers/          # App-wide providers (theme, i18n, etc.)
-│   │   └── layout/             # Global layout templates
-│   │
-│   ├── features/               # Feature-based modules (auth, dashboard, etc.)
-│   │   ├── auth/
-│   │   │   ├── pages/          # Auth-related UI pages (Login, Register, etc.)
-│   │   │   ├── store/          # Zustand stores for Auth feature
-│   │   │   ├── services/       # Business logic and orchestration
-│   │   │   └── repositories/   # API/data access layer (e.g. userRepository.ts)
-│   │   └── dashboard/
-│   │       ├── pages/
-│   │       ├── store/
-│   │       ├── services/
-│   │       └── repositories/
-│   │
-│   ├── shared/                 # Common reusable logic & UI
-│   │   ├── components/         # Reusable UI components
-│   │   ├── hooks/              # Custom React hooks
-│   │   ├── utils/              # Helper functions
-│   │   ├── store/              # Shared Zustand stores (global theme, etc.)
-│   │   └── types/              # Shared TypeScript types/interfaces
-│   │
-│   └── assets/                 # Static assets (images, fonts, SVGs)
-│
-├── .eslint.config.js           # ESLint configuration
-├── .prettierrc                 # Prettier configuration
-├── .gitignore
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-└── README.md
 
+src/
+├── assets/
+│   └── foundation/              # Design assets: colors, icons, fonts, illustrations
+│
+├── core/                        # Application core (framework-agnostic foundation)
+│   ├── api/                     # Axios instances, interceptors, and clients
+│   ├── config/
+│   │   ├── constants/           # Global constants, enums, static config
+│   │   ├── di/                  # Dependency injection setup (Awilix)
+│   │   └── env/                 # Environment configuration & schema validation
+│   ├── errors/                  # Centralized error definitions
+│   ├── exceptions/              # Custom exception classes
+│   ├── models/                  # Global models / DTOs
+│   ├── router/                  # Application routing definitions and guards
+│   └── services/                # Global reusable services (logger, notification, etc.)
+│
+├── features/                    # Domain-based modular feature system
+│   ├── app/
+│   │   └── providers/           # Root-level providers
+│   │       ├── app_common/      # Global providers (theme, language)
+│   │       │   └── effect/      # App-wide startup effects
+│   │       └── auth/            # Auth context and providers
+│   │
+│   ├── auth/                    # Authentication domain
+│   │   ├── pages/               # Login, register, reset password, etc.
+│   │   ├── repositories/        # Repository layer for API requests
+│   │   └── requests/            # DTOs (request/response models)
+│   │
+│   └── user/                    # User domain (dashboard, profile, etc.)
+│       └── pages/               # UI pages for user-facing features
+│
+├── shared/                      # Shared reusable modules
+│   ├── components/              # Reusable UI components and layouts
+│   │   ├── atomic/              # Base atoms (Button, Input, Checkbox, etc.)
+│   │   ├── common/              # Common UI (modal, notification, loader)
+│   │   │   └── notification/
+│   │   │       └── toast/       # Toast feedback components
+│   │   ├── errors/              # Shared error boundaries
+│   │   └── layout/              # Layout templates and wrappers
+│   │       └── user_layout/
+│   │           └── sidebar/
+│   │
+│   ├── hooks/                   # Reusable hooks for logic and UI state
+│   │   ├── language/            # i18n translation helpers
+│   │   ├── router/              # Navigation and routing helpers
+│   │   ├── theme/               # Theme (dark/light) management
+│   │   └── ui/                  # UI-related logic (modal, scroll lock)
+│   │
+│   └── types/                   # Global and cross-feature TypeScript types
+│
+└── public/
+└── locales/                 # i18n translation resources
+├── en/
+└── id/
 
 ```
 
 ---
 
-## Scripts
+## Architecture Overview
 
-| Command        | Description                          |
-| -------------- | ------------------------------------ |
-| `yarn dev`     | Run the dev server (Vite)            |
-| `yarn build`   | Build the production bundle          |
-| `yarn preview` | Preview the production build locally |
-| `yarn lint`    | Run ESLint across the project        |
-| `yarn format`  | Format code using Prettier           |
-| `yarn prepare` | Initialize Husky hooks               |
-| `yarn test`    | Dummy test script (placeholder)      |
+| Layer         | Responsibility                                                            |
+| ------------- | ------------------------------------------------------------------------- |
+| **core/**     | Foundation of the app — routing, configs, global models, and interceptors |
+| **features/** | Domain-level modules (auth, user, etc.) — fully encapsulated              |
+| **shared/**   | Reusable components, hooks, utilities, and types                          |
+| **assets/**   | Visual design assets                                                      |
+| **public/**   | Static files & localization resources                                     |
 
 ---
 
-## Installation
+## Clean Architecture Flow
+
+```mermaid
+flowchart LR
+UI[UI Layer: Components/Pages] --> SRV[Service Layer]
+SRV --> REPO[Repository Layer]
+REPO --> API[Axios Client]
+API --> SERVER[(Backend API)]
+```
+
+---
+
+## Development Setup
+
+### Prerequisites
+
+- Node.js ≥ 18
+- Yarn or PNPM package manager
+
+### Installation
 
 ```bash
-# Clone repository
-git clone https://github.com/alpinnz/react-app-boilerplate.git
-cd react-app-boilerplate
-
-# Install dependencies
 yarn install
+```
 
-# Setup Husky
-yarn prepare
+### Run Development Server
 
-# Start development
+```bash
 yarn dev
+```
 
+### Build for Production
+
+```bash
+yarn build
+```
+
+### Preview Production Build
+
+```bash
+yarn preview
+```
+
+### Lint & Fix Code
+
+```bash
+yarn lint
+# or
+yarn lint:fix
 ```
 
 ---
 
-## Configuration
+## Environment Variables
 
-**.env Example**
+Create a `.env` file in the project root:
 
-```env
-VITE_APP_NAME=ReactViteBoilerplate
+```
 VITE_API_URL=https://api.example.com
+VITE_APP_ENV=development
+VITE_DEFAULT_LANG=en
+VITE_APP_VERSION=1.0.0
 ```
 
-**vite.config.ts (Alias Example)**
-
-```markdown
-resolve: {
-alias: {
-'@': path.resolve(\_\_dirname, './src'),
-},
-},
-```
+All variables prefixed with `VITE_` are automatically exposed to the frontend build.
+You can define validation logic in `src/core/config/env/` for type-safe environment configs.
 
 ---
 
-## Development Standards
+## Tools & Standards
 
-- **ESLint & Prettier** → konsistensi style code
-- **Absolute Imports** → pakai `@/` untuk path pendek
-- **Husky + lint-staged (opsional)** → lint sebelum commit
-- **Hot Reloading** → Vite dev server cepat
-
----
-
-## Design Philosophy
-
-1. **Composable** — Setiap module bisa dibangun atau diganti independen.
-2. **Configurable** — Perilaku diatur lewat env & config file.
-3. **Scalable** — Struktur berbasis fitur, mudah berkembang.
-4. **Type-Safe** — TypeScript penuh dari UI ke store.
-5. **Production-Ready** — SWC, lazy loading, dan optimisasi build.
+| Category                 | Description                                                                          |
+| ------------------------ | ------------------------------------------------------------------------------------ |
+| **Linting**              | ESLint (with TypeScript, React, and import rules)                                    |
+| **Formatting**           | Prettier (auto-run with Husky on commit)                                             |
+| **Git Hooks**            | Husky + lint-staged (`eslint --fix`, `prettier --write`)                             |
+| **Commit Convention**    | Conventional Commits (`feat:`, `fix:`, `chore:`, etc.)                               |
+| **Alias Imports**        | `@/*` → `src/*` (configured via `vite-tsconfig-paths`)                               |
+| **State Management**     | Zustand — lightweight, composable state stores                                       |
+| **Dependency Injection** | Awilix — clean container-based DI setup                                              |
+| **Build System**         | Vite (SWC React plugin for fast HMR)                                                 |
+| **Type Checking**        | TypeScript strict mode                                                               |
+| **Code Style**           | `kebab-case` for folders, `PascalCase` for components, `camelCase` for hooks & utils |
 
 ---
 
-## Future Roadmap
+## Folder Philosophy
 
-- [ ] Authentication Flow
-- [ ] Dark Mode Switcher
-- [ ] i18n Language Switcher
-- [ ] API Service Layer with Axios Interceptors
-- [ ] Husky + lint-staged Pre-commit Setup
+- **Feature Isolation**
+  Each domain (e.g. `auth`, `user`) owns its own `pages`, `repositories`, and `requests`.
+
+- **Shared is Truly Shared**
+  Anything reused across features belongs in `shared/`.
+
+- **Core is the Foundation**
+  Should contain framework-agnostic setup and base architecture.
+
+- **Consistent Imports**
+  Use clean alias-based imports:
+
+  ```
+  @/core/...       → core logic
+  @/features/...   → domain features
+  @/shared/...     → reusable components, hooks, or utils
+  ```
+
+- **Avoid Circular Dependencies**
+  Never import upward in the hierarchy (`shared → features ❌`, `core → shared ❌`).
 
 ---
 
-## Deployment
+## Available Scripts
 
-- **Vercel** → otomatis dari branch `main`
-- **Netlify** → gunakan output `dist/`
-- **GitHub Pages** → deploy via `gh-pages -d dist`
+| Command         | Description                                     |
+| --------------- | ----------------------------------------------- |
+| `yarn dev`      | Run development server with Vite                |
+| `yarn build`    | Build production bundle                         |
+| `yarn preview`  | Preview production build                        |
+| `yarn lint`     | Run ESLint check                                |
+| `yarn lint:fix` | Auto-fix linting and formatting issues          |
+| `yarn prepare`  | Install Husky hooks                             |
+| `yarn test`     | Placeholder (ready for future test integration) |
+
+---
+
+## Contribution Guidelines
+
+1. Fork this repository
+2. Create a new branch
+
+   ```bash
+   git checkout -b feat/add-new-module
+   ```
+
+3. Commit changes using Conventional Commits
+
+   ```bash
+   git commit -m "feat(auth): add password reset flow"
+   ```
+
+4. Push to your branch and open a Pull Request
+
+---
+
+## Author
+
+**Alfin Noviaji**
+Software Engineer
+[Personal](https://alpinnz.github.io) • [GitHub](https://github.com/alpinnz) • [LinkedIn](https://linkedin.com/in/alpinnz)
 
 ---
 
 ## License
 
-MIT © 2025 — Built by [Alfin Noviaji](https://github.com/alpinnz)
+MIT License © 2025 — Alpinnz

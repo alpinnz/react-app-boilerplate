@@ -1,1 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap");
 @import "tailwindcss";
+@import "./assets/foundation/radius.css";
+@import "./assets/foundation/shadow.css";
+@import "./assets/foundation/typography.css";
+@import "./assets/foundation/color.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-primary: "Plus Jakarta Sans", sans-serif;
+}
+
+html {
+  font-family: var(--font-primary), serif;
+  @apply h-full bg-white;
+}
+
+body {
+  @apply h-full;
+}
+
+#root {
+  @apply h-full;
+}

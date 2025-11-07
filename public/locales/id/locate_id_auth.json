@@ -1,0 +1,68 @@
+{
+  "login": {
+    "page_title": "Masuk",
+    "form_title": "Masuk ke akun Anda",
+    "button": "Masuk",
+    "no_account": "Belum punya akun?",
+    "register_now": "Daftar sekarang",
+    "email_label": "Email",
+    "email_placeholder": "contoh@domain.com",
+    "password_label": "Kata Sandi",
+    "password_placeholder": "kata sandi",
+    "forgot_password": "Lupa Kata Sandi?",
+    "success_message": "Anda berhasil masuk.",
+    "failure_message": "Gagal masuk. Periksa kembali data Anda dan coba lagi."
+  },
+  "register": {
+    "page_title": "Daftar",
+    "form_title": "Buat akun baru",
+    "button": "Daftar",
+    "have_account": "Sudah punya akun?",
+    "login_now": "Masuk sekarang",
+    "first_name_label": "Nama Depan",
+    "first_name_placeholder": "Masukkan Nama Depan",
+    "last_name_label": "Nama Belakang",
+    "last_name_placeholder": "Masukkan Nama Belakang",
+    "email_label": "Email",
+    "email_placeholder": "Masukkan Email",
+    "password_label": "Kata Sandi",
+    "password_placeholder": "Masukkan Kata Sandi",
+    "password_repeat_label": "Ulangi Kata Sandi",
+    "password_repeat_placeholder": "Masukkan Ulang Kata Sandi",
+    "success_message": "Akun Anda berhasil dibuat. Silakan periksa email untuk aktivasi.",
+    "failure_message": "Gagal mendaftar. Silakan coba lagi nanti."
+  },
+  "forgot_password": {
+    "page_title": "Lupa Kata Sandi",
+    "form_title": "Lupa Kata Sandi",
+    "email_label": "Alamat Email",
+    "email_placeholder": "Masukkan email Anda",
+    "button": "Kirim Tautan Reset",
+    "remember_password": "Sudah ingat kata sandi?",
+    "login_now": "Masuk sekarang",
+    "success_message": "Kami telah mengirim tautan untuk mengatur ulang kata sandi ke email Anda.",
+    "failure_message": "Gagal mengirim tautan reset kata sandi. Silakan coba lagi nanti."
+  },
+  "account_activation": {
+    "page_title": "Akun Diaktifkan",
+    "form_title": "Akun Diaktifkan",
+    "login_button": "Masuk ke Akun",
+    "success_message": "Akun Anda berhasil diaktifkan. Sekarang Anda dapat masuk.",
+    "failure_message": "Aktivasi akun gagal. Silakan coba lagi nanti."
+  },
+  "reset_password": {
+    "page_title": "Kata Sandi Baru",
+    "form_title": "Atur Ulang Kata Sandi",
+    "email_label": "Alamat Email",
+    "email_placeholder": "Masukkan email Anda",
+    "password_label": "Kata Sandi Baru",
+    "password_placeholder": "Masukkan kata sandi baru",
+    "password_repeat_label": "Konfirmasi Kata Sandi Baru",
+    "password_repeat_placeholder": "Masukkan ulang kata sandi baru",
+    "button": "Atur Ulang Kata Sandi",
+    "have_account": "Sudah ingat kata sandi?",
+    "login_now": "Masuk sekarang",
+    "success_message": "Kata sandi Anda berhasil diatur ulang.",
+    "failure_message": "Gagal mengatur ulang kata sandi. Silakan coba lagi nanti."
+  }
+}

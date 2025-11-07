@@ -1,0 +1,91 @@
+{
+  "dashboard": {
+    "page_title": "Home",
+    "header_title": "Hello, {{name}}"
+  },
+  "courses": {
+    "all": {
+      "page_title": "All Courses",
+      "header_title": "Hello, {{name}}",
+      "courses": {
+        "html": {
+          "title": "HTML Basics",
+          "description": "Learn basic HTML structure for beginners.",
+          "duration": "4 Modules • 2 Hours",
+          "action": "Continue"
+        },
+        "react": {
+          "title": "Intro to React",
+          "description": "Introduction to React and component fundamentals.",
+          "duration": "6 Modules • 3 Hours",
+          "action": "Start"
+        },
+        "uiux": {
+          "title": "UI/UX Design",
+          "description": "Learn interface and user experience design principles.",
+          "duration": "5 Modules • 2.5 Hours",
+          "action": "Continue"
+        },
+        "marketing": {
+          "title": "Digital Marketing",
+          "description": "Digital marketing strategies in the modern era.",
+          "duration": "3 Modules • 1.5 Hours",
+          "action": "Details"
+        }
+      }
+    },
+    "categories": {
+      "page_title": "Categories",
+      "header_title": "Course Categories",
+      "exploreButton": "Explore Classes",
+      "list": {
+        "web": {
+          "title": "Web Development",
+          "description": "Learn HTML, CSS, JavaScript, and modern frameworks."
+        },
+        "uiux": {
+          "title": "UI/UX Design",
+          "description": "Learn interface design and user experience principles."
+        },
+        "marketing": {
+          "title": "Digital Marketing",
+          "description": "Digital marketing strategies for modern businesses."
+        },
+        "data": {
+          "title": "Data Science",
+          "description": "Data analysis and machine learning for beginners."
+        }
+      }
+    },
+    "my": {
+      "page_title": "My Courses",
+      "header_title": "My Courses",
+      "courses": {
+        "html": {
+          "title": "HTML Basics",
+          "description": "Learn basic HTML structure for beginners.",
+          "duration": "4 Modules • 2 Hours",
+          "action": "Continue"
+        },
+        "react": {
+          "title": "Intro to React",
+          "description": "Introduction to React and component fundamentals.",
+          "duration": "6 Modules • 3 Hours",
+          "action": "Start"
+        },
+        "uiux": {
+          "title": "UI/UX Design",
+          "description": "Learn interface and user experience design principles.",
+          "duration": "5 Modules • 2.5 Hours",
+          "action": "Continue"
+        },
+        "marketing": {
+          "title": "Digital Marketing",
+          "description": "Digital marketing strategies in the modern era.",
+          "duration": "3 Modules • 1.5 Hours",
+          "action": "Details"
+        }
+      }
+    }
+  }
+}

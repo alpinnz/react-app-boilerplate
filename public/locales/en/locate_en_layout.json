@@ -1,0 +1,43 @@
+{
+  "common": {
+    "view_profile": "View Profile",
+    "theme_toggle_light": "Light Theme",
+    "theme_toggle_dark": "Dark Theme",
+    "language_id": "Language: Indonesian",
+    "language_en": "Language: English",
+    "logout": "Logout"
+  },
+  "sidebar": {
+    "main": "Main",
+    "dashboard": "Dashboard",
+
+    "modules": "Modules",
+    "moduleA": "Module A",
+    "moduleA.list": "List",
+    "moduleA.create": "Create",
+    "moduleA.categories": "Categories",
+
+    "moduleB": "Module B",
+    "moduleB.active": "Active",
+    "moduleB.archived": "Archived",
+
+    "moduleC": "Module C",
+    "moduleC.upcoming": "Upcoming",
+    "moduleC.history": "History",
+
+    "community": "Community",
+    "users": "Users",
+    "users.list": "All Users",
+    "users.stats": "Statistics",
+
+    "events": "Events",
+    "events.calendar": "Calendar",
+    "events.webinars": "Webinars",
+
+    "account": "Account",
+    "profile": "Profile",
+    "settings": "Settings",
+    "account.settings": "Account Settings",
+    "account.preferences": "Preferences"
+  }
+}

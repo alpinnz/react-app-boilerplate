@@ -1,0 +1,91 @@
+{
+  "dashboard": {
+    "page_title": "Beranda",
+    "header_title": "Halo, {{name}}"
+  },
+  "courses": {
+    "all": {
+      "page_title": "Semua Pelatihan",
+      "header_title": "Halo, {{name}}",
+      "courses": {
+        "html": {
+          "title": "Dasar HTML",
+          "description": "Belajar struktur dasar HTML untuk pemula.",
+          "duration": "4 Modul • 2 Jam",
+          "action": "Lanjutkan"
+        },
+        "react": {
+          "title": "Intro React",
+          "description": "Pengenalan React dan dasar-dasar komponen.",
+          "duration": "6 Modul • 3 Jam",
+          "action": "Mulai"
+        },
+        "uiux": {
+          "title": "Desain UI/UX",
+          "description": "Pelajari prinsip desain antarmuka dan pengalaman pengguna.",
+          "duration": "5 Modul • 2.5 Jam",
+          "action": "Lanjutkan"
+        },
+        "marketing": {
+          "title": "Digital Marketing",
+          "description": "Strategi digital marketing di era modern.",
+          "duration": "3 Modul • 1.5 Jam",
+          "action": "Detail"
+        }
+      }
+    },
+    "categories": {
+      "page_title": "Kategori",
+      "header_title": "Kategori Pelatihan",
+      "exploreButton": "Jelajahi Kelas",
+      "list": {
+        "web": {
+          "title": "Web Development",
+          "description": "Belajar HTML, CSS, JavaScript, dan framework modern."
+        },
+        "uiux": {
+          "title": "Desain UI/UX",
+          "description": "Pelajari prinsip desain antarmuka dan pengalaman pengguna."
+        },
+        "marketing": {
+          "title": "Digital Marketing",
+          "description": "Strategi pemasaran digital untuk bisnis modern."
+        },
+        "data": {
+          "title": "Data Science",
+          "description": "Analisis data dan machine learning untuk pemula."
+        }
+      }
+    },
+    "my": {
+      "page_title": "Pelatihan Saya",
+      "header_title": "Pelatihan Saya",
+      "courses": {
+        "html": {
+          "title": "Dasar HTML",
+          "description": "Belajar struktur dasar HTML untuk pemula.",
+          "duration": "4 Modul • 2 Jam",
+          "action": "Lanjutkan"
+        },
+        "react": {
+          "title": "Intro React",
+          "description": "Pengenalan React dan dasar-dasar komponen.",
+          "duration": "6 Modul • 3 Jam",
+          "action": "Mulai"
+        },
+        "uiux": {
+          "title": "Desain UI/UX",
+          "description": "Pelajari desain antarmuka dan pengalaman pengguna.",
+          "duration": "5 Modul • 2.5 Jam",
+          "action": "Lanjutkan"
+        },
+        "marketing": {
+          "title": "Digital Marketing",
+          "description": "Strategi digital marketing di era modern.",
+          "duration": "3 Modul • 1.5 Jam",
+          "action": "Detail"
+        }
+      }
+    }
+  }
+}

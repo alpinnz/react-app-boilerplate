@@ -1,0 +1,12 @@
+{
+  "required": "{{field}} is required",
+  "name": "{{field}} must only contain letters and spaces",
+  "email": "Invalid email address",
+  "min_length": "{{field}} must be at least {{length}} characters",
+  "passwords_not_match": "Passwords do not match",
+  "must_include": "Must include at least {{include}}",
+  "include_lowercase": "1 lowercase letter",
+  "include_uppercase": "1 uppercase letter",
+  "include_number": "1 number",
+  "include_symbol": "1 symbol"
+}

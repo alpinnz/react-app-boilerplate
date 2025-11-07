@@ -1,10 +1,10 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
 import "./main.css";
-import { App } from "@/app/app.tsx";
+import { createRoot } from "react-dom/client";
+import { App } from "./app.tsx";
+import { LanguageService } from "@/core/services/language_service.ts";
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+LanguageService.initialize().then(() => {
+  const container = document.getElementById("root")!;
+  const root = createRoot(container);
+  root.render(<App />);
+});

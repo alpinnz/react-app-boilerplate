@@ -1,0 +1,12 @@
+{
+  "required": "{{field}} wajib diisi",
+  "name": "{{field}} hanya boleh berisi huruf dan spasi",
+  "email": "Alamat email tidak valid",
+  "min_length": "{{field}} harus terdiri dari minimal {{length}} karakter",
+  "passwords_not_match": "Kata sandi tidak cocok",
+  "must_include": "Harus mengandung minimal {{include}}",
+  "include_lowercase": "1 huruf kecil",
+  "include_uppercase": "1 huruf besar",
+  "include_number": "1 angka",
+  "include_symbol": "1 simbol"
+}
