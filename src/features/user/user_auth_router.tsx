@@ -7,14 +7,9 @@ interface UserAuthRouterProps {
 }
 
 export function UserAuthRouter(props: UserAuthRouterProps) {
-  const initial = useAuthContext((state) => state.initial);
-  const authState = useAuthContext((state) => state);
+  const user = useAuthContext((state) => state.auth?.user);
 
-  React.useEffect(() => {
-    initial();
-  }, [initial]);
-
-  if (authState.auth?.user?.roles?.some((e) => e.name?.toLowerCase() === "user")) {
+  if (user?.roles?.some((e) => e.name?.toLowerCase() == "user")) {
     return props.children;
   }
 

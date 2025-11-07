@@ -9,6 +9,7 @@ import { useToast } from "@/shared/components/common/notification/toast/toast_ho
 import { handleException } from "@/core/exceptions/handle_exceptions.ts";
 import { authRepository } from "@/features/auth/repositories/auth_repository/auth_repository.ts";
 import { DataState } from "@/core/models/data_state.ts";
+import { useAuthContext } from "@/features/app/providers/auth";
 
 export function LoginPage() {
   const { showToast } = useToast();
@@ -16,6 +17,7 @@ export function LoginPage() {
   const { t } = useTranslation(["auth", "validation"]);
   const navigate = useNavigate();
   const [submitState, setSubmitState] = React.useState<DataState<null>>(DataState.initial());
+  const authState = useAuthContext((state) => state);
 
   type FormData = {
     email: string | null;
@@ -47,15 +49,11 @@ export function LoginPage() {
         throw res.error;
       }
       if (res.isRight()) {
-        const auth = await authRepository.SaveAuth(res.value);
-        if (auth.isLeft()) {
-          throw auth.error;
-        }
-        if (auth.isRight()) {
-          showToast({ type: "success", message: t("login.success_message", { ns: "auth" }) });
-          setSubmitState(DataState.success(null));
-          navigate("/user/dashboard", { replace: true });
-        }
+        authState.login(res.value);
+        console.log(res.value);
+        showToast({ type: "success", message: t("login.success_message", { ns: "auth" }) });
+        setSubmitState(DataState.success(null));
+        navigate("/user/dashboard", { replace: true });
       }
     } catch (err) {
       const exception = handleException(err);

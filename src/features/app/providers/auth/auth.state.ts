@@ -8,27 +8,51 @@ import { AppCommonEffect } from "@/features/app/providers/app_common/app.common.
 export interface AuthState {
   auth: Auth | null;
   initial: () => void;
+  initialLoading: boolean;
   login: (auth: Auth) => void;
   logout: () => void;
+  logoutLoading: boolean;
 }
 
 export const createAuthState: StateCreator<AuthState> = (set) => ({
   auth: null,
-  initial: () => {
-    const auth = AuthStorageService.get();
-    set({ auth: auth });
+  initialLoading: false,
+  initial: async () => {
+    try {
+      set({ initialLoading: true });
+      const auth = AuthStorageService.get();
+
+      if (auth) {
+        const res = await authRepository.Refresh({ refresh_token: auth?.refresh_token ?? "" });
+        if (res.isLeft()) {
+          AuthStorageService.clear();
+          set({ auth: null });
+        }
+        if (res.isRight()) {
+          AuthStorageService.save(res.value);
+          set({ auth: res.value });
+        }
+      }
+    } catch (err) {
+      AppCommonEffect.toast({ exception: handleException(err) });
+    } finally {
+      set({ initialLoading: false });
+    }
   },
-  login: (auth: Auth) => {
+  login: async (auth: Auth) => {
     AuthStorageService.save(auth);
     set({ auth: auth });
   },
   logout: async () => {
     try {
+      set({ logoutLoading: true });
       const auth = AuthStorageService.get();
       const res = await authRepository.Logout({ refresh_token: auth?.refresh_token ?? "" });
 
       if (res.isLeft()) {
-        throw res.error;
+        AuthStorageService.clear();
+        set({ auth: null });
+        AppCommonEffect.navigate("/auth/login", { replace: true });
       }
       if (res.isRight()) {
         AuthStorageService.clear();
@@ -37,6 +61,9 @@ export const createAuthState: StateCreator<AuthState> = (set) => ({
       }
     } catch (err) {
       AppCommonEffect.toast({ exception: handleException(err) });
+    } finally {
+      set({ logoutLoading: false });
     }
   },
+  logoutLoading: false,
 });
