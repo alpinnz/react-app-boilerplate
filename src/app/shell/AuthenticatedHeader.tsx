@@ -30,7 +30,7 @@ export function AuthenticatedHeader({ onMenuOpen }: { onMenuOpen: () => void }) 
     { match: accountRoutePaths.account, title: translate('account.account'), section: translate('app.settings') },
     { match: healthRoutePaths.status, title: translate('health.serviceStatus'), section: translate('app.system') },
   ]
-  const page = pageDetails.find((entry) => location.pathname.startsWith(entry.match)) ?? { title: 'Workspace', section: appBrand.name }
+  const page = pageDetails.find((entry) => location.pathname.startsWith(entry.match)) ?? { title: appBrand.name, section: appBrand.description }
 
   async function confirmLogout() {
     setIsLoggingOut(true)
