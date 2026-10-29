@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import "./tokens/primitive.css";
+@import "./tokens/semantic.css";
+
+@layer base {
+  body {
+    min-width: 20rem;
+    min-height: 100dvh;
+    background: var(--ds-canvas);
+    color: var(--ds-content);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  a,
+  input,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ds-focus);
+    outline-offset: 2px;
+  }
+}

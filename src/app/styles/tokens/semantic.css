@@ -1,0 +1,62 @@
+:root {
+  --ds-canvas: var(--color-neutral-50);
+  --ds-surface: var(--color-neutral-0);
+  --ds-content: var(--color-neutral-900);
+  --ds-content-muted: var(--color-neutral-700);
+  --ds-border: var(--color-neutral-200);
+  --ds-border-strong: var(--color-neutral-300);
+  --ds-action: var(--color-brand-700);
+  --ds-action-hover: var(--color-brand-800);
+  --ds-action-soft: var(--color-brand-50);
+  --ds-on-action: var(--color-neutral-0);
+  --ds-accent: var(--color-accent-500);
+  --ds-accent-strong: var(--color-accent-800);
+  --ds-accent-soft: var(--color-accent-50);
+  --ds-on-accent: var(--color-neutral-0);
+  --ds-sidebar: var(--color-neutral-0);
+  --ds-sidebar-hover: var(--color-neutral-50);
+  --ds-sidebar-active: var(--color-brand-50);
+  --ds-auth-panel: var(--color-brand-100);
+  --ds-on-auth-panel: var(--color-brand-950);
+  --ds-danger: var(--color-red-700);
+  --ds-danger-hover: var(--color-red-800);
+  --ds-danger-soft: var(--color-red-50);
+  --ds-on-danger: var(--color-neutral-0);
+  --ds-focus: var(--color-brand-700);
+  --ds-overlay: rgb(15 23 42 / 60%);
+}
+
+@theme inline {
+  --color-canvas: var(--ds-canvas);
+  --color-surface: var(--ds-surface);
+  --color-content: var(--ds-content);
+  --color-content-muted: var(--ds-content-muted);
+  --color-line: var(--ds-border);
+  --color-line-strong: var(--ds-border-strong);
+  --color-action: var(--ds-action);
+  --color-action-hover: var(--ds-action-hover);
+  --color-action-soft: var(--ds-action-soft);
+  --color-on-action: var(--ds-on-action);
+  --color-accent: var(--ds-accent);
+  --color-accent-strong: var(--ds-accent-strong);
+  --color-accent-soft: var(--ds-accent-soft);
+  --color-on-accent: var(--ds-on-accent);
+  --color-sidebar: var(--ds-sidebar);
+  --color-sidebar-hover: var(--ds-sidebar-hover);
+  --color-sidebar-active: var(--ds-sidebar-active);
+  --color-auth-panel: var(--ds-auth-panel);
+  --color-on-auth-panel: var(--ds-on-auth-panel);
+  --color-danger: var(--ds-danger);
+  --color-danger-hover: var(--ds-danger-hover);
+  --color-danger-soft: var(--ds-danger-soft);
+  --color-on-danger: var(--ds-on-danger);
+  --color-focus: var(--ds-focus);
+  --color-overlay: var(--ds-overlay);
+  --radius-control: var(--radius-primitive-sm);
+  --radius-surface: var(--radius-primitive-lg);
+  --shadow-surface: var(--shadow-primitive-surface);
+  --shadow-shell: var(--shadow-primitive-shell);
+  --shadow-popover: var(--shadow-primitive-popover);
+  --text-page-title: clamp(1.75rem, 4vw, 2.5rem);
+  --text-page-title--line-height: 1.1;
+}
