@@ -1,10 +1,11 @@
 {
   "@@module": "app",
   "@@locale": "id",
-  "workspaceTagline": "Workspace yang lebih rapi",
+  "workspaceTagline": "Ruang kerja yang lebih rapi",
   "workspaceHeadline": "Kelola akun dan akses dalam satu tempat.",
   "workspaceDescription": "Navigasi yang jelas, kontrol peran yang aman, dan pengalaman kerja yang konsisten di setiap perangkat.",
   "workspaceFooter": "Ruang kerja yang aman dan teratur.",
+  "workspace": "Ruang kerja",
   "accessManagement": "Manajemen akses",
   "settings": "Pengaturan",
   "system": "Sistem",

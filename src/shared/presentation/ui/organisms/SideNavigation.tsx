@@ -73,7 +73,7 @@ export function SideNavigation({ isOpen, onClose, brandName, brandDescription, b
         </button>
       </div>
       <nav aria-label={translate('app.mainNavigation')} className="min-h-0 flex-1 overflow-y-auto p-3">
-        <p className="mb-3 px-3 text-[0.6875rem] font-bold uppercase tracking-[0.16em] text-content-muted">Workspace</p>
+        <p className="mb-3 px-3 text-[0.6875rem] font-bold uppercase tracking-[0.16em] text-content-muted">{translate('app.workspace')}</p>
         <div className="grid gap-1">{children}</div>
       </nav>
       {footer && <div className="border-t border-line p-3">{footer}</div>}

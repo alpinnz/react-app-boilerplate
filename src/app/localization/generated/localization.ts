@@ -149,6 +149,10 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "app.workspace",
+      "placeholders": []
+    },
+    {
       "key": "app.workspaceDescription",
       "placeholders": []
     },
@@ -721,6 +725,7 @@ const manifest: LocalizationManifest = {
       "app.openNavigation": "Open navigation",
       "app.settings": "Settings",
       "app.system": "System",
+      "app.workspace": "Workspace",
       "app.workspaceDescription": "Clear navigation, secure role controls, and a consistent experience on every device.",
       "app.workspaceFooter": "A secure, organized workspace.",
       "app.workspaceHeadline": "Manage accounts and access in one place.",
@@ -887,10 +892,11 @@ const manifest: LocalizationManifest = {
       "app.openNavigation": "Buka navigasi",
       "app.settings": "Pengaturan",
       "app.system": "Sistem",
+      "app.workspace": "Ruang kerja",
       "app.workspaceDescription": "Navigasi yang jelas, kontrol peran yang aman, dan pengalaman kerja yang konsisten di setiap perangkat.",
       "app.workspaceFooter": "Ruang kerja yang aman dan teratur.",
       "app.workspaceHeadline": "Kelola akun dan akses dalam satu tempat.",
-      "app.workspaceTagline": "Workspace yang lebih rapi",
+      "app.workspaceTagline": "Ruang kerja yang lebih rapi",
       "auth.confirmPassword": "Konfirmasi kata sandi",
       "auth.errorCredentials": "Email atau kata sandi tidak cocok.",
       "auth.errorInvalidRegistration": "Periksa nama, email, dan nomor telepon yang diisi.",
@@ -1063,6 +1069,7 @@ export const localization = {
     "openNavigation": "app.openNavigation",
     "settings": "app.settings",
     "system": "app.system",
+    "workspace": "app.workspace",
     "workspaceDescription": "app.workspaceDescription",
     "workspaceFooter": "app.workspaceFooter",
     "workspaceHeadline": "app.workspaceHeadline",
