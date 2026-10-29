@@ -1,0 +1,22 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "src/modules/account/index.ts",
+    "src/modules/auth/index.ts",
+    "src/modules/health/index.ts",
+    "src/modules/roles/index.ts",
+    "src/modules/users/index.ts"
+  ],
+  "entryPointStrategy": "resolve",
+  "tsconfig": "tsconfig.app.json",
+  "name": "React App Boilerplate API",
+  "readme": "docs/api-reference.md",
+  "projectDocuments": ["docs/project-structure.md"],
+  "out": "docs/api-reference",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "validation": {
+    "notDocumented": false,
+    "notExported": false
+  }
+}
