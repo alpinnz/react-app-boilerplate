@@ -1,75 +1,34 @@
-# React + TypeScript + Vite
+# React Clean Architecture + Zustand Context
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SPA React 19 + TypeScript 7 dengan arsitektur modular berlapis dan alur `UI → Zustand action → use case → repository → data source → HTTP`; panduan struktur layer ada di [`docs/project-structure.md`](docs/project-structure.md). Pemetaan kontrak API yang dikonsumsi frontend ada di [`docs/api-coverage.md`](docs/api-coverage.md).
 
-Currently, two official plugins are available:
+UI menggunakan Tailwind CSS v4 dengan token primitive dan semantic serta komposisi atom, molekul, organisme, pattern, dan template. Aturan kepemilikan dan pemakaian token ada di [`docs/design-system.md`](docs/design-system.md).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Peta lengkap direktori milik proyek dan klasifikasi tiap layer ada di [`docs/project-structure.md`](docs/project-structure.md). Dokumen ini juga dimasukkan ke HTML TypeDoc.
 
-## React Compiler
+Aplikasi mencakup seluruh operasi kontrak untuk autentikasi, profil sendiri, pengguna, peran, dan status layanan. Pemetaan tiap endpoint ada di [`docs/api-coverage.md`](docs/api-coverage.md).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Menjalankan
 
-## Expanding the ESLint configuration
+1. Jalankan backend Express di `http://localhost:3000` beserta database dan seed sesuai petunjuk repository backend. Konfigurasi CORS backend harus mengizinkan `http://localhost:5173`.
+2. Salin `.env.example` ke `.env.local` bila URL API berbeda. `VITE_API_BASE_URL` adalah host tanpa `/api/v1`.
+3. Jalankan `npm install`, lalu `npm run dev`. Buka `http://localhost:5173`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Pengguna dapat mendaftar, mengubah profil, mengganti kata sandi, dan menonaktifkan akun sendiri. Admin atau owner dapat membuka daftar dan detail pengguna. Owner dapat mengubah nama dan telepon serta menonaktifkan akun lain. Penggantian peran mengikuti hierarki level backend. Halaman peran menyediakan katalog serta pembuatan, pengubahan, dan penghapusan peran kustom. Backend tidak mengizinkan perubahan email melalui endpoint edit. Pencarian hanya menyaring pengguna pada halaman yang sudah dimuat karena API daftar tidak menyediakan parameter pencarian. Muat ulang mengambil halaman pertama; tombol “Muat lainnya” memuat halaman berikutnya.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Seeder development backend menyediakan `demo-admin@example.test` dengan peran owner. Kata sandinya diambil dari `SEED_DEMO_USER_PASSWORD` milik backend; tidak disimpan di frontend.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Token akses dan refresh hanya disimpan di memori tab. Muat ulang browser meminta login lagi. Access token diperbarui lewat `/auth/refresh-token` ketika mendekati kedaluwarsa; token tidak disimpan di localStorage.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Verifikasi
 
+```sh
+npm run lint
+npm run test
+npm run build
+npm run docs:api
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+`npm run docs:api` membuat HTML referensi API TypeScript dari komentar TSDoc pada entry point modul dan deklarasi publiknya. Hasilnya ada di `docs/api-reference/index.html` dan dibuat ulang saat source berubah.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+Tes HTTP menjalankan client terhadap server tiruan lokal dengan bentuk respons dari OpenAPI. Tes itu memeriksa path, metode, payload, pemetaan respons, konflik peran, dan kegagalan kredensial. Pemeriksaan Chrome terhadap backend nyata telah membuktikan health `200` dan login salah `422`; operasi tulis tidak dijalankan pada database nyata selama verifikasi.
