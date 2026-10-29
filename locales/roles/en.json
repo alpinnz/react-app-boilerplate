@@ -1,0 +1,23 @@
+{
+  "@@module": "roles",
+  "@@locale": "en",
+  "rolesAccess": "Roles & access",
+  "roles": "Roles",
+  "rolesDescription": "Higher levels have more access.",
+  "loadingRoles": "Loading roles…",
+  "noRoles": "No roles yet.",
+  "builtIn": "built in",
+  "createRole": "Create role",
+  "createRoleDescription": "The level must be below your level ({level}).",
+  "roleName": "Role name",
+  "roleSaved": "Role saved.",
+  "roleDetail": "Role details",
+  "roleUpdated": "Role changed.",
+  "deleteRole": "Delete role",
+  "roleProtected": "Built-in roles and roles at or above your level cannot be changed.",
+  "deleteRoleTitle": "Delete role {name}?",
+  "deleteRoleDescription": "A role can only be deleted if no active users have it. The server reserves its name.",
+  "discardRoleTitle": "Discard role changes?",
+  "discardRoleDescription": "Unsaved role details will be lost.",
+  "errorInvalidRole": "Role names must use lowercase letters, numbers, or hyphens, and the level must be below yours."
+}

@@ -1,0 +1,11 @@
+{
+  "@@module": "health",
+  "@@locale": "id",
+  "serviceStatus": "Status layanan",
+  "serviceDescription": "Ketersediaan layanan dan penyimpanan data.",
+  "loadingStatus": "Memuat status layanan…",
+  "serviceSummary": "Layanan aplikasi: {api} · Penyimpanan data: {database}",
+  "available": "Tersedia",
+  "unavailable": "Tidak tersedia",
+  "refreshStatus": "Perbarui status"
+}

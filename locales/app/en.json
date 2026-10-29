@@ -1,0 +1,21 @@
+{
+  "@@module": "app",
+  "@@locale": "en",
+  "workspaceTagline": "A clearer workspace",
+  "workspaceHeadline": "Manage accounts and access in one place.",
+  "workspaceDescription": "Clear navigation, secure role controls, and a consistent experience on every device.",
+  "workspaceFooter": "A secure, organized workspace.",
+  "accessManagement": "Access management",
+  "settings": "Settings",
+  "system": "System",
+  "openNavigation": "Open navigation",
+  "closeNavigation": "Close navigation",
+  "mainNavigation": "Main navigation",
+  "accountMenu": "Account menu",
+  "manageAccount": "Manage account",
+  "logout": "Sign out",
+  "logoutTitle": "Sign out of your account?",
+  "logoutDescription": "The active session in this tab will end. You can sign in again at any time.",
+  "loggingOut": "Signing out…",
+  "confirmLogout": "Yes, sign out"
+}

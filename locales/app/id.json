@@ -1,0 +1,21 @@
+{
+  "@@module": "app",
+  "@@locale": "id",
+  "workspaceTagline": "Workspace yang lebih rapi",
+  "workspaceHeadline": "Kelola akun dan akses dalam satu tempat.",
+  "workspaceDescription": "Navigasi yang jelas, kontrol peran yang aman, dan pengalaman kerja yang konsisten di setiap perangkat.",
+  "workspaceFooter": "Ruang kerja yang aman dan teratur.",
+  "accessManagement": "Manajemen akses",
+  "settings": "Pengaturan",
+  "system": "Sistem",
+  "openNavigation": "Buka navigasi",
+  "closeNavigation": "Tutup navigasi",
+  "mainNavigation": "Navigasi utama",
+  "accountMenu": "Menu akun",
+  "manageAccount": "Kelola akun",
+  "logout": "Keluar",
+  "logoutTitle": "Keluar dari akun?",
+  "logoutDescription": "Sesi aktif di tab ini akan diakhiri. Anda dapat masuk kembali kapan saja.",
+  "loggingOut": "Sedang keluar…",
+  "confirmLogout": "Ya, keluar"
+}

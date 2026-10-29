@@ -1,0 +1,11 @@
+{
+  "@@module": "health",
+  "@@locale": "en",
+  "serviceStatus": "Service status",
+  "serviceDescription": "Availability of the application and its data storage.",
+  "loadingStatus": "Loading service status…",
+  "serviceSummary": "Application: {api} · Data storage: {database}",
+  "available": "Available",
+  "unavailable": "Unavailable",
+  "refreshStatus": "Refresh status"
+}

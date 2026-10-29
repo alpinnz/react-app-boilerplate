@@ -1,0 +1,23 @@
+{
+  "@@module": "roles",
+  "@@locale": "id",
+  "rolesAccess": "Peran & akses",
+  "roles": "Peran",
+  "rolesDescription": "Level yang lebih tinggi memiliki hak lebih besar.",
+  "loadingRoles": "Memuat peran…",
+  "noRoles": "Belum ada peran.",
+  "builtIn": "bawaan",
+  "createRole": "Buat peran",
+  "createRoleDescription": "Level harus lebih rendah dari level Anda ({level}).",
+  "roleName": "Nama peran",
+  "roleSaved": "Peran berhasil disimpan.",
+  "roleDetail": "Detail peran",
+  "roleUpdated": "Peran berhasil diubah.",
+  "deleteRole": "Hapus peran",
+  "roleProtected": "Peran bawaan atau peran setingkat/lebih tinggi tidak dapat diubah.",
+  "deleteRoleTitle": "Hapus peran {name}?",
+  "deleteRoleDescription": "Peran hanya dapat dihapus jika tidak dipakai pengguna aktif. Namanya tetap dipesan oleh server.",
+  "discardRoleTitle": "Buang perubahan peran?",
+  "discardRoleDescription": "Perubahan detail peran yang belum disimpan akan hilang.",
+  "errorInvalidRole": "Nama peran harus huruf kecil/angka/garis, dan level harus lebih rendah dari level Anda."
+}
