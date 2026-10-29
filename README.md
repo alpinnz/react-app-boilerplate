@@ -1,34 +1,45 @@
-# React Clean Architecture + Zustand Context
+# React App Boilerplate
 
-SPA React 19 + TypeScript 7 dengan arsitektur modular berlapis dan alur `UI → Zustand action → use case → repository → data source → HTTP`; panduan struktur layer ada di [`docs/project-structure.md`](docs/project-structure.md). Pemetaan kontrak API yang dikonsumsi frontend ada di [`docs/api-coverage.md`](docs/api-coverage.md).
+Starter SPA modular dengan React 19, TypeScript 7, React Router, Zustand, Tailwind CSS v4, dan Valfuse localization untuk bahasa Indonesia dan Inggris.
 
-UI menggunakan Tailwind CSS v4 dengan token primitive dan semantic serta komposisi atom, molekul, organisme, pattern, dan template. Aturan kepemilikan dan pemakaian token ada di [`docs/design-system.md`](docs/design-system.md).
+Repository ini menyertakan modul contoh untuk autentikasi, akun, pengguna, peran, dan status layanan. Modul tersebut menunjukkan pola arsitektur yang dapat digunakan ulang dan mengasumsikan REST API contoh yang dicatat di [docs/api-coverage.md](docs/api-coverage.md). Ganti modul atau adapter API agar sesuai dengan backend aplikasi Anda.
 
-Peta lengkap direktori milik proyek dan klasifikasi tiap layer ada di [`docs/project-structure.md`](docs/project-structure.md). Dokumen ini juga dimasukkan ke HTML TypeDoc.
+## Quick start
 
-Aplikasi mencakup seluruh operasi kontrak untuk autentikasi, profil sendiri, pengguna, peran, dan status layanan. Pemetaan tiap endpoint ada di [`docs/api-coverage.md`](docs/api-coverage.md).
+1. Gunakan Node.js yang memenuhi field `engines` di `package.json`.
+2. Jalankan `npm ci`.
+3. Salin `.env.example` ke `.env.local`, lalu atur `VITE_API_BASE_URL` jika backend berjalan pada host lain.
+4. Jalankan `npm run dev` dan buka URL yang ditampilkan Vite.
 
-## Menjalankan
+Repository ini tidak menyertakan backend. `VITE_API_BASE_URL` adalah origin backend tanpa `/api/v1`; HTTP client menambahkan prefix tersebut.
 
-1. Jalankan backend Express di `http://localhost:3000` beserta database dan seed sesuai petunjuk repository backend. Konfigurasi CORS backend harus mengizinkan `http://localhost:5173`.
-2. Salin `.env.example` ke `.env.local` bila URL API berbeda. `VITE_API_BASE_URL` adalah host tanpa `/api/v1`.
-3. Jalankan `npm install`, lalu `npm run dev`. Buka `http://localhost:5173`.
+## Modul contoh
 
-Pengguna dapat mendaftar, mengubah profil, mengganti kata sandi, dan menonaktifkan akun sendiri. Admin atau owner dapat membuka daftar dan detail pengguna. Owner dapat mengubah nama dan telepon serta menonaktifkan akun lain. Penggantian peran mengikuti hierarki level backend. Halaman peran menyediakan katalog serta pembuatan, pengubahan, dan penghapusan peran kustom. Backend tidak mengizinkan perubahan email melalui endpoint edit. Pencarian hanya menyaring pengguna pada halaman yang sudah dimuat karena API daftar tidak menyediakan parameter pencarian. Muat ulang mengambil halaman pertama; tombol “Muat lainnya” memuat halaman berikutnya.
+- `src/modules/auth`: login, pendaftaran, dan sesi di memori tab.
+- `src/modules/account`: profil, kata sandi, dan penonaktifan akun.
+- `src/modules/users`: daftar, detail, perubahan peran, dan tindakan admin.
+- `src/modules/roles`: katalog dan pengelolaan peran.
+- `src/modules/health`: contoh halaman status layanan.
 
-Seeder development backend menyediakan `demo-admin@example.test` dengan peran owner. Kata sandinya diambil dari `SEED_DEMO_USER_PASSWORD` milik backend; tidak disimpan di frontend.
+Setiap modul memiliki batas domain, data, presentation, dependency injection, dan route. `src/app` menyusun public API modul melalui `src/App.tsx`; `src/shared` berisi komponen dan tipe lintas modul.
 
-Token akses dan refresh hanya disimpan di memori tab. Muat ulang browser meminta login lagi. Access token diperbarui lewat `/auth/refresh-token` ketika mendekati kedaluwarsa; token tidak disimpan di localStorage.
-
-## Verifikasi
+## Perintah
 
 ```sh
+npm run dev
 npm run lint
-npm run test
+npm test
 npm run build
+npm run i18n:validate
 npm run docs:api
 ```
 
-`npm run docs:api` membuat HTML referensi API TypeScript dari komentar TSDoc pada entry point modul dan deklarasi publiknya. Hasilnya ada di `docs/api-reference/index.html` dan dibuat ulang saat source berubah.
+Perubahan sumber localization di `locales/<module>/{id,en}.json` perlu diikuti `npm run i18n:generate` dan `npm run i18n:validate`. Jangan edit output di `src/app/localization/generated/` secara manual. Tes memakai server HTTP lokal tiruan dan tidak memerlukan backend nyata.
 
-Tes HTTP menjalankan client terhadap server tiruan lokal dengan bentuk respons dari OpenAPI. Tes itu memeriksa path, metode, payload, pemetaan respons, konflik peran, dan kegagalan kredensial. Pemeriksaan Chrome terhadap backend nyata telah membuktikan health `200` dan login salah `422`; operasi tulis tidak dijalankan pada database nyata selama verifikasi.
+## Localization dan desain
+
+Pesan Valfuse dikelompokkan berdasarkan modul di `locales/`. Token warna, ukuran, dan surface berada di `src/app/styles/tokens/`; gunakan token semantic pada komponen. Lihat [docs/design-system.md](docs/design-system.md) dan [docs/project-structure.md](docs/project-structure.md).
+
+## Konfigurasi dan keamanan
+
+Jangan taruh secret di variabel `VITE_*`; nilainya dikirim ke bundle browser. Access token dan refresh token untuk modul contoh hanya disimpan di memori tab. Gunakan `.env.local` untuk konfigurasi lokal dan jangan commit file tersebut.
