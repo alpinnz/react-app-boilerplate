@@ -30,7 +30,17 @@ const messageKeys: Record<string, string> = {
   'Kata sandi baru harus 8–72 karakter, memiliki huruf besar, angka, simbol, dan cocok dengan konfirmasi.': 'account.errorInvalidNewPassword',
   'Masukkan kata sandi akun saat ini.': 'account.errorCurrentPassword',
   'Nama peran harus huruf kecil/angka/garis, dan level harus lebih rendah dari level Anda.': 'roles.errorInvalidRole',
+  'Periksa nama dan level peran.': 'roles.errorInvalidRole',
+  'Periksa kembali kolom kata sandi.': 'account.errorInvalidNewPassword',
+  'Kata sandi saat ini wajib diisi dengan 8–72 karakter.': 'common.fieldCurrentPasswordInvalid',
   'Isi nama dan nomor telepon yang valid.': 'users.errorInvalidUserProfile',
+  'Nama wajib diisi dan maksimal 100 karakter.': 'common.fieldNameInvalid',
+  'Masukkan alamat email yang valid.': 'common.fieldEmailInvalid',
+  'Nomor telepon maksimal 20 karakter.': 'common.fieldPhoneInvalid',
+  'Kode negara maksimal 5 karakter.': 'common.fieldCountryInvalid',
+  'Kata sandi harus 8–72 karakter, berisi huruf besar, angka, dan simbol.': 'common.fieldPasswordInvalid',
+  'Nama peran hanya boleh huruf kecil, angka, garis bawah, atau tanda hubung.': 'common.fieldRoleNameInvalid',
+  'Level harus bilangan bulat positif di bawah level Anda.': 'common.fieldRoleLevelInvalid',
 }
 
 export function useLocalizedMessage() {

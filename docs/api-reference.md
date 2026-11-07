@@ -24,4 +24,4 @@ export function getProfile(signal?: AbortSignal) {
 }
 ```
 
-Jalankan `npm run docs:api` untuk menghasilkan `docs/api-reference/index.html`. Ringkasan TSDoc pada entry point ditampilkan bersama signature TypeScript di halaman HTML.
+Jalankan `pnpm run docs:api` untuk menghasilkan `docs/api-reference/index.html`. Ringkasan TSDoc pada entry point ditampilkan bersama signature TypeScript di halaman HTML.

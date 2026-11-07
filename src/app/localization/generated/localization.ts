@@ -18,11 +18,8 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
-      "key": "account.accountRole",
-      "placeholders": [
-        "level",
-        "role"
-      ]
+      "key": "account.accountDescription",
+      "placeholders": []
     },
     {
       "key": "account.changePassword",
@@ -57,6 +54,14 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "account.deactivatedToastDescription",
+      "placeholders": []
+    },
+    {
+      "key": "account.editProfile",
+      "placeholders": []
+    },
+    {
       "key": "account.errorAccountOperation",
       "placeholders": []
     },
@@ -85,7 +90,19 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "account.profile",
+      "placeholders": []
+    },
+    {
       "key": "account.profileSaved",
+      "placeholders": []
+    },
+    {
+      "key": "account.profileSavedToastDescription",
+      "placeholders": []
+    },
+    {
+      "key": "account.profileSummary",
       "placeholders": []
     },
     {
@@ -105,11 +122,39 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "app.appearance",
+      "placeholders": []
+    },
+    {
+      "key": "app.breadcrumbs",
+      "placeholders": []
+    },
+    {
+      "key": "app.cancelLogout",
+      "placeholders": []
+    },
+    {
       "key": "app.closeNavigation",
       "placeholders": []
     },
     {
+      "key": "app.collapseNavigation",
+      "placeholders": []
+    },
+    {
       "key": "app.confirmLogout",
+      "placeholders": []
+    },
+    {
+      "key": "app.darkMode",
+      "placeholders": []
+    },
+    {
+      "key": "app.dismissNotification",
+      "placeholders": []
+    },
+    {
+      "key": "app.expandNavigation",
       "placeholders": []
     },
     {
@@ -125,6 +170,14 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "app.logoutSuccessToastDescription",
+      "placeholders": []
+    },
+    {
+      "key": "app.logoutSuccessToastTitle",
+      "placeholders": []
+    },
+    {
       "key": "app.logoutTitle",
       "placeholders": []
     },
@@ -133,7 +186,15 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
-      "key": "app.manageAccount",
+      "key": "app.noNavigationMatches",
+      "placeholders": []
+    },
+    {
+      "key": "app.noNotifications",
+      "placeholders": []
+    },
+    {
+      "key": "app.notifications",
       "placeholders": []
     },
     {
@@ -141,7 +202,23 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "app.profile",
+      "placeholders": []
+    },
+    {
+      "key": "app.searchNavigation",
+      "placeholders": []
+    },
+    {
       "key": "app.settings",
+      "placeholders": []
+    },
+    {
+      "key": "app.switchToDarkMode",
+      "placeholders": []
+    },
+    {
+      "key": "app.switchToLightMode",
       "placeholders": []
     },
     {
@@ -150,18 +227,6 @@ const manifest: LocalizationManifest = {
     },
     {
       "key": "app.workspace",
-      "placeholders": []
-    },
-    {
-      "key": "app.workspaceDescription",
-      "placeholders": []
-    },
-    {
-      "key": "app.workspaceFooter",
-      "placeholders": []
-    },
-    {
-      "key": "app.workspaceHeadline",
       "placeholders": []
     },
     {
@@ -201,11 +266,15 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
-      "key": "auth.loginEyebrow",
+      "key": "auth.loginLink",
       "placeholders": []
     },
     {
-      "key": "auth.loginLink",
+      "key": "auth.loginSuccessToastDescription",
+      "placeholders": []
+    },
+    {
+      "key": "auth.loginSuccessToastTitle",
       "placeholders": []
     },
     {
@@ -221,11 +290,11 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
-      "key": "auth.registerDescription",
+      "key": "auth.registerCompleteTitle",
       "placeholders": []
     },
     {
-      "key": "auth.registerEyebrow",
+      "key": "auth.registerDescription",
       "placeholders": []
     },
     {
@@ -237,7 +306,11 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
-      "key": "auth.registerSuccess",
+      "key": "auth.registerSuccessToastDescription",
+      "placeholders": []
+    },
+    {
+      "key": "auth.registerSuccessToastTitle",
       "placeholders": []
     },
     {
@@ -245,11 +318,19 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
-      "key": "auth.rememberHint",
+      "key": "auth.rememberMe",
       "placeholders": []
     },
     {
-      "key": "auth.rememberMe",
+      "key": "common.actionFailed",
+      "placeholders": []
+    },
+    {
+      "key": "common.actions",
+      "placeholders": []
+    },
+    {
+      "key": "common.actionSucceeded",
       "placeholders": []
     },
     {
@@ -258,6 +339,17 @@ const manifest: LocalizationManifest = {
     },
     {
       "key": "common.cancel",
+      "placeholders": []
+    },
+    {
+      "key": "common.changeCountryCode",
+      "placeholders": [
+        "code",
+        "country"
+      ]
+    },
+    {
+      "key": "common.changeLanguage",
       "placeholders": []
     },
     {
@@ -270,6 +362,10 @@ const manifest: LocalizationManifest = {
     },
     {
       "key": "common.countryCode",
+      "placeholders": []
+    },
+    {
+      "key": "common.countryListUnavailable",
       "placeholders": []
     },
     {
@@ -345,6 +441,66 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "common.fieldCountryInvalid",
+      "placeholders": []
+    },
+    {
+      "key": "common.fieldCurrentPasswordInvalid",
+      "placeholders": []
+    },
+    {
+      "key": "common.fieldEmailInvalid",
+      "placeholders": []
+    },
+    {
+      "key": "common.fieldMaxLength",
+      "placeholders": [
+        "max"
+      ]
+    },
+    {
+      "key": "common.fieldMinLength",
+      "placeholders": [
+        "min"
+      ]
+    },
+    {
+      "key": "common.fieldNameInvalid",
+      "placeholders": []
+    },
+    {
+      "key": "common.fieldPasswordInvalid",
+      "placeholders": []
+    },
+    {
+      "key": "common.fieldPatternInvalid",
+      "placeholders": []
+    },
+    {
+      "key": "common.fieldPhoneInvalid",
+      "placeholders": []
+    },
+    {
+      "key": "common.fieldRangeInvalid",
+      "placeholders": []
+    },
+    {
+      "key": "common.fieldRequired",
+      "placeholders": []
+    },
+    {
+      "key": "common.fieldRoleLevelInvalid",
+      "placeholders": []
+    },
+    {
+      "key": "common.fieldRoleNameInvalid",
+      "placeholders": []
+    },
+    {
+      "key": "common.hidePassword",
+      "placeholders": []
+    },
+    {
       "key": "common.indonesian",
       "placeholders": []
     },
@@ -365,7 +521,15 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "common.loadingCountries",
+      "placeholders": []
+    },
+    {
       "key": "common.name",
+      "placeholders": []
+    },
+    {
+      "key": "common.noCountriesFound",
       "placeholders": []
     },
     {
@@ -377,7 +541,27 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "common.phoneCountryPickerDescription",
+      "placeholders": []
+    },
+    {
+      "key": "common.phoneCountryPickerTitle",
+      "placeholders": []
+    },
+    {
+      "key": "common.pullToRefresh",
+      "placeholders": []
+    },
+    {
       "key": "common.refresh",
+      "placeholders": []
+    },
+    {
+      "key": "common.refreshing",
+      "placeholders": []
+    },
+    {
+      "key": "common.releaseToRefresh",
       "placeholders": []
     },
     {
@@ -394,6 +578,14 @@ const manifest: LocalizationManifest = {
     },
     {
       "key": "common.saving",
+      "placeholders": []
+    },
+    {
+      "key": "common.searchCountries",
+      "placeholders": []
+    },
+    {
+      "key": "common.showPassword",
       "placeholders": []
     },
     {
@@ -421,10 +613,6 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
-      "key": "health.refreshStatus",
-      "placeholders": []
-    },
-    {
       "key": "health.serviceDescription",
       "placeholders": []
     },
@@ -444,6 +632,109 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "onboarding.accessDescription",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.accessImageAlt",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.accessTitle",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.accountDescription",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.accountImageAlt",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.accountTitle",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.carousel",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.introduction",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.login",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.next",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.nextSlide",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.previousSlide",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.register",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.registerPrompt",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.showSlide",
+      "placeholders": [
+        "number"
+      ]
+    },
+    {
+      "key": "onboarding.skip",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.slideCount",
+      "placeholders": [
+        "current",
+        "total"
+      ]
+    },
+    {
+      "key": "onboarding.slideNavigation",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.statusDescription",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.statusImageAlt",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.statusTitle",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.welcomeDescription",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.welcomeImageAlt",
+      "placeholders": []
+    },
+    {
+      "key": "onboarding.welcomeTitle",
+      "placeholders": [
+        "brandName"
+      ]
+    },
+    {
       "key": "roles.builtIn",
       "placeholders": []
     },
@@ -456,6 +747,10 @@ const manifest: LocalizationManifest = {
       "placeholders": [
         "level"
       ]
+    },
+    {
+      "key": "roles.custom",
+      "placeholders": []
     },
     {
       "key": "roles.deleteRole",
@@ -480,6 +775,18 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "roles.editRole",
+      "placeholders": [
+        "name"
+      ]
+    },
+    {
+      "key": "roles.editRoleDescription",
+      "placeholders": [
+        "level"
+      ]
+    },
+    {
       "key": "roles.errorInvalidRole",
       "placeholders": []
     },
@@ -488,11 +795,47 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "roles.noRoleMatches",
+      "placeholders": []
+    },
+    {
       "key": "roles.noRoles",
       "placeholders": []
     },
     {
+      "key": "roles.roleActions",
+      "placeholders": [
+        "name"
+      ]
+    },
+    {
+      "key": "roles.roleCreatedToastDescription",
+      "placeholders": [
+        "name"
+      ]
+    },
+    {
+      "key": "roles.roleCreatedToastTitle",
+      "placeholders": []
+    },
+    {
+      "key": "roles.roleDeletedToastDescription",
+      "placeholders": [
+        "name"
+      ]
+    },
+    {
+      "key": "roles.roleDeletedToastTitle",
+      "placeholders": []
+    },
+    {
       "key": "roles.roleDetail",
+      "placeholders": [
+        "name"
+      ]
+    },
+    {
+      "key": "roles.roleDetailDescription",
       "placeholders": []
     },
     {
@@ -520,8 +863,36 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "roles.roleType",
+      "placeholders": []
+    },
+    {
       "key": "roles.roleUpdated",
       "placeholders": []
+    },
+    {
+      "key": "roles.roleUpdatedToastDescription",
+      "placeholders": [
+        "name"
+      ]
+    },
+    {
+      "key": "roles.roleUpdatedToastTitle",
+      "placeholders": []
+    },
+    {
+      "key": "roles.searchPlaceholder",
+      "placeholders": []
+    },
+    {
+      "key": "roles.searchRoles",
+      "placeholders": []
+    },
+    {
+      "key": "roles.showRoleDetailsAction",
+      "placeholders": [
+        "name"
+      ]
     },
     {
       "key": "users.backToUsers",
@@ -533,14 +904,26 @@ const manifest: LocalizationManifest = {
     },
     {
       "key": "users.changeRoleDescription",
+      "placeholders": [
+        "name"
+      ]
+    },
+    {
+      "key": "users.currentUser",
       "placeholders": []
     },
     {
-      "key": "users.deleteUser",
-      "placeholders": []
+      "key": "users.deleteUserAction",
+      "placeholders": [
+        "name"
+      ]
     },
     {
       "key": "users.deleteUserDescription",
+      "placeholders": []
+    },
+    {
+      "key": "users.deleteUserTitle",
       "placeholders": [
         "name"
       ]
@@ -560,6 +943,18 @@ const manifest: LocalizationManifest = {
     {
       "key": "users.editUser",
       "placeholders": []
+    },
+    {
+      "key": "users.editUserAction",
+      "placeholders": [
+        "name"
+      ]
+    },
+    {
+      "key": "users.editUserDescription",
+      "placeholders": [
+        "name"
+      ]
     },
     {
       "key": "users.emailReadOnly",
@@ -600,6 +995,10 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "users.loadingMoreUsers",
+      "placeholders": []
+    },
+    {
       "key": "users.loadingUsers",
       "placeholders": []
     },
@@ -620,11 +1019,19 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "users.noMatchesDescription",
+      "placeholders": []
+    },
+    {
       "key": "users.noUsers",
       "placeholders": []
     },
     {
-      "key": "users.readyUsers",
+      "key": "users.noUsersDescription",
+      "placeholders": []
+    },
+    {
+      "key": "users.phoneColumn",
       "placeholders": []
     },
     {
@@ -640,7 +1047,13 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
-      "key": "users.roleChanged",
+      "key": "users.roleChangeSavedToastDescription",
+      "placeholders": [
+        "name"
+      ]
+    },
+    {
+      "key": "users.roleChangeSavedToastTitle",
       "placeholders": []
     },
     {
@@ -658,6 +1071,10 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
+      "key": "users.searchLoadedHint",
+      "placeholders": []
+    },
+    {
       "key": "users.searchUsers",
       "placeholders": []
     },
@@ -666,11 +1083,17 @@ const manifest: LocalizationManifest = {
       "placeholders": []
     },
     {
-      "key": "users.userDetail",
+      "key": "users.userDeletedToastDescription",
+      "placeholders": [
+        "name"
+      ]
+    },
+    {
+      "key": "users.userDeletedToastTitle",
       "placeholders": []
     },
     {
-      "key": "users.userFeature",
+      "key": "users.userDetail",
       "placeholders": []
     },
     {
@@ -688,74 +1111,108 @@ const manifest: LocalizationManifest = {
     {
       "key": "users.users",
       "placeholders": []
+    },
+    {
+      "key": "users.userSavedToastDescription",
+      "placeholders": [
+        "name"
+      ]
+    },
+    {
+      "key": "users.userSavedToastTitle",
+      "placeholders": []
     }
   ],
   "messages": {
     "en": {
       "account.account": "My account",
-      "account.accountRole": "Role {role} (level {level})",
+      "account.accountDescription": "Manage your profile, password, and account security.",
       "account.changePassword": "Change password",
-      "account.changePasswordDescription": "All sessions will end after your password changes.",
+      "account.changePasswordDescription": "Changing your password ends all sessions. Sign in again with your new password.",
       "account.confirmCurrentPassword": "Confirm with your current password",
       "account.confirmNewPassword": "Confirm new password",
       "account.currentPassword": "Current password",
       "account.deactivateAccount": "Deactivate account",
-      "account.deactivateDescription": "Your account and all sessions will be deactivated. This action cannot be undone in the app.",
+      "account.deactivateDescription": "This account and all its sessions will be deactivated. You will be signed out when the operation succeeds, and the app cannot reactivate the account.",
       "account.deactivatedNotice": "Account deactivated.",
+      "account.deactivatedToastDescription": "Your account and all sessions have been deactivated.",
+      "account.editProfile": "Edit profile",
       "account.errorAccountOperation": "Account operation failed. Try again.",
       "account.errorCurrentPassword": "Enter your current account password.",
-      "account.errorInvalidNewPassword": "The new password must be 8–72 characters, include an uppercase letter, number, and symbol, and match the confirmation.",
-      "account.errorInvalidProfile": "Enter a valid profile.",
+      "account.errorInvalidNewPassword": "Use 8–72 characters with an uppercase letter, a number, and a symbol. The confirmation must match.",
+      "account.errorInvalidProfile": "Enter a valid name and phone number.",
       "account.loadingProfile": "Loading profile…",
       "account.newPassword": "New password",
       "account.passwordChangedNotice": "Password changed. Please sign in again.",
+      "account.profile": "Profile",
       "account.profileSaved": "Profile saved.",
+      "account.profileSavedToastDescription": "Your name and contact details were updated.",
+      "account.profileSummary": "Update your account name and phone number. The email address cannot be changed.",
       "account.profileUnavailable": "Profile unavailable.",
       "account.saveProfile": "Save profile",
       "app.accessManagement": "Access management",
       "app.accountMenu": "Account menu",
+      "app.appearance": "Appearance",
+      "app.breadcrumbs": "Breadcrumb",
+      "app.cancelLogout": "Stay signed in",
       "app.closeNavigation": "Close navigation",
-      "app.confirmLogout": "Yes, sign out",
+      "app.collapseNavigation": "Collapse navigation",
+      "app.confirmLogout": "Sign out of account",
+      "app.darkMode": "Dark mode",
+      "app.dismissNotification": "Dismiss notification",
+      "app.expandNavigation": "Expand navigation",
       "app.loggingOut": "Signing out…",
       "app.logout": "Sign out",
-      "app.logoutDescription": "The active session in this tab will end. You can sign in again at any time.",
+      "app.logoutDescription": "You will sign out of this browser. The saved session will be removed, and you will need to sign in again to open protected pages.",
+      "app.logoutSuccessToastDescription": "The session in this browser has ended.",
+      "app.logoutSuccessToastTitle": "Signed out",
       "app.logoutTitle": "Sign out of your account?",
       "app.mainNavigation": "Main navigation",
-      "app.manageAccount": "Manage account",
+      "app.noNavigationMatches": "No menu found. Try another search.",
+      "app.noNotifications": "There are no new notifications.",
+      "app.notifications": "Notifications",
       "app.openNavigation": "Open navigation",
+      "app.profile": "Profile",
+      "app.searchNavigation": "Search menu",
       "app.settings": "Settings",
+      "app.switchToDarkMode": "Switch to dark mode",
+      "app.switchToLightMode": "Switch to light mode",
       "app.system": "System",
       "app.workspace": "Workspace",
-      "app.workspaceDescription": "Clear navigation, secure role controls, and a consistent experience on every device.",
-      "app.workspaceFooter": "A secure, organized workspace.",
-      "app.workspaceHeadline": "Manage accounts and access in one place.",
-      "app.workspaceTagline": "A clearer workspace",
+      "app.workspaceTagline": "A React application boilerplate",
       "auth.confirmPassword": "Confirm password",
       "auth.errorCredentials": "Email or password is incorrect.",
       "auth.errorInvalidRegistration": "Check the name, email, and phone number.",
       "auth.errorLogin": "Could not sign in. Try again.",
       "auth.errorRateLimited": "Too many sign-in attempts. Wait a moment and try again.",
-      "auth.goToLogin": "Go to sign in",
+      "auth.goToLogin": "Sign in",
       "auth.loggingIn": "Checking your account…",
-      "auth.loginDescription": "Sign in to continue to your workspace.",
-      "auth.loginEyebrow": "Account access",
+      "auth.loginDescription": "Sign in to open your workspace.",
       "auth.loginLink": "Already have an account? Sign in",
+      "auth.loginSuccessToastDescription": "Welcome back.",
+      "auth.loginSuccessToastTitle": "Signed in",
       "auth.loginTitle": "Sign in",
       "auth.passwordHint": "8–72 characters, including an uppercase letter, a number, and a symbol.",
-      "auth.register": "Register",
-      "auth.registerDescription": "After registering, sign in with your email and password.",
-      "auth.registerEyebrow": "New account",
+      "auth.register": "Create account",
+      "auth.registerCompleteTitle": "Registration complete",
+      "auth.registerDescription": "Create an account to access your workspace.",
       "auth.registering": "Creating account…",
       "auth.registerLink": "New here? Create an account",
-      "auth.registerSuccess": "Account created. You can now sign in.",
+      "auth.registerSuccessToastDescription": "Sign in with your email and password.",
+      "auth.registerSuccessToastTitle": "Account created",
       "auth.registerTitle": "Create an account",
-      "auth.rememberHint": "Your session lasts longer while this tab stays open. Closing the tab signs you out.",
-      "auth.rememberMe": "Keep my session longer",
+      "auth.rememberMe": "Extend session duration",
+      "common.actionFailed": "Action failed",
+      "common.actions": "Actions",
+      "common.actionSucceeded": "Action completed",
       "common.backToLogin": "Back to sign in",
       "common.cancel": "Cancel",
+      "common.changeCountryCode": "Choose a country and calling code. Current selection: {country}, {code}.",
+      "common.changeLanguage": "Change language",
       "common.close": "Close",
       "common.continueEditing": "Continue editing",
       "common.countryCode": "Country code",
+      "common.countryListUnavailable": "Could not load the country list.",
       "common.delete": "Delete",
       "common.detail": "Details",
       "common.discard": "Discard changes",
@@ -774,155 +1231,253 @@ const manifest: LocalizationManifest = {
       "common.errorUnavailable": "The service is unavailable. Please try again later.",
       "common.errorUnexpected": "The operation failed. Try again.",
       "common.errorWeakPassword": "Use a password of 8–72 characters with an uppercase letter, number, and symbol.",
-      "common.indonesian": "Indonesia",
+      "common.fieldCountryInvalid": "Country code must have 5 characters or fewer.",
+      "common.fieldCurrentPasswordInvalid": "Enter your current password using 8–72 characters.",
+      "common.fieldEmailInvalid": "Enter a valid email address.",
+      "common.fieldMaxLength": "Enter no more than {max} characters.",
+      "common.fieldMinLength": "Enter at least {min} characters.",
+      "common.fieldNameInvalid": "Enter a name using 1–100 characters.",
+      "common.fieldPasswordInvalid": "Use 8–72 characters with an uppercase letter, a number, and a symbol.",
+      "common.fieldPatternInvalid": "The value format is invalid.",
+      "common.fieldPhoneInvalid": "Phone number must have 20 characters or fewer.",
+      "common.fieldRangeInvalid": "The value must be within the allowed range.",
+      "common.fieldRequired": "This field is required.",
+      "common.fieldRoleLevelInvalid": "Enter a positive whole number below your own level.",
+      "common.fieldRoleNameInvalid": "Use lowercase letters, numbers, underscores, or hyphens in the role name.",
+      "common.hidePassword": "Hide password",
+      "common.indonesian": "Indonesian",
       "common.language": "Language",
       "common.leave": "Leave page",
       "common.level": "Level",
       "common.loading": "Loading…",
+      "common.loadingCountries": "Loading countries…",
       "common.name": "Name",
+      "common.noCountriesFound": "No countries found.",
       "common.password": "Password",
-      "common.phone": "Phone number",
+      "common.phone": "Phone / WhatsApp",
+      "common.phoneCountryPickerDescription": "Search for a country and select it to fill in the phone number's calling code.",
+      "common.phoneCountryPickerTitle": "Choose a calling code",
+      "common.pullToRefresh": "Pull down to refresh",
       "common.refresh": "Refresh",
+      "common.refreshing": "Refreshing data…",
+      "common.releaseToRefresh": "Release to refresh",
       "common.retry": "Try again",
       "common.role": "Role",
       "common.save": "Save",
       "common.saving": "Saving…",
+      "common.searchCountries": "Search countries or calling codes…",
+      "common.showPassword": "Show password",
       "common.stay": "Stay on this page",
       "common.unknown": "Unknown",
-      "common.unsavedDescription": "Unsaved changes will be lost if you leave this page.",
+      "common.unsavedDescription": "Unsaved changes will be lost if you leave the page or close this form.",
       "common.unsavedTitle": "Leave your changes?",
       "health.available": "Available",
       "health.loadingStatus": "Loading service status…",
-      "health.refreshStatus": "Refresh status",
-      "health.serviceDescription": "Availability of the application and its data storage.",
+      "health.serviceDescription": "API and database status.",
       "health.serviceStatus": "Service status",
-      "health.serviceSummary": "Application: {api} · Data storage: {database}",
+      "health.serviceSummary": "API: {api} · Database: {database}",
       "health.unavailable": "Unavailable",
-      "roles.builtIn": "built in",
+      "onboarding.accessDescription": "The sample modules cover user lists, account details, role hierarchy, and access restrictions. Adapt authorization rules in your backend.",
+      "onboarding.accessImageAlt": "Team roles and access permissions protected by a shield",
+      "onboarding.accessTitle": "Manage users and roles",
+      "onboarding.accountDescription": "The account module covers profiles, password changes, and account deactivation. Adapt the flow to your app's policies.",
+      "onboarding.accountImageAlt": "An account profile with contact details and verification status",
+      "onboarding.accountTitle": "Sample account management",
+      "onboarding.carousel": "carousel",
+      "onboarding.introduction": "Product introduction",
+      "onboarding.login": "Get started",
+      "onboarding.next": "Next",
+      "onboarding.nextSlide": "Next slide",
+      "onboarding.previousSlide": "Previous slide",
+      "onboarding.register": "Create account",
+      "onboarding.registerPrompt": "Don't have an account?",
+      "onboarding.showSlide": "Show slide {number}",
+      "onboarding.skip": "Skip",
+      "onboarding.slideCount": "Slide {current} of {total}",
+      "onboarding.slideNavigation": "Introduction navigation",
+      "onboarding.statusDescription": "The sample page checks the API and database. Adapt its endpoint and response format to your backend.",
+      "onboarding.statusImageAlt": "API and database health with active service status",
+      "onboarding.statusTitle": "Monitor service health",
+      "onboarding.welcomeDescription": "This boilerplate includes sample authentication, account, user, role, and service status modules. Adapt each module to your app.",
+      "onboarding.welcomeImageAlt": "A workspace dashboard summarizing accounts, users, and services",
+      "onboarding.welcomeTitle": "Welcome to {brandName}",
+      "roles.builtIn": "Built-in",
       "roles.createRole": "Create role",
-      "roles.createRoleDescription": "The level must be below your level ({level}).",
+      "roles.createRoleDescription": "Set a name and level for the custom role. Its level must be below yours ({level}); higher levels grant broader access.",
+      "roles.custom": "Custom",
       "roles.deleteRole": "Delete role",
-      "roles.deleteRoleDescription": "A role can only be deleted if no active users have it. The server reserves its name.",
+      "roles.deleteRoleDescription": "A role cannot be deleted while it is assigned to active users. Once deleted, it will no longer be available for assignment.",
       "roles.deleteRoleTitle": "Delete role {name}?",
-      "roles.discardRoleDescription": "Unsaved role details will be lost.",
+      "roles.discardRoleDescription": "Unsaved role name, level, or assignment changes will be lost.",
       "roles.discardRoleTitle": "Discard role changes?",
-      "roles.errorInvalidRole": "Role names must use lowercase letters, numbers, or hyphens, and the level must be below yours.",
+      "roles.editRole": "Edit {name}",
+      "roles.editRoleDescription": "Change the role name and level. Its level must be below yours ({level}); higher levels grant broader access.",
+      "roles.errorInvalidRole": "Role names can contain lowercase letters, numbers, underscores, and hyphens. The level must be a positive whole number below your own.",
       "roles.loadingRoles": "Loading roles…",
+      "roles.noRoleMatches": "No matching roles.",
       "roles.noRoles": "No roles yet.",
-      "roles.roleDetail": "Role details",
+      "roles.roleActions": "More actions for {name}",
+      "roles.roleCreatedToastDescription": "{name}",
+      "roles.roleCreatedToastTitle": "Role created",
+      "roles.roleDeletedToastDescription": "{name}",
+      "roles.roleDeletedToastTitle": "Role deleted",
+      "roles.roleDetail": "Details for {name}",
+      "roles.roleDetailDescription": "Higher levels grant broader access. Built-in roles are protected and cannot be changed.",
       "roles.roleName": "Role name",
       "roles.roleProtected": "Built-in roles and roles at or above your level cannot be changed.",
       "roles.roles": "Roles",
       "roles.rolesAccess": "Roles & access",
       "roles.roleSaved": "Role saved.",
-      "roles.rolesDescription": "Higher levels have more access.",
-      "roles.roleUpdated": "Role changed.",
-      "users.backToUsers": "← Back to users",
+      "roles.rolesDescription": "Higher levels grant broader access.",
+      "roles.roleType": "Role type",
+      "roles.roleUpdated": "Role updated.",
+      "roles.roleUpdatedToastDescription": "{name}",
+      "roles.roleUpdatedToastTitle": "Role updated",
+      "roles.searchPlaceholder": "Name, level, or role type",
+      "roles.searchRoles": "Search roles",
+      "roles.showRoleDetailsAction": "View details for role {name}",
+      "users.backToUsers": "Back to user list",
       "users.changeRole": "Change role",
-      "users.changeRoleDescription": "You can only assign roles below your own level to users with a lower level.",
-      "users.deleteUser": "Delete user",
-      "users.deleteUserDescription": "Delete {name} from this account's user list?",
+      "users.changeRoleDescription": "You are changing {name}'s access by assigning a new role. You can only assign roles below your level to users whose level is also lower than yours.",
+      "users.currentUser": "You",
+      "users.deleteUserAction": "Delete {name}",
+      "users.deleteUserDescription": "This user will be removed from the account. Check the name above before continuing.",
+      "users.deleteUserTitle": "Delete {name}?",
       "users.deleting": "Deleting…",
-      "users.discardUserDescription": "Unsaved changes to this user will be lost.",
+      "users.discardUserDescription": "Unsaved changes to the name or phone number will be lost if discarded.",
       "users.discardUserTitle": "Discard user changes?",
       "users.editUser": "Edit user",
-      "users.emailReadOnly": "Email: {email} (cannot be changed)",
+      "users.editUserAction": "Edit {name}",
+      "users.editUserDescription": "Update {name}'s name and phone number. The email address cannot be changed.",
+      "users.emailReadOnly": "Email {email} cannot be changed.",
       "users.errorDeleteUser": "Could not delete the user.",
       "users.errorInvalidPage": "Invalid page.",
       "users.errorInvalidUser": "User data is invalid.",
-      "users.errorInvalidUserProfile": "Enter a valid name and phone number.",
+      "users.errorInvalidUserProfile": "Enter a name. Phone numbers can be up to 20 characters.",
       "users.errorLoadUsers": "Could not load users.",
       "users.errorSaveUser": "Could not save the user.",
       "users.errorUserNotFound": "User not found.",
       "users.errorUserOperation": "User operation failed. Try again.",
+      "users.loadingMoreUsers": "Loading more users",
       "users.loadingUsers": "Loading users…",
-      "users.loadMore": "Load more",
+      "users.loadMore": "Load more users",
       "users.nameOrEmail": "Name or email",
       "users.newRole": "New role",
       "users.noMatches": "No matching users.",
+      "users.noMatchesDescription": "Try a different search or clear the query to see all users.",
       "users.noUsers": "No users yet.",
-      "users.readyUsers": "Ready to load users.",
+      "users.noUsersDescription": "Available users will appear here.",
+      "users.phoneColumn": "Phone",
       "users.refreshing": "Refreshing data…",
-      "users.restrictedDescription": "The user list requires an admin or owner role.",
+      "users.restrictedDescription": "The user list is available to admins and owners.",
       "users.restrictedTitle": "Access restricted",
-      "users.roleChanged": "User role changed.",
-      "users.roleChangeUnavailable": "No role changes are allowed for this user.",
-      "users.roleLevel": "level {level}",
+      "users.roleChangeSavedToastDescription": "{name}",
+      "users.roleChangeSavedToastTitle": "User access updated",
+      "users.roleChangeUnavailable": "No roles are available to assign to this user.",
+      "users.roleLevel": "Level {level}",
       "users.saveRole": "Save role",
+      "users.searchLoadedHint": "Load the next page to expand search results.",
       "users.searchUsers": "Search users",
       "users.selectRole": "Select role",
+      "users.userDeletedToastDescription": "{name}",
+      "users.userDeletedToastTitle": "User deleted",
       "users.userDetail": "User details",
-      "users.userFeature": "User management",
       "users.userId": "User ID",
       "users.userList": "User list",
-      "users.userListDescription": "Manage the users shown here. Load more to see additional users.",
-      "users.users": "Users"
+      "users.userListDescription": "Search loaded users, then open a profile to review access.",
+      "users.users": "Users",
+      "users.userSavedToastDescription": "{name}",
+      "users.userSavedToastTitle": "User updated"
     },
     "id": {
       "account.account": "Akun saya",
-      "account.accountRole": "Peran {role} (level {level})",
+      "account.accountDescription": "Kelola profil, kata sandi, dan keamanan akun Anda.",
       "account.changePassword": "Ganti kata sandi",
-      "account.changePasswordDescription": "Semua sesi akan keluar setelah perubahan berhasil.",
+      "account.changePasswordDescription": "Setelah kata sandi diganti, seluruh sesi akan berakhir. Masuk kembali menggunakan kata sandi baru.",
       "account.confirmCurrentPassword": "Konfirmasi dengan kata sandi saat ini",
       "account.confirmNewPassword": "Konfirmasi kata sandi baru",
       "account.currentPassword": "Kata sandi saat ini",
       "account.deactivateAccount": "Nonaktifkan akun",
-      "account.deactivateDescription": "Akun dan semua sesi akan dinonaktifkan. Tindakan ini tidak dapat dibatalkan dari aplikasi.",
+      "account.deactivateDescription": "Akun ini dan semua sesinya akan dinonaktifkan. Anda akan keluar setelah proses berhasil; tindakan ini tidak dapat dibatalkan dari aplikasi.",
       "account.deactivatedNotice": "Akun berhasil dinonaktifkan.",
+      "account.deactivatedToastDescription": "Akun dan semua sesi telah dinonaktifkan.",
+      "account.editProfile": "Edit profil",
       "account.errorAccountOperation": "Operasi akun gagal. Coba lagi.",
       "account.errorCurrentPassword": "Masukkan kata sandi akun saat ini.",
-      "account.errorInvalidNewPassword": "Kata sandi baru harus 8–72 karakter, memiliki huruf besar, angka, simbol, dan cocok dengan konfirmasi.",
-      "account.errorInvalidProfile": "Isi profil yang valid.",
+      "account.errorInvalidNewPassword": "Gunakan 8–72 karakter dengan huruf besar, angka, dan simbol. Konfirmasi kata sandi harus sama.",
+      "account.errorInvalidProfile": "Masukkan nama dan nomor telepon yang valid.",
       "account.loadingProfile": "Memuat profil…",
       "account.newPassword": "Kata sandi baru",
       "account.passwordChangedNotice": "Kata sandi berhasil diganti. Silakan masuk lagi.",
+      "account.profile": "Profil",
       "account.profileSaved": "Profil berhasil disimpan.",
+      "account.profileSavedToastDescription": "Nama dan informasi kontak telah diperbarui.",
+      "account.profileSummary": "Ubah nama dan nomor telepon akun. Email tidak dapat diubah.",
       "account.profileUnavailable": "Profil tidak tersedia.",
       "account.saveProfile": "Simpan profil",
       "app.accessManagement": "Manajemen akses",
       "app.accountMenu": "Menu akun",
+      "app.appearance": "Tampilan",
+      "app.breadcrumbs": "Jejak navigasi",
+      "app.cancelLogout": "Tetap masuk",
       "app.closeNavigation": "Tutup navigasi",
-      "app.confirmLogout": "Ya, keluar",
+      "app.collapseNavigation": "Ringkas navigasi",
+      "app.confirmLogout": "Keluar dari akun",
+      "app.darkMode": "Mode gelap",
+      "app.dismissNotification": "Tutup notifikasi",
+      "app.expandNavigation": "Perluas navigasi",
       "app.loggingOut": "Sedang keluar…",
       "app.logout": "Keluar",
-      "app.logoutDescription": "Sesi aktif di tab ini akan diakhiri. Anda dapat masuk kembali kapan saja.",
+      "app.logoutDescription": "Anda akan keluar dari akun di browser ini. Sesi tersimpan akan dihapus dan Anda perlu masuk kembali untuk membuka halaman yang memerlukan autentikasi.",
+      "app.logoutSuccessToastDescription": "Sesi di browser ini telah diakhiri.",
+      "app.logoutSuccessToastTitle": "Berhasil keluar",
       "app.logoutTitle": "Keluar dari akun?",
       "app.mainNavigation": "Navigasi utama",
-      "app.manageAccount": "Kelola akun",
+      "app.noNavigationMatches": "Menu tidak ditemukan. Coba kata kunci lain.",
+      "app.noNotifications": "Belum ada notifikasi baru.",
+      "app.notifications": "Notifikasi",
       "app.openNavigation": "Buka navigasi",
+      "app.profile": "Profil",
+      "app.searchNavigation": "Cari menu",
       "app.settings": "Pengaturan",
+      "app.switchToDarkMode": "Aktifkan mode gelap",
+      "app.switchToLightMode": "Aktifkan mode terang",
       "app.system": "Sistem",
       "app.workspace": "Ruang kerja",
-      "app.workspaceDescription": "Navigasi yang jelas, kontrol peran yang aman, dan pengalaman kerja yang konsisten di setiap perangkat.",
-      "app.workspaceFooter": "Ruang kerja yang aman dan teratur.",
-      "app.workspaceHeadline": "Kelola akun dan akses dalam satu tempat.",
-      "app.workspaceTagline": "Ruang kerja yang lebih rapi",
+      "app.workspaceTagline": "Boilerplate aplikasi React",
       "auth.confirmPassword": "Konfirmasi kata sandi",
       "auth.errorCredentials": "Email atau kata sandi tidak cocok.",
       "auth.errorInvalidRegistration": "Periksa nama, email, dan nomor telepon yang diisi.",
       "auth.errorLogin": "Tidak dapat masuk. Coba lagi.",
       "auth.errorRateLimited": "Terlalu banyak percobaan masuk. Tunggu beberapa saat lalu coba lagi.",
-      "auth.goToLogin": "Ke halaman masuk",
+      "auth.goToLogin": "Masuk",
       "auth.loggingIn": "Memeriksa akun…",
-      "auth.loginDescription": "Masuk untuk melanjutkan ke ruang kerja Anda.",
-      "auth.loginEyebrow": "Akses akun",
+      "auth.loginDescription": "Masuk untuk membuka ruang kerja.",
       "auth.loginLink": "Sudah punya akun? Masuk",
+      "auth.loginSuccessToastDescription": "Selamat datang kembali.",
+      "auth.loginSuccessToastTitle": "Berhasil masuk",
       "auth.loginTitle": "Masuk",
       "auth.passwordHint": "8–72 karakter, dengan huruf besar, angka, dan simbol.",
       "auth.register": "Daftar",
-      "auth.registerDescription": "Setelah pendaftaran berhasil, masuk dengan email dan kata sandi Anda.",
-      "auth.registerEyebrow": "Akun baru",
+      "auth.registerCompleteTitle": "Pendaftaran selesai",
+      "auth.registerDescription": "Buat akun untuk mengakses ruang kerja.",
       "auth.registering": "Membuat akun…",
       "auth.registerLink": "Belum punya akun? Daftar",
-      "auth.registerSuccess": "Akun berhasil dibuat. Silakan masuk.",
+      "auth.registerSuccessToastDescription": "Masuk dengan email dan kata sandi Anda.",
+      "auth.registerSuccessToastTitle": "Akun berhasil dibuat",
       "auth.registerTitle": "Daftar akun",
-      "auth.rememberHint": "Sesi lebih lama selama tab ini terbuka. Tutup tab untuk keluar.",
-      "auth.rememberMe": "Perpanjang sesi saya",
+      "auth.rememberMe": "Perpanjang masa sesi",
+      "common.actionFailed": "Operasi gagal",
+      "common.actions": "Aksi",
+      "common.actionSucceeded": "Operasi berhasil",
       "common.backToLogin": "Kembali ke halaman masuk",
       "common.cancel": "Batal",
+      "common.changeCountryCode": "Pilih negara dan kode telepon. Saat ini {country}, {code}.",
+      "common.changeLanguage": "Ganti bahasa",
       "common.close": "Tutup",
-      "common.continueEditing": "Lanjutkan edit",
+      "common.continueEditing": "Lanjutkan mengedit",
       "common.countryCode": "Kode negara",
+      "common.countryListUnavailable": "Daftar negara gagal dimuat.",
       "common.delete": "Hapus",
       "common.detail": "Detail",
       "common.discard": "Buang perubahan",
@@ -941,89 +1496,163 @@ const manifest: LocalizationManifest = {
       "common.errorUnavailable": "Layanan sedang tidak tersedia. Coba lagi nanti.",
       "common.errorUnexpected": "Operasi gagal. Coba lagi.",
       "common.errorWeakPassword": "Gunakan kata sandi 8–72 karakter dengan huruf besar, angka, dan simbol.",
-      "common.indonesian": "Indonesia",
+      "common.fieldCountryInvalid": "Kode negara tidak boleh lebih dari 5 karakter.",
+      "common.fieldCurrentPasswordInvalid": "Kata sandi saat ini wajib diisi dengan 8–72 karakter.",
+      "common.fieldEmailInvalid": "Masukkan alamat email yang valid.",
+      "common.fieldMaxLength": "Masukkan maksimal {max} karakter.",
+      "common.fieldMinLength": "Masukkan setidaknya {min} karakter.",
+      "common.fieldNameInvalid": "Masukkan nama dengan panjang 1–100 karakter.",
+      "common.fieldPasswordInvalid": "Kata sandi harus 8–72 karakter, berisi huruf besar, angka, dan simbol.",
+      "common.fieldPatternInvalid": "Format nilai tidak valid.",
+      "common.fieldPhoneInvalid": "Nomor telepon tidak boleh lebih dari 20 karakter.",
+      "common.fieldRangeInvalid": "Nilai harus berada dalam rentang yang diizinkan.",
+      "common.fieldRequired": "Kolom ini wajib diisi.",
+      "common.fieldRoleLevelInvalid": "Level harus bilangan bulat positif di bawah level Anda.",
+      "common.fieldRoleNameInvalid": "Nama peran hanya boleh huruf kecil, angka, garis bawah, atau tanda hubung.",
+      "common.hidePassword": "Sembunyikan kata sandi",
+      "common.indonesian": "Bahasa Indonesia",
       "common.language": "Bahasa",
       "common.leave": "Tinggalkan halaman",
       "common.level": "Level",
       "common.loading": "Memuat…",
+      "common.loadingCountries": "Memuat daftar negara…",
       "common.name": "Nama",
+      "common.noCountriesFound": "Negara tidak ditemukan.",
       "common.password": "Kata sandi",
-      "common.phone": "Nomor telepon",
+      "common.phone": "Nomor telepon / WhatsApp",
+      "common.phoneCountryPickerDescription": "Cari negara, lalu pilih untuk mengisi kode panggilan pada nomor telepon.",
+      "common.phoneCountryPickerTitle": "Pilih kode telepon",
+      "common.pullToRefresh": "Tarik ke bawah untuk memperbarui",
       "common.refresh": "Muat ulang",
+      "common.refreshing": "Memperbarui data…",
+      "common.releaseToRefresh": "Lepaskan untuk memperbarui",
       "common.retry": "Coba lagi",
       "common.role": "Peran",
       "common.save": "Simpan",
       "common.saving": "Menyimpan…",
+      "common.searchCountries": "Cari negara atau kode telepon…",
+      "common.showPassword": "Tampilkan kata sandi",
       "common.stay": "Tetap di halaman",
       "common.unknown": "Tidak diketahui",
-      "common.unsavedDescription": "Perubahan yang belum disimpan akan hilang jika Anda meninggalkan halaman ini.",
+      "common.unsavedDescription": "Perubahan yang belum disimpan akan hilang jika Anda meninggalkan halaman atau menutup formulir ini.",
       "common.unsavedTitle": "Tinggalkan perubahan?",
       "health.available": "Tersedia",
       "health.loadingStatus": "Memuat status layanan…",
-      "health.refreshStatus": "Perbarui status",
-      "health.serviceDescription": "Ketersediaan layanan dan penyimpanan data.",
+      "health.serviceDescription": "Status API dan database.",
       "health.serviceStatus": "Status layanan",
-      "health.serviceSummary": "Layanan aplikasi: {api} · Penyimpanan data: {database}",
+      "health.serviceSummary": "API: {api} · Database: {database}",
       "health.unavailable": "Tidak tersedia",
-      "roles.builtIn": "bawaan",
+      "onboarding.accessDescription": "Contoh modul ini mencakup daftar pengguna, detail akun, hierarki peran, dan pembatasan akses. Sesuaikan aturan izin di backend Anda.",
+      "onboarding.accessImageAlt": "Ilustrasi peran tim dan izin akses yang terlindungi",
+      "onboarding.accessTitle": "Kelola pengguna dan peran",
+      "onboarding.accountDescription": "Modul akun mencakup profil, perubahan kata sandi, dan penonaktifan akun. Sesuaikan alurnya dengan kebijakan aplikasi Anda.",
+      "onboarding.accountImageAlt": "Ilustrasi profil akun dengan informasi kontak dan status verifikasi",
+      "onboarding.accountTitle": "Contoh pengelolaan akun",
+      "onboarding.carousel": "karusel",
+      "onboarding.introduction": "Pengenalan aplikasi",
+      "onboarding.login": "Mulai menggunakan",
+      "onboarding.next": "Selanjutnya",
+      "onboarding.nextSlide": "Slide berikutnya",
+      "onboarding.previousSlide": "Slide sebelumnya",
+      "onboarding.register": "Daftar",
+      "onboarding.registerPrompt": "Belum punya akun?",
+      "onboarding.showSlide": "Tampilkan slide {number}",
+      "onboarding.skip": "Lewati",
+      "onboarding.slideCount": "Slide {current} dari {total}",
+      "onboarding.slideNavigation": "Navigasi pengenalan",
+      "onboarding.statusDescription": "Contoh halaman ini memeriksa API dan database. Sesuaikan endpoint serta format respons dengan backend Anda.",
+      "onboarding.statusImageAlt": "Ilustrasi kesehatan layanan API dan database dengan status aktif",
+      "onboarding.statusTitle": "Pantau kesehatan layanan",
+      "onboarding.welcomeDescription": "Boilerplate ini menyediakan contoh autentikasi, akun, pengguna, peran, dan status layanan. Sesuaikan setiap modul dengan kebutuhan aplikasi Anda.",
+      "onboarding.welcomeImageAlt": "Ilustrasi dasbor ruang kerja yang merangkum akun, pengguna, dan layanan",
+      "onboarding.welcomeTitle": "Selamat datang di {brandName}",
+      "roles.builtIn": "Bawaan",
       "roles.createRole": "Buat peran",
-      "roles.createRoleDescription": "Level harus lebih rendah dari level Anda ({level}).",
+      "roles.createRoleDescription": "Tentukan nama dan level peran kustom. Level harus di bawah level Anda ({level}); level yang lebih tinggi memberi akses lebih luas.",
+      "roles.custom": "Kustom",
       "roles.deleteRole": "Hapus peran",
-      "roles.deleteRoleDescription": "Peran hanya dapat dihapus jika tidak dipakai pengguna aktif. Namanya tetap dipesan oleh server.",
+      "roles.deleteRoleDescription": "Peran tidak dapat dihapus selama ditetapkan kepada pengguna aktif. Setelah dihapus, peran ini tidak dapat dipilih lagi.",
       "roles.deleteRoleTitle": "Hapus peran {name}?",
-      "roles.discardRoleDescription": "Perubahan detail peran yang belum disimpan akan hilang.",
+      "roles.discardRoleDescription": "Perubahan nama, level, atau pilihan peran yang belum disimpan akan hilang.",
       "roles.discardRoleTitle": "Buang perubahan peran?",
-      "roles.errorInvalidRole": "Nama peran harus huruf kecil/angka/garis, dan level harus lebih rendah dari level Anda.",
+      "roles.editRole": "Edit peran {name}",
+      "roles.editRoleDescription": "Ubah nama dan level peran. Level harus di bawah level Anda ({level}); level yang lebih tinggi memberi akses lebih luas.",
+      "roles.errorInvalidRole": "Nama peran hanya boleh berisi huruf kecil, angka, garis bawah, atau tanda hubung. Level harus bilangan bulat positif yang lebih rendah dari level Anda.",
       "roles.loadingRoles": "Memuat peran…",
+      "roles.noRoleMatches": "Tidak ada peran yang cocok.",
       "roles.noRoles": "Belum ada peran.",
-      "roles.roleDetail": "Detail peran",
+      "roles.roleActions": "Aksi lainnya untuk {name}",
+      "roles.roleCreatedToastDescription": "{name}",
+      "roles.roleCreatedToastTitle": "Peran dibuat",
+      "roles.roleDeletedToastDescription": "{name}",
+      "roles.roleDeletedToastTitle": "Peran dihapus",
+      "roles.roleDetail": "Detail peran {name}",
+      "roles.roleDetailDescription": "Level yang lebih tinggi memberi akses lebih luas. Peran bawaan dilindungi dan tidak dapat diubah.",
       "roles.roleName": "Nama peran",
-      "roles.roleProtected": "Peran bawaan atau peran setingkat/lebih tinggi tidak dapat diubah.",
+      "roles.roleProtected": "Peran bawaan dan peran dengan level setara atau lebih tinggi tidak dapat diubah.",
       "roles.roles": "Peran",
       "roles.rolesAccess": "Peran & akses",
       "roles.roleSaved": "Peran berhasil disimpan.",
-      "roles.rolesDescription": "Level yang lebih tinggi memiliki hak lebih besar.",
-      "roles.roleUpdated": "Peran berhasil diubah.",
-      "users.backToUsers": "← Kembali ke pengguna",
+      "roles.rolesDescription": "Level yang lebih tinggi memberi akses lebih luas.",
+      "roles.roleType": "Jenis peran",
+      "roles.roleUpdated": "Peran berhasil diperbarui.",
+      "roles.roleUpdatedToastDescription": "{name}",
+      "roles.roleUpdatedToastTitle": "Peran diperbarui",
+      "roles.searchPlaceholder": "Nama, level, atau jenis peran",
+      "roles.searchRoles": "Cari peran",
+      "roles.showRoleDetailsAction": "Lihat detail peran {name}",
+      "users.backToUsers": "Kembali ke daftar pengguna",
       "users.changeRole": "Ubah peran",
-      "users.changeRoleDescription": "Anda hanya dapat memilih peran di bawah level Anda untuk pengguna dengan level yang juga lebih rendah.",
-      "users.deleteUser": "Hapus pengguna",
-      "users.deleteUserDescription": "Hapus {name} dari daftar pengguna akun ini?",
+      "users.changeRoleDescription": "Anda akan mengubah hak akses {name} dengan menetapkan peran baru. Anda hanya dapat menetapkan peran di bawah level Anda kepada pengguna yang levelnya juga lebih rendah.",
+      "users.currentUser": "Anda",
+      "users.deleteUserAction": "Hapus {name}",
+      "users.deleteUserDescription": "Pengguna ini akan dihapus dari akun. Pastikan nama di atas benar sebelum melanjutkan.",
+      "users.deleteUserTitle": "Hapus {name}?",
       "users.deleting": "Menghapus…",
-      "users.discardUserDescription": "Perubahan yang belum disimpan pada pengguna ini akan hilang.",
-      "users.discardUserTitle": "Batalkan perubahan pengguna?",
+      "users.discardUserDescription": "Perubahan nama atau nomor telepon yang belum disimpan akan hilang jika dibuang.",
+      "users.discardUserTitle": "Buang perubahan pengguna?",
       "users.editUser": "Edit pengguna",
-      "users.emailReadOnly": "Email: {email} (tidak dapat diubah)",
+      "users.editUserAction": "Edit {name}",
+      "users.editUserDescription": "Perbarui nama dan nomor telepon untuk {name}. Email pengguna ini tidak dapat diubah.",
+      "users.emailReadOnly": "Email {email} tidak dapat diubah.",
       "users.errorDeleteUser": "Gagal menghapus pengguna.",
       "users.errorInvalidPage": "Halaman tidak valid.",
       "users.errorInvalidUser": "Data pengguna tidak valid.",
-      "users.errorInvalidUserProfile": "Isi nama dan nomor telepon yang valid.",
+      "users.errorInvalidUserProfile": "Nama wajib diisi. Nomor telepon maksimal 20 karakter.",
       "users.errorLoadUsers": "Gagal memuat pengguna.",
       "users.errorSaveUser": "Gagal menyimpan pengguna.",
       "users.errorUserNotFound": "Pengguna tidak ditemukan.",
       "users.errorUserOperation": "Operasi pengguna gagal. Coba lagi.",
+      "users.loadingMoreUsers": "Memuat lebih banyak pengguna",
       "users.loadingUsers": "Memuat pengguna…",
-      "users.loadMore": "Muat lainnya",
+      "users.loadMore": "Muat pengguna lainnya",
       "users.nameOrEmail": "Nama atau email",
       "users.newRole": "Peran baru",
       "users.noMatches": "Tidak ada pengguna yang cocok.",
+      "users.noMatchesDescription": "Coba kata kunci lain atau hapus pencarian untuk melihat semua pengguna.",
       "users.noUsers": "Belum ada pengguna.",
-      "users.readyUsers": "Siap memuat pengguna.",
+      "users.noUsersDescription": "Pengguna yang tersedia akan muncul di sini.",
+      "users.phoneColumn": "Telepon",
       "users.refreshing": "Memperbarui data…",
-      "users.restrictedDescription": "Daftar pengguna memerlukan peran admin atau owner.",
+      "users.restrictedDescription": "Daftar pengguna hanya dapat diakses oleh admin atau owner.",
       "users.restrictedTitle": "Akses dibatasi",
-      "users.roleChanged": "Peran pengguna berhasil diubah.",
-      "users.roleChangeUnavailable": "Tidak ada perubahan peran yang diizinkan untuk pengguna ini.",
-      "users.roleLevel": "level {level}",
+      "users.roleChangeSavedToastDescription": "{name}",
+      "users.roleChangeSavedToastTitle": "Akses pengguna diperbarui",
+      "users.roleChangeUnavailable": "Tidak ada peran yang bisa diberikan kepada pengguna ini.",
+      "users.roleLevel": "Level {level}",
       "users.saveRole": "Simpan peran",
+      "users.searchLoadedHint": "Muat halaman berikutnya untuk memperluas hasil pencarian.",
       "users.searchUsers": "Cari pengguna",
       "users.selectRole": "Pilih peran",
+      "users.userDeletedToastDescription": "{name}",
+      "users.userDeletedToastTitle": "Pengguna dihapus",
       "users.userDetail": "Detail pengguna",
-      "users.userFeature": "Fitur pengguna",
       "users.userId": "ID pengguna",
       "users.userList": "Daftar pengguna",
-      "users.userListDescription": "Kelola pengguna yang ditampilkan. Muat lainnya untuk melihat lebih banyak.",
-      "users.users": "Pengguna"
+      "users.userListDescription": "Cari pengguna yang sudah dimuat, lalu buka detail untuk melihat aksesnya.",
+      "users.users": "Pengguna",
+      "users.userSavedToastDescription": "{name}",
+      "users.userSavedToastTitle": "Pengguna diperbarui"
     }
   }
 } as const;
@@ -1035,7 +1664,7 @@ const manifest: LocalizationManifest = {
 export const localization = {
   "account": {
     "account": "account.account",
-    "accountRole": "account.accountRole",
+    "accountDescription": "account.accountDescription",
     "changePassword": "account.changePassword",
     "changePasswordDescription": "account.changePasswordDescription",
     "confirmCurrentPassword": "account.confirmCurrentPassword",
@@ -1044,6 +1673,8 @@ export const localization = {
     "deactivateAccount": "account.deactivateAccount",
     "deactivateDescription": "account.deactivateDescription",
     "deactivatedNotice": "account.deactivatedNotice",
+    "deactivatedToastDescription": "account.deactivatedToastDescription",
+    "editProfile": "account.editProfile",
     "errorAccountOperation": "account.errorAccountOperation",
     "errorCurrentPassword": "account.errorCurrentPassword",
     "errorInvalidNewPassword": "account.errorInvalidNewPassword",
@@ -1051,28 +1682,43 @@ export const localization = {
     "loadingProfile": "account.loadingProfile",
     "newPassword": "account.newPassword",
     "passwordChangedNotice": "account.passwordChangedNotice",
+    "profile": "account.profile",
     "profileSaved": "account.profileSaved",
+    "profileSavedToastDescription": "account.profileSavedToastDescription",
+    "profileSummary": "account.profileSummary",
     "profileUnavailable": "account.profileUnavailable",
     "saveProfile": "account.saveProfile"
   },
   "app": {
     "accessManagement": "app.accessManagement",
     "accountMenu": "app.accountMenu",
+    "appearance": "app.appearance",
+    "breadcrumbs": "app.breadcrumbs",
+    "cancelLogout": "app.cancelLogout",
     "closeNavigation": "app.closeNavigation",
+    "collapseNavigation": "app.collapseNavigation",
     "confirmLogout": "app.confirmLogout",
+    "darkMode": "app.darkMode",
+    "dismissNotification": "app.dismissNotification",
+    "expandNavigation": "app.expandNavigation",
     "loggingOut": "app.loggingOut",
     "logout": "app.logout",
     "logoutDescription": "app.logoutDescription",
+    "logoutSuccessToastDescription": "app.logoutSuccessToastDescription",
+    "logoutSuccessToastTitle": "app.logoutSuccessToastTitle",
     "logoutTitle": "app.logoutTitle",
     "mainNavigation": "app.mainNavigation",
-    "manageAccount": "app.manageAccount",
+    "noNavigationMatches": "app.noNavigationMatches",
+    "noNotifications": "app.noNotifications",
+    "notifications": "app.notifications",
     "openNavigation": "app.openNavigation",
+    "profile": "app.profile",
+    "searchNavigation": "app.searchNavigation",
     "settings": "app.settings",
+    "switchToDarkMode": "app.switchToDarkMode",
+    "switchToLightMode": "app.switchToLightMode",
     "system": "app.system",
     "workspace": "app.workspace",
-    "workspaceDescription": "app.workspaceDescription",
-    "workspaceFooter": "app.workspaceFooter",
-    "workspaceHeadline": "app.workspaceHeadline",
     "workspaceTagline": "app.workspaceTagline"
   },
   "auth": {
@@ -1084,26 +1730,33 @@ export const localization = {
     "goToLogin": "auth.goToLogin",
     "loggingIn": "auth.loggingIn",
     "loginDescription": "auth.loginDescription",
-    "loginEyebrow": "auth.loginEyebrow",
     "loginLink": "auth.loginLink",
+    "loginSuccessToastDescription": "auth.loginSuccessToastDescription",
+    "loginSuccessToastTitle": "auth.loginSuccessToastTitle",
     "loginTitle": "auth.loginTitle",
     "passwordHint": "auth.passwordHint",
     "register": "auth.register",
+    "registerCompleteTitle": "auth.registerCompleteTitle",
     "registerDescription": "auth.registerDescription",
-    "registerEyebrow": "auth.registerEyebrow",
     "registering": "auth.registering",
     "registerLink": "auth.registerLink",
-    "registerSuccess": "auth.registerSuccess",
+    "registerSuccessToastDescription": "auth.registerSuccessToastDescription",
+    "registerSuccessToastTitle": "auth.registerSuccessToastTitle",
     "registerTitle": "auth.registerTitle",
-    "rememberHint": "auth.rememberHint",
     "rememberMe": "auth.rememberMe"
   },
   "common": {
+    "actionFailed": "common.actionFailed",
+    "actions": "common.actions",
+    "actionSucceeded": "common.actionSucceeded",
     "backToLogin": "common.backToLogin",
     "cancel": "common.cancel",
+    "changeCountryCode": "common.changeCountryCode",
+    "changeLanguage": "common.changeLanguage",
     "close": "common.close",
     "continueEditing": "common.continueEditing",
     "countryCode": "common.countryCode",
+    "countryListUnavailable": "common.countryListUnavailable",
     "delete": "common.delete",
     "detail": "common.detail",
     "discard": "common.discard",
@@ -1122,19 +1775,42 @@ export const localization = {
     "errorUnavailable": "common.errorUnavailable",
     "errorUnexpected": "common.errorUnexpected",
     "errorWeakPassword": "common.errorWeakPassword",
+    "fieldCountryInvalid": "common.fieldCountryInvalid",
+    "fieldCurrentPasswordInvalid": "common.fieldCurrentPasswordInvalid",
+    "fieldEmailInvalid": "common.fieldEmailInvalid",
+    "fieldMaxLength": "common.fieldMaxLength",
+    "fieldMinLength": "common.fieldMinLength",
+    "fieldNameInvalid": "common.fieldNameInvalid",
+    "fieldPasswordInvalid": "common.fieldPasswordInvalid",
+    "fieldPatternInvalid": "common.fieldPatternInvalid",
+    "fieldPhoneInvalid": "common.fieldPhoneInvalid",
+    "fieldRangeInvalid": "common.fieldRangeInvalid",
+    "fieldRequired": "common.fieldRequired",
+    "fieldRoleLevelInvalid": "common.fieldRoleLevelInvalid",
+    "fieldRoleNameInvalid": "common.fieldRoleNameInvalid",
+    "hidePassword": "common.hidePassword",
     "indonesian": "common.indonesian",
     "language": "common.language",
     "leave": "common.leave",
     "level": "common.level",
     "loading": "common.loading",
+    "loadingCountries": "common.loadingCountries",
     "name": "common.name",
+    "noCountriesFound": "common.noCountriesFound",
     "password": "common.password",
     "phone": "common.phone",
+    "phoneCountryPickerDescription": "common.phoneCountryPickerDescription",
+    "phoneCountryPickerTitle": "common.phoneCountryPickerTitle",
+    "pullToRefresh": "common.pullToRefresh",
     "refresh": "common.refresh",
+    "refreshing": "common.refreshing",
+    "releaseToRefresh": "common.releaseToRefresh",
     "retry": "common.retry",
     "role": "common.role",
     "save": "common.save",
     "saving": "common.saving",
+    "searchCountries": "common.searchCountries",
+    "showPassword": "common.showPassword",
     "stay": "common.stay",
     "unknown": "common.unknown",
     "unsavedDescription": "common.unsavedDescription",
@@ -1143,43 +1819,88 @@ export const localization = {
   "health": {
     "available": "health.available",
     "loadingStatus": "health.loadingStatus",
-    "refreshStatus": "health.refreshStatus",
     "serviceDescription": "health.serviceDescription",
     "serviceStatus": "health.serviceStatus",
     "serviceSummary": "health.serviceSummary",
     "unavailable": "health.unavailable"
   },
+  "onboarding": {
+    "accessDescription": "onboarding.accessDescription",
+    "accessImageAlt": "onboarding.accessImageAlt",
+    "accessTitle": "onboarding.accessTitle",
+    "accountDescription": "onboarding.accountDescription",
+    "accountImageAlt": "onboarding.accountImageAlt",
+    "accountTitle": "onboarding.accountTitle",
+    "carousel": "onboarding.carousel",
+    "introduction": "onboarding.introduction",
+    "login": "onboarding.login",
+    "next": "onboarding.next",
+    "nextSlide": "onboarding.nextSlide",
+    "previousSlide": "onboarding.previousSlide",
+    "register": "onboarding.register",
+    "registerPrompt": "onboarding.registerPrompt",
+    "showSlide": "onboarding.showSlide",
+    "skip": "onboarding.skip",
+    "slideCount": "onboarding.slideCount",
+    "slideNavigation": "onboarding.slideNavigation",
+    "statusDescription": "onboarding.statusDescription",
+    "statusImageAlt": "onboarding.statusImageAlt",
+    "statusTitle": "onboarding.statusTitle",
+    "welcomeDescription": "onboarding.welcomeDescription",
+    "welcomeImageAlt": "onboarding.welcomeImageAlt",
+    "welcomeTitle": "onboarding.welcomeTitle"
+  },
   "roles": {
     "builtIn": "roles.builtIn",
     "createRole": "roles.createRole",
     "createRoleDescription": "roles.createRoleDescription",
+    "custom": "roles.custom",
     "deleteRole": "roles.deleteRole",
     "deleteRoleDescription": "roles.deleteRoleDescription",
     "deleteRoleTitle": "roles.deleteRoleTitle",
     "discardRoleDescription": "roles.discardRoleDescription",
     "discardRoleTitle": "roles.discardRoleTitle",
+    "editRole": "roles.editRole",
+    "editRoleDescription": "roles.editRoleDescription",
     "errorInvalidRole": "roles.errorInvalidRole",
     "loadingRoles": "roles.loadingRoles",
+    "noRoleMatches": "roles.noRoleMatches",
     "noRoles": "roles.noRoles",
+    "roleActions": "roles.roleActions",
+    "roleCreatedToastDescription": "roles.roleCreatedToastDescription",
+    "roleCreatedToastTitle": "roles.roleCreatedToastTitle",
+    "roleDeletedToastDescription": "roles.roleDeletedToastDescription",
+    "roleDeletedToastTitle": "roles.roleDeletedToastTitle",
     "roleDetail": "roles.roleDetail",
+    "roleDetailDescription": "roles.roleDetailDescription",
     "roleName": "roles.roleName",
     "roleProtected": "roles.roleProtected",
     "roles": "roles.roles",
     "rolesAccess": "roles.rolesAccess",
     "roleSaved": "roles.roleSaved",
     "rolesDescription": "roles.rolesDescription",
-    "roleUpdated": "roles.roleUpdated"
+    "roleType": "roles.roleType",
+    "roleUpdated": "roles.roleUpdated",
+    "roleUpdatedToastDescription": "roles.roleUpdatedToastDescription",
+    "roleUpdatedToastTitle": "roles.roleUpdatedToastTitle",
+    "searchPlaceholder": "roles.searchPlaceholder",
+    "searchRoles": "roles.searchRoles",
+    "showRoleDetailsAction": "roles.showRoleDetailsAction"
   },
   "users": {
     "backToUsers": "users.backToUsers",
     "changeRole": "users.changeRole",
     "changeRoleDescription": "users.changeRoleDescription",
-    "deleteUser": "users.deleteUser",
+    "currentUser": "users.currentUser",
+    "deleteUserAction": "users.deleteUserAction",
     "deleteUserDescription": "users.deleteUserDescription",
+    "deleteUserTitle": "users.deleteUserTitle",
     "deleting": "users.deleting",
     "discardUserDescription": "users.discardUserDescription",
     "discardUserTitle": "users.discardUserTitle",
     "editUser": "users.editUser",
+    "editUserAction": "users.editUserAction",
+    "editUserDescription": "users.editUserDescription",
     "emailReadOnly": "users.emailReadOnly",
     "errorDeleteUser": "users.errorDeleteUser",
     "errorInvalidPage": "users.errorInvalidPage",
@@ -1189,28 +1910,36 @@ export const localization = {
     "errorSaveUser": "users.errorSaveUser",
     "errorUserNotFound": "users.errorUserNotFound",
     "errorUserOperation": "users.errorUserOperation",
+    "loadingMoreUsers": "users.loadingMoreUsers",
     "loadingUsers": "users.loadingUsers",
     "loadMore": "users.loadMore",
     "nameOrEmail": "users.nameOrEmail",
     "newRole": "users.newRole",
     "noMatches": "users.noMatches",
+    "noMatchesDescription": "users.noMatchesDescription",
     "noUsers": "users.noUsers",
-    "readyUsers": "users.readyUsers",
+    "noUsersDescription": "users.noUsersDescription",
+    "phoneColumn": "users.phoneColumn",
     "refreshing": "users.refreshing",
     "restrictedDescription": "users.restrictedDescription",
     "restrictedTitle": "users.restrictedTitle",
-    "roleChanged": "users.roleChanged",
+    "roleChangeSavedToastDescription": "users.roleChangeSavedToastDescription",
+    "roleChangeSavedToastTitle": "users.roleChangeSavedToastTitle",
     "roleChangeUnavailable": "users.roleChangeUnavailable",
     "roleLevel": "users.roleLevel",
     "saveRole": "users.saveRole",
+    "searchLoadedHint": "users.searchLoadedHint",
     "searchUsers": "users.searchUsers",
     "selectRole": "users.selectRole",
+    "userDeletedToastDescription": "users.userDeletedToastDescription",
+    "userDeletedToastTitle": "users.userDeletedToastTitle",
     "userDetail": "users.userDetail",
-    "userFeature": "users.userFeature",
     "userId": "users.userId",
     "userList": "users.userList",
     "userListDescription": "users.userListDescription",
-    "users": "users.users"
+    "users": "users.users",
+    "userSavedToastDescription": "users.userSavedToastDescription",
+    "userSavedToastTitle": "users.userSavedToastTitle"
   }
 } as const satisfies LocalizationNode;
 

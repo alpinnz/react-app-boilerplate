@@ -1,6 +1,6 @@
 # Cakupan API contoh
 
-Modul contoh dalam repository ini mengasumsikan REST API dengan prefix `/api/v1`. Backend dan dokumen OpenAPI tidak disertakan. `VITE_API_BASE_URL` berisi origin backend; HTTP client menambahkan prefix tersebut. Tes memakai server tiruan lokal untuk memeriksa request dan response yang diharapkan modul, bukan memvalidasi server nyata.
+Modul contoh mengikuti kontrak OpenAPI yang diberikan dan menggunakan prefix `/api/v1`. Implementasi backend tidak disertakan. `VITE_API_BASE_URL` berisi origin backend; HTTP client menambahkan prefix tersebut. Tes memakai server tiruan lokal untuk memeriksa request dan response sesuai kontrak, bukan memanggil server nyata.
 
 | Operasi | Alur aplikasi |
 | --- | --- |
@@ -27,4 +27,4 @@ Modul contoh dalam repository ini mengasumsikan REST API dengan prefix `/api/v1`
 
 Aturan izin dalam tabel ini adalah asumsi modul contoh. Backend aplikasi tetap harus menjadi sumber kebenaran otorisasi. UI menyembunyikan tindakan yang jelas tidak diizinkan: daftar/detail pengguna memerlukan admin atau owner, edit/nonaktifkan pengguna lain memerlukan owner, dan penggantian peran hanya ditawarkan bila level aktor lebih tinggi dari peran saat ini dan peran tujuan. Peran bawaan tidak dapat diubah atau dihapus. Kegagalan `401`, `403`, `409`, dan validasi ditampilkan tanpa menyalin detail internal server.
 
-Modul contoh mengharapkan perubahan kata sandi dan penonaktifan akun mencabut sesi di backend; klien lalu menghapus token dari memori dan meminta login ulang. Pendaftaran tidak menerbitkan token dalam alur contoh ini. Sesuaikan asumsi tersebut dengan kontrak server yang digunakan.
+Modul contoh mengharapkan perubahan kata sandi dan penonaktifan akun mencabut sesi di backend; klien lalu menghapus token dari `localStorage` dan meminta login ulang. Pendaftaran tidak menerbitkan token dalam alur contoh ini. Sesuaikan asumsi tersebut dengan kontrak server yang digunakan.

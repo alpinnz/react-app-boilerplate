@@ -6,7 +6,7 @@ import type { ChangeUserRole } from '@/modules/users/domain/usecases/change-user
 import type { GetUser } from '@/modules/users/domain/usecases/get-user.usecase'
 import type { AssignableRole, ListAssignableRoles } from '../assignable-role'
 
-type ActionStatus = { type: 'idle' | 'loading' | 'success' } | { type: 'failure'; message: string }
+type ActionStatus = { type: 'idle' | 'loading' | 'success' } | { type: 'failure'; message: string; fieldErrors?: Record<string, string> }
 
 /**
  * Membuat store detail dengan satu kontrol pembatalan untuk baca dan perubahan peran.
@@ -42,15 +42,23 @@ export function createUserDetailStore(userId: string, getUser: GetUser, changeUs
       if (controller) return
       controller = new AbortController()
       const active = controller
-      set({ user: { data: get().user.data, status: { type: 'loading' } }, rolesError: null })
+      const previousUser = get().user.data
+      const previousRoles = get().roles
+      set({ user: { data: previousUser, status: { type: previousUser ? 'refreshing' : 'loading' } }, rolesError: null })
       try {
         const [userResult, rolesResult] = await Promise.all([getUser(userId, active.signal), listAssignableRoles(active.signal)])
         if (active.signal.aborted) return
         set({
-          user: userResult.ok ? { data: userResult.data, status: { type: 'success' } } : { data: null, status: { type: 'failure', failure: userResult.failure } },
-          roles: rolesResult.ok ? rolesResult.data : null,
+          user: userResult.ok ? { data: userResult.data, status: { type: 'success' } } : { data: previousUser, status: { type: 'failure', failure: userResult.failure } },
+          roles: rolesResult.ok ? rolesResult.data : previousRoles,
           rolesError: rolesResult.ok ? null : rolesResult.failure.message,
           selectedRoleId: userResult.ok ? userResult.data.roleId ?? '' : '',
+        })
+      } catch {
+        if (!active.signal.aborted) set({
+          user: { data: previousUser, status: { type: 'failure', failure: { kind: 'unexpected', message: 'Gagal memuat detail pengguna.' } } },
+          roles: previousRoles,
+          rolesError: 'Gagal memuat peran yang dapat ditetapkan.',
         })
       } finally { if (controller === active) controller = null }
     },
@@ -64,7 +72,7 @@ export function createUserDetailStore(userId: string, getUser: GetUser, changeUs
       try {
         const result = await changeUserRole(user.data.id, selectedRoleId, active.signal)
         if (active.signal.aborted) return
-        if (!result.ok) { set({ actionStatus: { type: 'failure', message: result.failure.message } }); return }
+        if (!result.ok) { set({ actionStatus: { type: 'failure', message: result.failure.message, fieldErrors: result.failure.fieldErrors } }); return }
         set({ user: { data: { ...user.data, roleId: selectedRoleId }, status: { type: 'success' } }, actionStatus: { type: 'success' } })
       } finally { if (controller === active) controller = null }
     },

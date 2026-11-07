@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 800" fill="none">
+  <defs>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientTransform="matrix(490 370 -380 505 650 385)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DBEAFE" stop-opacity=".78" />
+      <stop offset="1" stop-color="#DBEAFE" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="brand" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#3B82F6" />
+      <stop offset="1" stop-color="#1D4ED8" />
+    </linearGradient>
+    <linearGradient id="mint" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#CCFBF1" />
+      <stop offset="1" stop-color="#ECFDFB" />
+    </linearGradient>
+    <filter id="card-shadow" x="250" y="212" width="626" height="430" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="background" />
+      <feColorMatrix in="SourceAlpha" result="alpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+      <feOffset dy="12" />
+      <feGaussianBlur stdDeviation="14" />
+      <feComposite in2="alpha" operator="out" />
+      <feColorMatrix values="0 0 0 0 0.05 0 0 0 0 0.14 0 0 0 0 0.3 0 0 0 0.12 0" />
+      <feBlend in2="background" result="shadow" />
+      <feBlend in="SourceGraphic" in2="shadow" result="shape" />
+    </filter>
+    <filter id="float-shadow" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB" filterUnits="objectBoundingBox">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1" />
+      <feOffset dy="4" />
+      <feComponentTransfer><feFuncA slope=".08" type="linear" /></feComponentTransfer>
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+
+  <circle cx="692" cy="390" r="326" fill="url(#halo)" />
+  <circle cx="698" cy="390" r="278" stroke="#BFDBFE" stroke-opacity=".48" stroke-width="1.5" />
+  <circle cx="698" cy="390" r="238" stroke="#DBEAFE" stroke-opacity=".65" stroke-width="1.5" />
+
+  <path d="M243 277c74 0 101 54 164 54h112" stroke="#93C5FD" stroke-dasharray="4 9" stroke-linecap="round" stroke-opacity=".8" stroke-width="2" />
+  <path d="M811 235c42 0 63 22 63 60v20" stroke="#5EEAD4" stroke-dasharray="4 9" stroke-linecap="round" stroke-opacity=".9" stroke-width="2" />
+  <path d="M798 584c68 0 106-34 106-97v-14" stroke="#93C5FD" stroke-dasharray="4 9" stroke-linecap="round" stroke-opacity=".7" stroke-width="2" />
+  <circle cx="519" cy="331" r="5" fill="#3B82F6" />
+  <circle cx="874" cy="315" r="5" fill="#0F766E" />
+  <circle cx="904" cy="473" r="5" fill="#F4C95D" />
+
+  <g filter="url(#card-shadow)">
+    <rect x="278" y="238" width="570" height="370" rx="28" fill="#fff" fill-opacity=".96" />
+    <rect x="279" y="239" width="568" height="368" rx="27" stroke="#DCE4ED" stroke-width="2" />
+  </g>
+  <path d="M306 239h514a27 27 0 0 1 27 27v36H279v-36a27 27 0 0 1 27-27Z" fill="#F7F9FC" />
+  <path d="M279 302h568" stroke="#DCE4ED" />
+  <circle cx="307" cy="267" r="5" fill="#3B82F6" />
+  <circle cx="325" cy="267" r="5" fill="#5EEAD4" />
+  <circle cx="343" cy="267" r="5" fill="#F4C95D" />
+  <rect x="742" y="257" width="78" height="20" rx="10" fill="#ECFDFB" />
+  <circle cx="755" cy="267" r="4" fill="#0F766E" />
+  <path d="M766 267h39" stroke="#0F766E" stroke-linecap="round" stroke-width="4" />
+
+  <rect x="302" y="322" width="112" height="254" rx="18" fill="#F7F9FC" />
+  <rect x="318" y="340" width="30" height="30" rx="9" fill="url(#brand)" />
+  <path d="M328 355h10m-5-5v10" stroke="#fff" stroke-linecap="round" stroke-width="2" />
+  <rect x="361" y="346" width="36" height="5" rx="2.5" fill="#64748B" />
+  <rect x="361" y="357" width="24" height="4" rx="2" fill="#C5D0DD" />
+  <rect x="318" y="391" width="80" height="34" rx="10" fill="#DBEAFE" />
+  <circle cx="335" cy="408" r="7" fill="#3B82F6" />
+  <path d="M349 406h35m-35 7h25" stroke="#64748B" stroke-linecap="round" stroke-width="4" />
+  <circle cx="335" cy="451" r="7" fill="#0F766E" />
+  <path d="M349 449h35m-35 7h25" stroke="#94A3B8" stroke-linecap="round" stroke-width="4" />
+  <circle cx="335" cy="486" r="7" fill="#F4C95D" />
+  <path d="M349 484h35m-35 7h25" stroke="#94A3B8" stroke-linecap="round" stroke-width="4" />
+  <path d="M318 534h80" stroke="#DCE4ED" stroke-linecap="round" stroke-width="2" />
+  <circle cx="328" cy="553" r="5" fill="#5EEAD4" />
+  <path d="M341 553h42" stroke="#94A3B8" stroke-linecap="round" stroke-width="4" />
+
+  <rect x="438" y="322" width="386" height="55" rx="15" fill="#fff" stroke="#DCE4ED" />
+  <rect x="454" y="337" width="25" height="25" rx="8" fill="#DBEAFE" />
+  <path d="M461 355v-5a5 5 0 0 1 10 0v5m-12 0h14v8h-14z" fill="#1D4ED8" />
+  <rect x="491" y="339" width="112" height="6" rx="3" fill="#64748B" />
+  <rect x="491" y="352" width="74" height="5" rx="2.5" fill="#C5D0DD" />
+  <rect x="744" y="338" width="62" height="24" rx="12" fill="#CCFBF1" />
+  <circle cx="758" cy="350" r="4" fill="#0F766E" />
+  <path d="M770 350h23" stroke="#0F766E" stroke-linecap="round" stroke-width="4" />
+
+  <rect x="438" y="392" width="184" height="104" rx="16" fill="#EFF6FF" />
+  <rect x="638" y="392" width="186" height="104" rx="16" fill="#ECFDFB" />
+  <circle cx="462" cy="418" r="11" fill="#DBEAFE" />
+  <path d="M457 418h10m-5-5v10" stroke="#1D4ED8" stroke-linecap="round" stroke-width="2" />
+  <rect x="482" y="412" width="86" height="5" rx="2.5" fill="#64748B" />
+  <rect x="482" y="424" width="55" height="4" rx="2" fill="#94A3B8" />
+  <rect x="454" y="451" width="128" height="7" rx="3.5" fill="#BFDBFE" />
+  <rect x="454" y="466" width="94" height="7" rx="3.5" fill="#DBEAFE" />
+  <circle cx="663" cy="418" r="11" fill="#CCFBF1" />
+  <path d="m658 418 4 4 7-8" stroke="#0F766E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" />
+  <rect x="683" y="412" width="92" height="5" rx="2.5" fill="#64748B" />
+  <rect x="683" y="424" width="61" height="4" rx="2" fill="#94A3B8" />
+  <path d="m654 465 16-13 17 7 17-20 18 12 19-8 17 6 18-17 16 5" stroke="#0F766E" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+  <path d="M654 477h142" stroke="#C5D0DD" stroke-dasharray="3 7" stroke-linecap="round" />
+
+  <rect x="438" y="512" width="386" height="64" rx="15" fill="#fff" stroke="#DCE4ED" />
+  <circle cx="462" cy="544" r="11" fill="#DBEAFE" />
+  <path d="M458 544h8m-4-4v8" stroke="#1D4ED8" stroke-linecap="round" stroke-width="2" />
+  <rect x="484" y="536" width="93" height="5" rx="2.5" fill="#64748B" />
+  <rect x="484" y="548" width="60" height="4" rx="2" fill="#C5D0DD" />
+  <rect x="762" y="531" width="45" height="26" rx="13" fill="#EFF6FF" />
+  <circle cx="775" cy="544" r="6" fill="#3B82F6" />
+  <path d="M788 544h10" stroke="#1D4ED8" stroke-linecap="round" stroke-width="3" />
+
+  <g filter="url(#float-shadow)">
+    <rect x="74" y="171" width="220" height="152" rx="23" fill="#fff" fill-opacity=".96" stroke="#DCE4ED" />
+    <circle cx="112" cy="211" r="20" fill="url(#mint)" />
+    <path d="M103 216a9 9 0 0 1 18 0v5h-18zm9-8a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" fill="#0F766E" />
+    <rect x="145" y="198" width="96" height="6" rx="3" fill="#64748B" />
+    <rect x="145" y="212" width="66" height="5" rx="2.5" fill="#C5D0DD" />
+    <rect x="98" y="249" width="171" height="47" rx="13" fill="#F7F9FC" />
+    <circle cx="119" cy="272" r="9" fill="#DBEAFE" />
+    <path d="m115 272 3 3 6-7" stroke="#1D4ED8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+    <rect x="138" y="266" width="80" height="5" rx="2.5" fill="#64748B" />
+    <rect x="138" y="278" width="52" height="4" rx="2" fill="#C5D0DD" />
+  </g>
+
+  <g filter="url(#float-shadow)">
+    <rect x="706" y="93" width="213" height="154" rx="23" fill="#fff" fill-opacity=".96" stroke="#DCE4ED" />
+    <circle cx="748" cy="139" r="23" fill="#EFF6FF" />
+    <path d="m748 123 14 6v10c0 10-7 16-14 20-7-4-14-10-14-20v-10l14-6Z" fill="url(#brand)" />
+    <path d="m742 139 4 4 8-9" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" />
+    <rect x="783" y="129" width="96" height="6" rx="3" fill="#64748B" />
+    <rect x="783" y="143" width="67" height="5" rx="2.5" fill="#C5D0DD" />
+    <rect x="730" y="183" width="166" height="39" rx="12" fill="#ECFDFB" />
+    <circle cx="750" cy="202" r="7" fill="#0F766E" />
+    <path d="M765 199h99m-99 7h62" stroke="#94A3B8" stroke-linecap="round" stroke-width="4" />
+  </g>
+
+  <g filter="url(#float-shadow)">
+    <rect x="682" y="546" width="244" height="142" rx="23" fill="#fff" fill-opacity=".96" stroke="#DCE4ED" />
+    <circle cx="724" cy="588" r="22" fill="#ECFDFB" />
+    <path d="M711 588h8l5-9 8 18 6-12h8" stroke="#0F766E" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+    <rect x="762" y="577" width="121" height="6" rx="3" fill="#64748B" />
+    <rect x="762" y="591" width="77" height="5" rx="2.5" fill="#C5D0DD" />
+    <rect x="704" y="626" width="199" height="39" rx="12" fill="#F7F9FC" />
+    <path d="m719 647 27-1 16-13 16 8 17-12 19 8 18-10 20 3 20-15" stroke="#3B82F6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+    <circle cx="872" cy="615" r="15" fill="#CCFBF1" />
+    <path d="m865 615 5 5 9-10" stroke="#0F766E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" />
+  </g>
+
+  <circle cx="164" cy="414" r="5" fill="#3B82F6" fill-opacity=".65" />
+  <circle cx="946" cy="342" r="7" fill="#5EEAD4" fill-opacity=".7" />
+  <circle cx="606" cy="136" r="7" fill="#F4C95D" fill-opacity=".8" />
+  <circle cx="592" cy="660" r="5" fill="#3B82F6" fill-opacity=".48" />
+</svg>

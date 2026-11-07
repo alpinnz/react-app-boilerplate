@@ -1,5 +1,6 @@
 import { createServer, type Server } from 'node:http'
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
+import { HttpError, type HttpClient } from '../src/infrastructure/http/http-client'
 import { createHttpClient } from '../src/infrastructure/http/http-client'
 import { createAuthRepository } from '../src/modules/auth/data/repositories/auth.repository.impl'
 import { createUserRemoteDataSource } from '../src/modules/users/data/datasources/user-remote.datasource'
@@ -98,10 +99,13 @@ describe('API contract integration over HTTP', () => {
     ])
   })
 
-  it('maps invalid credentials without showing server details', async () => {
+  it('maps invalid login responses to a safe credential message', async () => {
     const auth = createAuthRepository(createHttpClient(baseUrl))
     const response = await auth.login({ email: 'owner@example.test', password: 'wrongpass', rememberMe: false })
-    expect(response).toEqual({ ok: false, failure: { kind: 'invalidCredentials', message: 'Email atau kata sandi tidak cocok.' } })
+    expect(response).toEqual({
+      ok: false,
+      failure: { kind: 'invalidCredentials', message: 'Email atau kata sandi tidak cocok.' },
+    })
   })
 
   it('forwards the remember option and current locale to the API', async () => {
@@ -151,7 +155,144 @@ describe('API contract integration over HTTP', () => {
     await auth.login({ email: 'owner@example.test', password: 'Valid!Password1', rememberMe: false })
     const repository = createUserRepository(createUserRemoteDataSource(http, auth.getAccessToken, auth.invalidateSession))
     const page = await repository.getUsers({ cursor: '2' })
-    expect(page).toEqual({ ok: false, failure: { kind: 'unauthorized', message: 'Sesi berakhir. Silakan masuk lagi.' } })
+    expect(page).toEqual({ ok: false, failure: { kind: 'unauthorized', message: 'unauthorized' } })
+    expect(invalidated).toHaveBeenCalledTimes(1)
+    await expect(auth.getAccessToken()).rejects.toBeTruthy()
+  })
+
+  it('shares one refresh across concurrent protected requests after 401', async () => {
+    const oldAccessToken = 'c'.repeat(43)
+    const oldRefreshToken = 'd'.repeat(43)
+    const newAccessToken = 'e'.repeat(43)
+    const newRefreshToken = 'f'.repeat(43)
+    const tokenResponse = (accessToken: string, refreshToken: string) => ({
+      code: 'success',
+      data: {
+        access_token: accessToken,
+        refresh_token: refreshToken,
+        token_type: 'Bearer',
+        expires_in: 900,
+        refresh_expires_in: 86400,
+        user: { id: userId },
+      },
+    })
+    const sessionResponse = {
+      code: 'success',
+      data: { id: userId, name: 'Owner', email: 'owner@example.test', role: { name: 'owner', level: 100 } },
+    }
+    const usersResponse = {
+      code: 'success',
+      data: { items: [user], count: 1 },
+      meta: { ...meta, pagination: { page: 1, limit: 20, total: 1, total_page: 1, has_next: false, has_prev: false } },
+    }
+    let refreshCount = 0
+    let initialUnauthorizedRequestCount = 0
+    let releaseRefresh: (() => void) | undefined
+    let resolveRefreshStarted: (() => void) | undefined
+    let resolveBothRequestsUnauthorized: (() => void) | undefined
+    const refreshGate = new Promise<void>((resolve) => { releaseRefresh = resolve })
+    const refreshStarted = new Promise<void>((resolve) => { resolveRefreshStarted = resolve })
+    const bothRequestsUnauthorized = new Promise<void>((resolve) => { resolveBothRequestsUnauthorized = resolve })
+    const http: HttpClient = {
+      async request(path, options = {}) {
+        if (path === '/auth/login') return tokenResponse(oldAccessToken, oldRefreshToken)
+        if (path === '/users/me') return sessionResponse
+        if (path === '/auth/refresh-token') {
+          refreshCount += 1
+          resolveRefreshStarted?.()
+          await refreshGate
+          return tokenResponse(newAccessToken, newRefreshToken)
+        }
+        if (path === '/users?page=1&limit=20') {
+          if (options.accessToken === oldAccessToken) {
+            initialUnauthorizedRequestCount += 1
+            if (initialUnauthorizedRequestCount === 2) resolveBothRequestsUnauthorized?.()
+            throw new HttpError('http', 401)
+          }
+          if (options.accessToken === newAccessToken) return usersResponse
+        }
+        throw new Error(`Unexpected request: ${path}`)
+      },
+    }
+    const auth = createAuthRepository(http)
+    const login = await auth.login({ email: 'owner@example.test', password: 'Valid!Password1', rememberMe: false })
+    expect(login.ok).toBe(true)
+    const repository = createUserRepository(createUserRemoteDataSource(http, auth.getAccessToken, auth.invalidateSession))
+
+    const firstRequest = repository.getUsers({ cursor: null })
+    const secondRequest = repository.getUsers({ cursor: null })
+    await Promise.all([refreshStarted, bothRequestsUnauthorized])
+    expect(refreshCount).toBe(1)
+    releaseRefresh?.()
+
+    const [firstResult, secondResult] = await Promise.all([firstRequest, secondRequest])
+    expect(firstResult.ok).toBe(true)
+    expect(secondResult.ok).toBe(true)
+    expect(refreshCount).toBe(1)
+  })
+
+  it('refreshes the issued token once if the login profile request returns 401', async () => {
+    const firstAccessToken = 'g'.repeat(43)
+    const firstRefreshToken = 'h'.repeat(43)
+    const refreshedAccessToken = 'i'.repeat(43)
+    const refreshedRefreshToken = 'j'.repeat(43)
+    const calls: string[] = []
+    let profileRequestCount = 0
+    const tokenResponse = (accessToken: string, refreshToken: string) => ({
+      code: 'success',
+      data: {
+        access_token: accessToken,
+        refresh_token: refreshToken,
+        token_type: 'Bearer',
+        expires_in: 900,
+        refresh_expires_in: 86400,
+        user: { id: userId },
+      },
+    })
+    const http: HttpClient = {
+      async request(path) {
+        calls.push(path)
+        if (path === '/auth/login') return tokenResponse(firstAccessToken, firstRefreshToken)
+        if (path === '/auth/refresh-token') return tokenResponse(refreshedAccessToken, refreshedRefreshToken)
+        if (path === '/users/me') {
+          profileRequestCount += 1
+          if (profileRequestCount === 1) throw new HttpError('http', 401)
+          return {
+            code: 'success',
+            data: { id: userId, name: 'Owner', email: 'owner@example.test', role: { name: 'owner', level: 100 } },
+          }
+        }
+        throw new Error(`Unexpected request: ${path}`)
+      },
+    }
+
+    const result = await createAuthRepository(http).login({
+      email: 'owner@example.test', password: 'Valid!Password1', rememberMe: false,
+    })
+
+    expect(result.ok).toBe(true)
+    expect(calls).toEqual(['/auth/login', '/users/me', '/auth/refresh-token', '/users/me'])
+  })
+
+  it('invalidates once and skips protected retries when the refresh token is rejected', async () => {
+    requests.length = 0
+    const http = createHttpClient(baseUrl)
+    const auth = createAuthRepository(http)
+    const invalidated = vi.fn()
+    auth.subscribeSessionInvalidated(invalidated)
+    await auth.login({ email: 'owner@example.test', password: 'Valid!Password1', rememberMe: false })
+    const repository = createUserRepository(createUserRemoteDataSource(http, auth.getAccessToken, auth.invalidateSession))
+
+    const [firstResult, secondResult] = await Promise.all([
+      repository.getUsers({ cursor: '2' }),
+      repository.getUsers({ cursor: '2' }),
+    ])
+
+    expect(firstResult).toEqual({ ok: false, failure: { kind: 'unauthorized', message: 'unauthorized' } })
+    expect(secondResult).toEqual({ ok: false, failure: { kind: 'unauthorized', message: 'unauthorized' } })
+    expect(requests.filter((request) => request.path === '/api/v1/auth/refresh-token')).toHaveLength(1)
+    expect(requests.filter((request) => request.path === '/api/v1/users?page=2&limit=20')).toHaveLength(2)
+    expect(requests.some((request) => request.path === '/api/v1/auth/logout')).toBe(false)
     expect(invalidated).toHaveBeenCalledTimes(1)
     await expect(auth.getAccessToken()).rejects.toBeTruthy()
   })

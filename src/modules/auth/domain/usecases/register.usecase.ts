@@ -15,14 +15,18 @@ export function createRegistrationUseCases(repository: RegistrationRepository) {
       phoneNumber: input.phoneNumber?.trim() || null, countryCode: input.countryCode?.trim() || null,
     }
     if (input.password !== input.confirmPassword) {
-      return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Konfirmasi kata sandi belum sama.' } })
+      return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Konfirmasi kata sandi belum sama.', fieldErrors: { confirmPassword: 'Konfirmasi kata sandi belum sama.' } } })
     }
     if (!passwordPattern.test(input.password)) {
-      return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Gunakan kata sandi 8–72 karakter dengan huruf besar, angka, dan simbol.' } })
+      return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Gunakan kata sandi 8–72 karakter dengan huruf besar, angka, dan simbol.', fieldErrors: { password: 'Kata sandi harus 8–72 karakter, berisi huruf besar, angka, dan simbol.' } } })
     }
-    if (!normalized.name || normalized.name.length > 100 || !normalized.email.includes('@') || normalized.email.length > 254 ||
-      (normalized.phoneNumber?.length ?? 0) > 20 || (normalized.countryCode?.length ?? 0) > 5) {
-      return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Periksa nama, email, dan nomor telepon yang diisi.' } })
+    const fieldErrors: Record<string, string> = {}
+    if (!normalized.name || normalized.name.length > 100) fieldErrors.name = 'Nama wajib diisi dan maksimal 100 karakter.'
+    if (!normalized.email.includes('@') || normalized.email.length > 254) fieldErrors.email = 'Masukkan alamat email yang valid.'
+    if ((normalized.phoneNumber?.length ?? 0) > 20) fieldErrors.phoneNumber = 'Nomor telepon maksimal 20 karakter.'
+    if ((normalized.countryCode?.length ?? 0) > 5) fieldErrors.countryCode = 'Kode negara maksimal 5 karakter.'
+    if (Object.keys(fieldErrors).length) {
+      return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Periksa nama, email, dan nomor telepon yang diisi.', fieldErrors } })
     }
     return repository[operation](normalized, signal)
   }

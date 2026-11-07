@@ -10,8 +10,13 @@ const roleNamePattern = /^[a-z][a-z0-9_-]{0,49}$/
  */
 export function createRoleUseCases(repository: RoleRepository) {
   function validate(input: RoleInput, actorLevel: number) {
-    if (!roleNamePattern.test(input.name) || !Number.isSafeInteger(input.level) || input.level < 1 || input.level >= actorLevel) {
-      return { ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Nama peran harus huruf kecil/angka/garis, dan level harus lebih rendah dari level Anda.' } }
+    const fieldErrors: Record<string, string> = {}
+    if (!roleNamePattern.test(input.name)) fieldErrors.name = 'Nama peran hanya boleh huruf kecil, angka, garis bawah, atau tanda hubung.'
+    if (!Number.isSafeInteger(input.level) || input.level < 1 || input.level >= actorLevel) {
+      fieldErrors.level = 'Level harus bilangan bulat positif di bawah level Anda.'
+    }
+    if (Object.keys(fieldErrors).length) {
+      return { ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Periksa nama dan level peran.', fieldErrors } }
     }
     return null
   }

@@ -8,5 +8,6 @@ export type LoginInput = { email: string; password: string; rememberMe: boolean 
 /** Kontrak domain untuk autentikasi dan pengakhiran sesi. */
 export interface AuthRepository {
   login(input: LoginInput, signal?: AbortSignal): Promise<Result<Session, AuthFailure>>
+  restoreSession(signal?: AbortSignal): Promise<Result<Session, AuthFailure> | null>
   logout(): Promise<Result<null, AuthFailure>>
 }

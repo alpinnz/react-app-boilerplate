@@ -13,6 +13,9 @@ export const healthRoutePaths = {
  * @param getHealth - Health request operation.
  * @returns React Router route objects for service status.
  */
-export function createHealthRoutes(getHealth: GetHealth): RouteObject[] {
-  return [{ path: healthRoutePaths.status, element: <HealthPage getHealth={getHealth} /> }]
+export function createHealthRoutes(getHealth: GetHealth, isAuthenticated = false): RouteObject[] {
+  return [{
+    path: healthRoutePaths.status,
+    element: <HealthPage getHealth={getHealth} showLoginLink={!isAuthenticated} />,
+  }]
 }

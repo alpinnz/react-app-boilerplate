@@ -4,7 +4,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
-/** Memvalidasi envelope token dan menghitung waktu refresh sebelum token kedaluwarsa. */
+/** Memvalidasi token API, mempertahankan durasi kedaluwarsa, dan menghitung ambang refresh. */
 export function parseTokenResponse(payload: unknown) {
   if (!isRecord(payload) || payload.code !== 'success' || !isRecord(payload.data)) throw new Error('invalidResponse')
   const data = payload.data
@@ -18,6 +18,8 @@ export function parseTokenResponse(payload: unknown) {
   return {
     accessToken: data.access_token,
     refreshToken: data.refresh_token,
+    expiresIn: data.expires_in,
+    refreshExpiresIn: data.refresh_expires_in,
     refreshAt: now + data.expires_in * 1000 - Math.min(30_000, data.expires_in * 500),
     refreshExpiresAt: now + data.refresh_expires_in * 1000,
     userId: data.user.id,

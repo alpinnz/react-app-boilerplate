@@ -2,6 +2,7 @@ import { createAuthRepository } from '@/modules/auth/data/repositories/auth.repo
 import { createRegistrationRepository } from '@/modules/auth/data/repositories/registration.repository.impl'
 import { createLogin } from '@/modules/auth/domain/usecases/login.usecase'
 import { createLogout } from '@/modules/auth/domain/usecases/logout.usecase'
+import { createRestoreSession } from '@/modules/auth/domain/usecases/restore-session.usecase'
 import { createRegistrationUseCases } from '@/modules/auth/domain/usecases/register.usecase'
 import type { HttpClient } from '@/infrastructure/http/http-client'
 
@@ -15,6 +16,7 @@ export function createAuthDependencies(http: HttpClient) {
   const repository = createAuthRepository(http)
   return {
     login: createLogin(repository),
+    restoreSession: createRestoreSession(repository),
     logout: createLogout(repository),
     registration: createRegistrationUseCases(createRegistrationRepository(http)),
     getAccessToken: repository.getAccessToken,

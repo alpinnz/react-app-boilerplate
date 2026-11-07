@@ -1,14 +1,19 @@
 import { useContext } from 'react'
-import { useLocalization } from '@valfuse-node/react'
 import { Navigate, Outlet, useRoutes, useSearchParams } from 'react-router-dom'
 import { useStore } from 'zustand'
 import { accountRoutePaths, createAccountRoutes, type AccountSessionEndReason, type AccountUseCases } from '@/modules/account'
 import { authRoutePaths, createAuthRoutes, SessionContext, type RegistrationUseCases } from '@/modules/auth'
 import { createHealthRoutes, type GetHealth } from '@/modules/health'
+import { createOnboardingRoutes } from '@/modules/onboarding'
 import { createRolesRoutes, type RoleUseCases } from '@/modules/roles'
 import { createUsersRoutes, userPermissionLevels, usersRoutePaths, type UsersDependencies } from '@/modules/users'
+import { appBrand } from '@/config/brand'
+import { LanguageSwitcher } from '../localization/LanguageSwitcher'
+import { ThemeToggleButton } from '../theme/ThemeToggleButton'
 import { AppTemplate } from '../templates/AppTemplate'
 import { AuthTemplate } from '../templates/AuthTemplate'
+import { PageFrame } from '../templates/PageFrame'
+import { PageShell } from '../templates/PageShell'
 import { ProtectedRoute } from './ProtectedRoute'
 
 type RouterDependencies = {
@@ -31,9 +36,14 @@ function AuthenticatedLayout() {
 
 function PublicAuthLayout() {
   const sessionStore = useSessionStore()
-  const session = useStore(sessionStore, (state) => state.session.data)
+  const sessionState = useStore(sessionStore, (state) => state.session)
 
-  if (session) {
+  if (sessionState.status.type === 'loading') {
+    return <AuthTemplate><div role="status" aria-live="polite">Memulihkan sesi…</div></AuthTemplate>
+  }
+
+  if (sessionState.data) {
+    const session = sessionState.data
     const landingPath = session.role.level >= userPermissionLevels.viewUsers
       ? usersRoutePaths.list
       : accountRoutePaths.account
@@ -46,14 +56,13 @@ function PublicAuthLayout() {
 
 /** Composition root route: menggabungkan public API modul dan layout aplikasi. */
 export function AppRouter({ auth, users, account, roles, getHealth }: RouterDependencies) {
-  const { translate } = useLocalization()
   const sessionStore = useSessionStore()
   const session = useStore(sessionStore, (state) => state.session.data)
   const renameSession = useStore(sessionStore, (state) => state.rename)
   const invalidateSession = useStore(sessionStore, (state) => state.invalidate)
   const [searchParams] = useSearchParams()
-  const loginNotice = searchParams.has('passwordChanged') ? translate('account.passwordChangedNotice')
-    : searchParams.has('deactivated') ? translate('account.deactivatedNotice') : null
+  const loginNotice = searchParams.has('passwordChanged') ? 'passwordChanged'
+    : searchParams.has('deactivated') ? 'deactivated' : null
 
   function endSession(reason: AccountSessionEndReason) {
     invalidateSession()
@@ -61,14 +70,28 @@ export function AppRouter({ auth, users, account, roles, getHealth }: RouterDepe
     window.location.replace(`${authRoutePaths.login}?${reason}=1`)
   }
 
-  const healthRoutes = createHealthRoutes(getHealth).map((route) => ({
+  const healthRoutes = createHealthRoutes(getHealth, !!session).map((route) => ({
     ...route,
     element: session
       ? <AppTemplate>{route.element}</AppTemplate>
-      : <AuthTemplate>{route.element}</AuthTemplate>,
+      : <AuthTemplate variant="standalone">{route.element}</AuthTemplate>,
+  }))
+  const authenticatedLandingPath = session
+    ? session.role.level >= userPermissionLevels.viewUsers ? usersRoutePaths.list : accountRoutePaths.account
+    : null
+  const onboardingRoutes = createOnboardingRoutes({
+    brandName: appBrand.name,
+    brandMark: appBrand.mark,
+    languageSwitcher: <div className="flex items-center gap-2"><ThemeToggleButton /><LanguageSwitcher /></div>,
+  }).map((route) => ({
+    ...route,
+    element: authenticatedLandingPath
+      ? <Navigate to={authenticatedLandingPath} replace />
+      : <PageFrame variant="onboarding"><PageShell className="mx-auto my-auto w-full max-w-6xl overflow-hidden">{route.element}</PageShell></PageFrame>,
   }))
 
   return useRoutes([
+    ...onboardingRoutes,
     {
       element: <PublicAuthLayout />,
       children: createAuthRoutes({

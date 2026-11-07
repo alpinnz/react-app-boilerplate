@@ -1,21 +1,32 @@
-import type { InputHTMLAttributes } from 'react'
-import { Input } from '../atoms/Input'
+import type { InputHTMLAttributes, ReactNode } from 'react'
+import { InputEmail } from '../atoms/InputEmail'
+import { InputNumber } from '../atoms/InputNumber'
+import { InputPassword } from '../atoms/InputPassword'
+import { InputSearch } from '../atoms/InputSearch'
+import { InputText } from '../atoms/InputText'
+import { GroupForm } from './GroupForm'
 
-type Props = Omit<InputHTMLAttributes<HTMLInputElement>, 'id'> & {
+type TextFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'type'> & {
   id: string
   label: string
+  type?: 'email' | 'number' | 'password' | 'search' | 'text'
   hint?: string
+  error?: string
 }
 
-/** Menggabungkan label, input, dan hint yang terhubung secara aksesibel. */
-export function TextField({ id, label, hint, className = '', ...inputProps }: Props) {
-  const descriptionId = hint ? `${id}-hint` : undefined
+/** Compatibility wrapper that selects a specialized input inside GroupForm. */
+export function TextField({ id, label, type = 'text', hint, error, className = '', ...inputProps }: TextFieldProps) {
+  let control: ReactNode
+
+  if (type === 'password') control = <InputPassword {...inputProps} id={id} />
+  else if (type === 'email') control = <InputEmail {...inputProps} id={id} />
+  else if (type === 'search') control = <InputSearch {...inputProps} id={id} />
+  else if (type === 'number') control = <InputNumber {...inputProps} id={id} />
+  else control = <InputText {...inputProps} id={id} />
 
   return (
-    <div className={`grid gap-2 ${className}`}>
-      <label htmlFor={id} className="text-sm font-semibold text-content">{label}</label>
-      <Input id={id} aria-describedby={descriptionId} {...inputProps} />
-      {hint && <p id={descriptionId} className="text-xs leading-relaxed text-content-muted">{hint}</p>}
-    </div>
+    <GroupForm controlId={id} labelText={label} hintText={hint} errorText={error} className={className}>
+      {control}
+    </GroupForm>
   )
 }

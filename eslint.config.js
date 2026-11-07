@@ -80,7 +80,7 @@ const moduleBoundaryConfigs = moduleNames.flatMap((moduleName) => [
 ])
 
 export default defineConfig([
-  globalIgnores(['dist', 'src/app/localization/generated/*.ts']),
+  globalIgnores(['dist', 'storybook-static', 'src/app/localization/generated/*.ts']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [

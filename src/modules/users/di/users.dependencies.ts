@@ -5,6 +5,7 @@ import { createChangeUserRole } from '@/modules/users/domain/usecases/change-use
 import { createGetUser } from '@/modules/users/domain/usecases/get-user.usecase'
 import { createGetUsers } from '@/modules/users/domain/usecases/get-users.usecase'
 import { createUpdateUser } from '@/modules/users/domain/usecases/update-user.usecase'
+import type { AccessTokenProvider, SessionInvalidationHandler } from '@/infrastructure/http/authorized-request'
 import type { HttpClient } from '@/infrastructure/http/http-client'
 
 /**
@@ -15,7 +16,7 @@ import type { HttpClient } from '@/infrastructure/http/http-client'
  * @param onUnauthorized - Invalidates the active session after an unauthorized response.
  * @returns User operations ready for route composition.
  */
-export function createUsersDependencies(http: HttpClient, getAccessToken: () => Promise<string>, onUnauthorized: () => void) {
+export function createUsersDependencies(http: HttpClient, getAccessToken: AccessTokenProvider, onUnauthorized: SessionInvalidationHandler) {
   const repository = createUserRepository(createUserRemoteDataSource(http, getAccessToken, onUnauthorized))
   return {
     getUsers: createGetUsers(repository),

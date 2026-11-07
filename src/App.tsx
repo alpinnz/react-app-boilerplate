@@ -10,6 +10,8 @@ import { createAuthDependencies, SessionProvider } from './modules/auth'
 import { createHealthDependencies } from './modules/health'
 import { createRoleDependencies } from './modules/roles'
 import { createUsersDependencies } from './modules/users'
+import { ToastProvider } from './shared/presentation/ui/organisms/ToastProvider'
+import { ThemeProvider } from './app/theme/ThemeProvider'
 
 /**
  * Creates the application dependency graph once and provides it to the router.
@@ -27,11 +29,15 @@ const router = createBrowserRouter([{ path: '*', element: <AppRouter auth={auth}
 
 function App() {
   return (
-    <LocalizationProvider manifest={localization} storage={localeStorage} initialLocale="id">
-      <SessionProvider login={auth.login} logout={auth.logout} subscribeSessionInvalidated={auth.subscribeSessionInvalidated}>
-        <RouterProvider router={router} />
-      </SessionProvider>
-    </LocalizationProvider>
+    <ThemeProvider>
+      <LocalizationProvider manifest={localization} storage={localeStorage} initialLocale="id">
+        <ToastProvider>
+          <SessionProvider login={auth.login} logout={auth.logout} restoreSession={auth.restoreSession} subscribeSessionInvalidated={auth.subscribeSessionInvalidated}>
+            <RouterProvider router={router} />
+          </SessionProvider>
+        </ToastProvider>
+      </LocalizationProvider>
+    </ThemeProvider>
   )
 }
 

@@ -6,13 +6,19 @@ import { mapUser } from '../mappers/user.mapper'
 
 function toFailure(error: unknown): UserFailure {
   if (error instanceof HttpError) {
-    if (error.status === 401) return { kind: 'unauthorized', message: 'Sesi berakhir. Silakan masuk lagi.' }
-    if (error.status === 403) return { kind: 'forbidden', message: 'Anda tidak memiliki izin untuk operasi ini.' }
-    if (error.status === 404) return { kind: 'notFound', message: 'Pengguna tidak ditemukan.' }
-    if (error.status === 409) return { kind: 'conflict', message: 'Perubahan bertentangan dengan data terbaru.' }
-    if (error.status === 422 || error.status === 400) return { kind: 'invalidInput', message: 'Data pengguna tidak valid.' }
-    if (error.kind === 'network' || error.kind === 'timeout') return { kind: 'network', message: 'Tidak dapat terhubung ke server. Coba lagi.' }
-    if (error.kind === 'invalidResponse') return { kind: 'invalidResponse', message: 'Respons server tidak valid.' }
+    const failure = (kind: UserFailure['kind'], fallback: string): UserFailure => ({
+      kind,
+      message: error.serverMessage ?? fallback,
+      ...(error.fieldErrors ? { fieldErrors: error.fieldErrors } : {}),
+    })
+    if (error.status === 401) return failure('unauthorized', 'Sesi berakhir. Silakan masuk lagi.')
+    if (error.status === 403) return failure('forbidden', 'Anda tidak memiliki izin untuk operasi ini.')
+    if (error.status === 404) return failure('notFound', 'Pengguna tidak ditemukan.')
+    if (error.status === 409) return failure('conflict', 'Perubahan bertentangan dengan data terbaru.')
+    if (error.status === 422 || error.status === 400) return failure('invalidInput', 'Data pengguna tidak valid.')
+    if (error.kind === 'network' || error.kind === 'timeout') return failure('network', 'Tidak dapat terhubung ke server. Coba lagi.')
+    if (error.kind === 'invalidResponse') return failure('invalidResponse', 'Respons server tidak valid.')
+    if (error.kind === 'http') return failure('unexpected', 'Operasi pengguna gagal. Coba lagi.')
   }
   if (error instanceof Error && error.message === 'invalidResponse') {
     return { kind: 'invalidResponse', message: 'Respons server tidak valid.' }

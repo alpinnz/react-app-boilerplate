@@ -1,15 +1,32 @@
+@import '@fontsource-variable/inter/wght.css';
 @import "tailwindcss";
 @import "./tokens/primitive.css";
 @import "./tokens/semantic.css";
+@import "./tokens/typography.css";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @layer base {
   body {
-    min-width: 20rem;
     min-height: 100dvh;
     background: var(--ds-canvas);
     color: var(--ds-content);
     font-family: var(--font-sans);
+    font-size: var(--type-body-regular-size);
+    font-weight: 400;
+    line-height: var(--type-body-regular-line-height);
+    letter-spacing: var(--type-letter-spacing-reading);
+    font-optical-sizing: auto;
+    font-kerning: normal;
+    font-synthesis: none;
     -webkit-font-smoothing: antialiased;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    font-family: var(--font-sans);
+    font-size: var(--type-placeholder-size);
+    line-height: var(--type-placeholder-line-height);
+    letter-spacing: var(--type-letter-spacing-reading);
   }
 
   button,

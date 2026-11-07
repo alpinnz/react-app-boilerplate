@@ -4,7 +4,7 @@ import type { OperationFailure } from '@/shared/domain/operation-failure'
 import type { Role } from '../../domain/entities/role'
 import type { RoleUseCases } from '../../domain/usecases/role.usecases'
 
-type ActionStatus = { type: 'idle' | 'loading' | 'success' } | { type: 'failure'; message: string }
+type ActionStatus = { type: 'idle' | 'loading' | 'success' } | { type: 'failure'; message: string; fieldErrors?: Record<string, string> }
 
 /** Membuat state katalog role dan aksi CRUD yang dibatasi level aktor aktif. */
 export function createRolesStore(operations: RoleUseCases, actorLevel: number) {
@@ -40,11 +40,14 @@ export function createRolesStore(operations: RoleUseCases, actorLevel: number) {
       if (controller) return
       controller = new AbortController()
       const active = controller
-      set({ roles: { data: get().roles.data, status: { type: 'loading' } } })
+      const previousRoles = get().roles.data
+      set({ roles: { data: previousRoles, status: { type: previousRoles ? 'refreshing' : 'loading' } } })
       try {
         const result = await operations.listRoles(active.signal)
         if (active.signal.aborted) return
-        set({ roles: result.ok ? { data: result.data, status: result.data.length ? { type: 'success' } : { type: 'noData' } } : { data: get().roles.data, status: { type: 'failure', failure: result.failure } } })
+        set({ roles: result.ok ? { data: result.data, status: result.data.length ? { type: 'success' } : { type: 'noData' } } : { data: previousRoles, status: { type: 'failure', failure: result.failure } } })
+      } catch {
+        if (!active.signal.aborted) set({ roles: { data: previousRoles, status: { type: 'failure', failure: { kind: 'unexpected', message: 'Gagal memuat daftar peran.' } } } })
       } finally { if (controller === active) controller = null }
     },
     select: async (id) => {
@@ -55,7 +58,7 @@ export function createRolesStore(operations: RoleUseCases, actorLevel: number) {
       try {
         const result = await operations.getRole(id, active.signal)
         if (active.signal.aborted) return
-        if (!result.ok) { set({ actionStatus: { type: 'failure', message: result.failure.message } }); return }
+        if (!result.ok) { set({ actionStatus: { type: 'failure', message: result.failure.message, fieldErrors: result.failure.fieldErrors } }); return }
         set({ selected: result.data, editName: result.data.name, editLevel: String(result.data.level), actionStatus: { type: 'idle' } })
       } finally { if (controller === active) controller = null }
     },
@@ -68,7 +71,7 @@ export function createRolesStore(operations: RoleUseCases, actorLevel: number) {
       try {
         const result = await operations.createRole({ name: get().createName, level: Number(get().createLevel) }, actorLevel, active.signal)
         if (active.signal.aborted) return
-        if (!result.ok) { set({ actionStatus: { type: 'failure', message: result.failure.message } }); return }
+        if (!result.ok) { set({ actionStatus: { type: 'failure', message: result.failure.message, fieldErrors: result.failure.fieldErrors } }); return }
         const roles = [...(get().roles.data ?? []), result.data].sort((a, b) => b.level - a.level)
         set({ roles: { data: roles, status: { type: 'success' } }, createName: '', createLevel: '', actionStatus: { type: 'success' } })
       } finally { if (controller === active) controller = null }
@@ -82,7 +85,7 @@ export function createRolesStore(operations: RoleUseCases, actorLevel: number) {
       try {
         const result = await operations.updateRole(selected.id, { name: get().editName, level: Number(get().editLevel) }, actorLevel, active.signal)
         if (active.signal.aborted) return
-        if (!result.ok) { set({ actionStatus: { type: 'failure', message: result.failure.message } }); return }
+        if (!result.ok) { set({ actionStatus: { type: 'failure', message: result.failure.message, fieldErrors: result.failure.fieldErrors } }); return }
         const roles = (get().roles.data ?? []).map((role) => role.id === selected.id ? result.data : role).sort((a, b) => b.level - a.level)
         set({ roles: { data: roles, status: { type: 'success' } }, selected: result.data, actionStatus: { type: 'success' } })
       } finally { if (controller === active) controller = null }

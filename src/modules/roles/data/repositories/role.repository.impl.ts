@@ -1,4 +1,5 @@
 import { createAuthorizedRequest } from '@/infrastructure/http/authorized-request'
+import type { AccessTokenProvider, SessionInvalidationHandler } from '@/infrastructure/http/authorized-request'
 import type { HttpClient } from '@/infrastructure/http/http-client'
 import { mapOperationFailure } from '@/infrastructure/http/map-operation-failure'
 import { assertResponseCode, isRecord, responseData } from '@/infrastructure/http/response'
@@ -12,7 +13,7 @@ function parseRole(value: unknown): Role {
 }
 
 /** Menghubungkan kontrak katalog peran ke endpoint API terautentikasi. */
-export function createRoleRepository(http: HttpClient, getAccessToken: () => Promise<string>, onUnauthorized: () => void): RoleRepository {
+export function createRoleRepository(http: HttpClient, getAccessToken: AccessTokenProvider, onUnauthorized: SessionInvalidationHandler): RoleRepository {
   const request = createAuthorizedRequest(http, getAccessToken, onUnauthorized)
   return {
     async listRoles(signal) {

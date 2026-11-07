@@ -5,6 +5,7 @@ import { Button } from '@/shared/presentation/ui/atoms/Button'
 import { Modal } from '@/shared/presentation/ui/organisms/Modal'
 import { AsyncActionPattern } from '@/shared/presentation/ui/patterns/AsyncActionPattern'
 import { useLocalizedMessage } from '@/shared/presentation/localization/useLocalizedMessage'
+import { useFailureToast } from '@/shared/presentation/ui/organisms/useToast'
 import type { User } from '@/modules/users/domain/entities/user'
 import type { DeleteUser } from '@/modules/users/domain/usecases/delete-user.usecase'
 import { DeleteUserContext } from './state/delete-user.context'
@@ -17,8 +18,10 @@ function DeleteUserConfirmation({ user, onDeleted, onClose }: {
 }) {
   const { translate, format } = useLocalization()
   const localizeMessage = useLocalizedMessage()
-  const store = useContext(DeleteUserContext)
-  if (!store) throw new Error('DeleteUserProvider belum dipasang.')
+  const showFailureToast = useFailureToast()
+  const contextStore = useContext(DeleteUserContext)
+  if (!contextStore) throw new Error('DeleteUserProvider belum dipasang.')
+  const store = contextStore
   const status = useStore(store, (state) => state.status)
   const remove = useStore(store, (state) => state.remove)
   const busy = status.type === 'loading'
@@ -26,20 +29,27 @@ function DeleteUserConfirmation({ user, onDeleted, onClose }: {
   async function confirm() {
     const deletedId = await remove()
     if (deletedId) onDeleted(deletedId)
+    else {
+      const currentStatus = store.getState().status
+      if (currentStatus.type === 'failure') showFailureToast(currentStatus.failure.message)
+    }
   }
 
   return (
-    <Modal titleId="delete-title" descriptionId="delete-description" onDismiss={onClose} canDismiss={!busy}>
-      <h2 id="delete-title" className="mb-3 text-xl font-semibold">{translate('users.deleteUser')}</h2>
+    <Modal
+      role="alertdialog"
+      title={format('users.deleteUserTitle', { name: user.name })}
+      description={translate('users.deleteUserDescription')}
+      onDismiss={onClose}
+      canDismiss={!busy}
+      footer={<>
+        <Button type="button" variant="secondary" autoFocus disabled={busy} onClick={onClose}>{translate('common.cancel')}</Button>
+        <Button type="button" variant="danger" disabled={busy} loading={busy} loadingLabel={translate('users.deleting')} onClick={() => void confirm()}>{translate('common.delete')}</Button>
+      </>}
+    >
       <AsyncActionPattern
         error={status.type === 'failure' ? localizeMessage(status.failure.message) : undefined}
-        actions={<>
-          <Button type="button" variant="secondary" autoFocus disabled={busy} onClick={onClose}>{translate('common.cancel')}</Button>
-          <Button type="button" variant="danger" disabled={busy} onClick={() => void confirm()}>{busy ? translate('users.deleting') : translate('common.delete')}</Button>
-        </>}
-      >
-        <p id="delete-description" className="text-sm leading-relaxed text-content-muted">{format('users.deleteUserDescription', { name: user.name })}</p>
-      </AsyncActionPattern>
+      />
     </Modal>
   )
 }

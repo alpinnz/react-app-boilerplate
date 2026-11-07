@@ -15,8 +15,12 @@ export function createUpdateUser(repository: UserRepository) {
     const name = input.name.trim()
     const phoneNumber = input.phoneNumber?.trim() || null
     const countryCode = input.countryCode?.trim() || null
-    if (!input.id || !name || name.length > 100 || (phoneNumber?.length ?? 0) > 20 || (countryCode?.length ?? 0) > 5) {
-      return Promise.resolve({ ok: false, failure: { kind: 'invalidInput', message: 'Isi nama dan nomor telepon yang valid.' } })
+    const fieldErrors: Record<string, string> = {}
+    if (!name || name.length > 100) fieldErrors.name = 'Nama wajib diisi dan maksimal 100 karakter.'
+    if ((phoneNumber?.length ?? 0) > 20) fieldErrors.phoneNumber = 'Nomor telepon maksimal 20 karakter.'
+    if ((countryCode?.length ?? 0) > 5) fieldErrors.countryCode = 'Kode negara maksimal 5 karakter.'
+    if (!input.id || Object.keys(fieldErrors).length) {
+      return Promise.resolve({ ok: false, failure: { kind: 'invalidInput', message: 'Isi nama dan nomor telepon yang valid.', fieldErrors } })
     }
     return repository.updateUser({ id: input.id, name, phoneNumber, countryCode }, signal)
   }

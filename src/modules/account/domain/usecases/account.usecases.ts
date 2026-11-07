@@ -15,20 +15,28 @@ export function createAccountUseCases(repository: AccountRepository) {
       const name = input.name.trim()
       const phoneNumber = input.phoneNumber?.trim() || null
       const countryCode = input.countryCode?.trim() || null
-      if (!name || name.length > 100 || (phoneNumber?.length ?? 0) > 20 || (countryCode?.length ?? 0) > 5) {
-        return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Isi profil yang valid.' } })
+      const fieldErrors: Record<string, string> = {}
+      if (!name || name.length > 100) fieldErrors.name = 'Nama wajib diisi dan maksimal 100 karakter.'
+      if ((phoneNumber?.length ?? 0) > 20) fieldErrors.phoneNumber = 'Nomor telepon maksimal 20 karakter.'
+      if ((countryCode?.length ?? 0) > 5) fieldErrors.countryCode = 'Kode negara maksimal 5 karakter.'
+      if (Object.keys(fieldErrors).length) {
+        return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Isi profil yang valid.', fieldErrors } })
       }
       return repository.updateProfile({ name, phoneNumber, countryCode }, signal)
     },
     changePassword: (input: ChangePasswordInput, signal?: AbortSignal) => {
-      if (input.currentPassword.length < 8 || input.currentPassword.length > 72 || !passwordPattern.test(input.newPassword) || input.newPassword !== input.confirmNewPassword) {
-        return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Kata sandi baru harus 8–72 karakter, memiliki huruf besar, angka, simbol, dan cocok dengan konfirmasi.' } })
+      const fieldErrors: Record<string, string> = {}
+      if (input.currentPassword.length < 8 || input.currentPassword.length > 72) fieldErrors.currentPassword = 'Kata sandi saat ini wajib diisi dengan 8–72 karakter.'
+      if (!passwordPattern.test(input.newPassword)) fieldErrors.newPassword = 'Kata sandi harus 8–72 karakter, berisi huruf besar, angka, dan simbol.'
+      if (input.newPassword !== input.confirmNewPassword) fieldErrors.confirmNewPassword = 'Konfirmasi kata sandi belum sama.'
+      if (Object.keys(fieldErrors).length) {
+        return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Periksa kembali kolom kata sandi.', fieldErrors } })
       }
       return repository.changePassword(input, signal)
     },
     deactivateAccount: (currentPassword: string, signal?: AbortSignal) => {
       if (currentPassword.length < 8 || currentPassword.length > 72) {
-        return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Masukkan kata sandi akun saat ini.' } })
+        return Promise.resolve({ ok: false as const, failure: { kind: 'invalidInput' as const, message: 'Masukkan kata sandi akun saat ini.', fieldErrors: { currentPassword: 'Kata sandi saat ini wajib diisi dengan 8–72 karakter.' } } })
       }
       return repository.deactivateAccount(currentPassword, signal)
     },

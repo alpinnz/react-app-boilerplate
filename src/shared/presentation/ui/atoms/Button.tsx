@@ -1,20 +1,50 @@
-import type { ButtonHTMLAttributes } from 'react'
+import { forwardRef, type ButtonHTMLAttributes } from 'react'
+import { getButtonClassName, type ButtonSize, type ButtonVariant } from './button-styles'
 
-type Variant = 'primary' | 'secondary' | 'danger' | 'quiet'
-
-const variantClasses: Record<Variant, string> = {
-  primary: 'bg-action text-on-action hover:bg-action-hover',
-  secondary: 'border border-line-strong bg-surface text-action hover:bg-action-soft',
-  danger: 'bg-danger text-on-danger hover:bg-danger-hover',
-  quiet: 'bg-transparent text-danger hover:bg-danger-soft',
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: ButtonVariant
+  size?: ButtonSize
+  loading?: boolean
+  loadingLabel?: string
+  loadingPresentation?: 'indicator' | 'indicator-with-label'
 }
 
-/** Tombol dasar dengan varian visual semantic dan seluruh atribut tombol native. */
-export function Button({ variant = 'primary', className = '', ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant }) {
+/** Tombol dasar dengan state semantic, indikator loading, ref, dan atribut tombol native. */
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button({
+  variant = 'primary',
+  size = 'medium',
+  className = '',
+  loading = false,
+  loadingLabel,
+  loadingPresentation = 'indicator',
+  disabled,
+  children,
+  'aria-busy': ariaBusy,
+  ...props
+}: ButtonProps, ref) {
+  const loadingIndicator = <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" className="size-4 shrink-0 animate-spin motion-reduce:animate-none">
+    <circle cx="10" cy="10" r="7" stroke="currentColor" strokeOpacity="0.3" strokeWidth="2.5" />
+    <path d="M10 3a7 7 0 0 1 7 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+  </svg>
+
   return (
     <button
-      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-control px-4 py-2 text-sm font-semibold shadow-sm transition-[background-color,border-color,color,box-shadow] disabled:cursor-not-allowed disabled:opacity-50 ${variantClasses[variant]} ${className}`}
+      ref={ref}
+      className={getButtonClassName(variant, size, className)}
+      disabled={disabled || loading}
+      aria-busy={loading || ariaBusy}
       {...props}
-    />
+    >
+      {loading ? loadingPresentation === 'indicator-with-label' ? (
+        <span className="inline-flex items-center gap-2">
+          {loadingIndicator}
+          <span>{loadingLabel ?? children}</span>
+        </span>
+      ) : <>
+        <span aria-hidden="true" className="opacity-0">{children}</span>
+        <span className="sr-only">{loadingLabel ?? children}</span>
+        <span className="absolute inset-0 m-auto grid size-4 place-items-center">{loadingIndicator}</span>
+      </> : children}
+    </button>
   )
-}
+})

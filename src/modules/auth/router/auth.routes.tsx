@@ -14,7 +14,7 @@ export const authRoutePaths = {
  */
 export type AuthRouteOptions = {
   registration: RegistrationUseCases
-  loginNotice: string | null
+  loginNotice: 'passwordChanged' | 'deactivated' | null
 }
 
 /**

@@ -1,5 +1,6 @@
 import { createRoleRepository } from '@/modules/roles/data/repositories/role.repository.impl'
 import { createRoleUseCases } from '@/modules/roles/domain/usecases/role.usecases'
+import type { AccessTokenProvider, SessionInvalidationHandler } from '@/infrastructure/http/authorized-request'
 import type { HttpClient } from '@/infrastructure/http/http-client'
 
 /**
@@ -10,6 +11,6 @@ import type { HttpClient } from '@/infrastructure/http/http-client'
  * @param onUnauthorized - Invalidates the active session after an unauthorized response.
  * @returns Role operations ready for app-level composition.
  */
-export function createRoleDependencies(http: HttpClient, getAccessToken: () => Promise<string>, onUnauthorized: () => void) {
+export function createRoleDependencies(http: HttpClient, getAccessToken: AccessTokenProvider, onUnauthorized: SessionInvalidationHandler) {
   return createRoleUseCases(createRoleRepository(http, getAccessToken, onUnauthorized))
 }

@@ -1,3 +1,8 @@
+assets:
+  input_dir: public
+  output_file: src/shared/assets/generated/assets.ts
+  base_path: /
+
 localization:
   input_dir: locales
   output_dir: src/app/localization/generated

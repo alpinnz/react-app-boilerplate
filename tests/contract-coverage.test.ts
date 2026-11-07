@@ -112,9 +112,9 @@ describe('remaining OpenAPI operations over HTTP', () => {
     expect(requests.filter((entry) => entry.authorization).every((entry) => entry.authorization === `Bearer ${'a'.repeat(43)}`)).toBe(true)
   })
 
-  it('maps role conflicts to a safe user-facing failure', async () => {
+  it('preserves the backend role conflict message', async () => {
     const http = createHttpClient(baseUrl)
     const roles = createRoleUseCases(createRoleRepository(http, async () => 'a'.repeat(43), () => undefined))
-    expect(await roles.createRole({ name: 'duplicate', level: 20 }, 100)).toEqual({ ok: false, failure: { kind: 'conflict', message: 'Perubahan bertentangan dengan data terbaru.' } })
+    expect(await roles.createRole({ name: 'duplicate', level: 20 }, 100)).toEqual({ ok: false, failure: { kind: 'conflict', message: 'conflict' } })
   })
 })

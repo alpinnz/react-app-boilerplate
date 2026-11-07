@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="240" viewBox="0 0 320 240" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Account profile</title>
+  <desc id="desc">An account profile includes contact details and a verified status.</desc>
+  <defs>
+    <filter id="shadow" x="22" y="19" width="276" height="211" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#1E293B" flood-opacity=".12"/>
+    </filter>
+    <linearGradient id="blue" x1="91" y1="72" x2="218" y2="183" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="160" cy="124" rx="139" ry="99" fill="#ECFDFB"/>
+  <circle cx="268" cy="56" r="18" fill="#FEF3C7"/>
+  <path d="M45 173c8-14 23-21 38-18 15 3 24 17 20 31-4 12-18 20-31 17-18-4-37-16-27-30Z" fill="#DBEAFE"/>
+  <g filter="url(#shadow)">
+    <rect x="58" y="30" width="204" height="180" rx="18" fill="#fff" stroke="#DCE4ED"/>
+    <path d="M58 48a18 18 0 0 1 18-18h168a18 18 0 0 1 18 18v17H58V48Z" fill="#F7F9FC"/>
+    <circle cx="76" cy="48" r="4" fill="#3B82F6"/>
+    <path d="M91 48h56" stroke="#94A3B8" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="160" cy="99" r="25" fill="#DBEAFE"/>
+    <path d="M142 103c0-10 8-18 18-18s18 8 18 18v5h-36v-5Z" fill="url(#blue)"/>
+    <circle cx="160" cy="93" r="8" fill="#F6C99A"/>
+    <path d="M151 92c0-9 6-15 14-14 6 1 10 6 9 12-4-2-9-4-13-8-1 5-5 8-10 10Z" fill="#1E293B"/>
+    <rect x="108" y="132" width="104" height="19" rx="9.5" fill="#EFF6FF"/>
+    <path d="M121 141.5h40" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="194" cy="141.5" r="5" fill="#5EEAD4"/>
+    <rect x="82" y="164" width="156" height="31" rx="9" fill="#fff" stroke="#DCE4ED"/>
+    <circle cx="99" cy="179.5" r="7" fill="#CCFBF1"/>
+    <path d="m96 180 2 2 4-5" stroke="#0F766E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M114 176h67M114 184h45" stroke="#94A3B8" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+  <circle cx="250" cy="173" r="17" fill="#CCFBF1" stroke="#fff" stroke-width="4"/>
+  <path d="m243 173 5 5 9-10" stroke="#0F766E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -11,17 +11,20 @@ export function createHealthStore(getHealth: GetHealth) {
     health: DataState<HealthStatus, OperationFailure>
     load: () => Promise<void>
     cancelPending: () => void
-  }>()((set) => ({
+    }>()((set, get) => ({
     health: initialDataState(),
     load: async () => {
       if (controller) return
       controller = new AbortController()
       const active = controller
-      set({ health: { data: null, status: { type: 'loading' } } })
+      const previousHealth = get().health.data
+      set({ health: { data: previousHealth, status: { type: previousHealth ? 'refreshing' : 'loading' } } })
       try {
         const result = await getHealth(active.signal)
         if (active.signal.aborted) return
-        set({ health: result.ok ? { data: result.data, status: { type: 'success' } } : { data: null, status: { type: 'failure', failure: result.failure } } })
+        set({ health: result.ok ? { data: result.data, status: { type: 'success' } } : { data: previousHealth, status: { type: 'failure', failure: result.failure } } })
+      } catch {
+        if (!active.signal.aborted) set({ health: { data: previousHealth, status: { type: 'failure', failure: { kind: 'unexpected', message: 'Gagal memuat status layanan.' } } } })
       } finally { if (controller === active) controller = null }
     },
     cancelPending: () => { controller?.abort(); controller = null },

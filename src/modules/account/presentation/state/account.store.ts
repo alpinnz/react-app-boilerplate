@@ -5,7 +5,7 @@ import type { AccountProfile } from '../../domain/entities/account-profile'
 import type { AccountUseCases } from '../../domain/usecases/account.usecases'
 
 type Action = 'profile' | 'password' | 'deactivate'
-type ActionStatus = { type: 'idle' | 'loading' | 'success'; action?: Action } | { type: 'failure'; action: Action; message: string }
+type ActionStatus = { type: 'idle' | 'loading' | 'success'; action?: Action } | { type: 'failure'; action: Action; message: string; fieldErrors?: Record<string, string> }
 
 /** Membuat state profil dan operasi akun untuk satu scope halaman account. */
 export function createAccountStore(operations: AccountUseCases) {
@@ -31,13 +31,16 @@ export function createAccountStore(operations: AccountUseCases) {
       if (controller) return
       controller = new AbortController()
       const active = controller
-      set({ profile: { data: null, status: { type: 'loading' } } })
+      const previousProfile = get().profile.data
+      set({ profile: { data: previousProfile, status: { type: previousProfile ? 'refreshing' : 'loading' } } })
       try {
         const result = await operations.getProfile(active.signal)
         if (active.signal.aborted) return
-        if (!result.ok) { set({ profile: { data: null, status: { type: 'failure', failure: result.failure } } }); return }
+        if (!result.ok) { set({ profile: { data: previousProfile, status: { type: 'failure', failure: result.failure } } }); return }
         const profile = result.data
         set({ profile: { data: profile, status: { type: 'success' } }, name: profile.name, phoneNumber: profile.phoneNumber ?? '', countryCode: profile.countryCode ?? '' })
+      } catch {
+        if (!active.signal.aborted) set({ profile: { data: previousProfile, status: { type: 'failure', failure: { kind: 'unexpected', message: 'Gagal memuat profil akun.' } } } })
       } finally { if (controller === active) controller = null }
     },
     saveProfile: async () => {
@@ -49,7 +52,7 @@ export function createAccountStore(operations: AccountUseCases) {
         const { name, phoneNumber, countryCode } = get()
         const result = await operations.updateProfile({ name, phoneNumber, countryCode }, active.signal)
         if (active.signal.aborted) return null
-        if (!result.ok) { set({ actionStatus: { type: 'failure', action: 'profile', message: result.failure.message } }); return null }
+        if (!result.ok) { set({ actionStatus: { type: 'failure', action: 'profile', message: result.failure.message, fieldErrors: result.failure.fieldErrors } }); return null }
         const profile = get().profile.data
         if (profile) set({ profile: { data: { ...profile, ...result.data }, status: { type: 'success' } }, actionStatus: { type: 'success', action: 'profile' } })
         return result.data.name
@@ -64,7 +67,7 @@ export function createAccountStore(operations: AccountUseCases) {
         const { currentPassword, newPassword, confirmNewPassword } = get()
         const result = await operations.changePassword({ currentPassword, newPassword, confirmNewPassword }, active.signal)
         if (active.signal.aborted) return false
-        set({ currentPassword: '', newPassword: '', confirmNewPassword: '', actionStatus: result.ok ? { type: 'success', action: 'password' } : { type: 'failure', action: 'password', message: result.failure.message } })
+        set({ currentPassword: '', newPassword: '', confirmNewPassword: '', actionStatus: result.ok ? { type: 'success', action: 'password' } : { type: 'failure', action: 'password', message: result.failure.message, fieldErrors: result.failure.fieldErrors } })
         return result.ok
       } finally { if (controller === active) controller = null }
     },
@@ -76,7 +79,7 @@ export function createAccountStore(operations: AccountUseCases) {
       try {
         const result = await operations.deactivateAccount(get().deactivatePassword, active.signal)
         if (active.signal.aborted) return false
-        set({ deactivatePassword: '', actionStatus: result.ok ? { type: 'success', action: 'deactivate' } : { type: 'failure', action: 'deactivate', message: result.failure.message } })
+        set({ deactivatePassword: '', actionStatus: result.ok ? { type: 'success', action: 'deactivate' } : { type: 'failure', action: 'deactivate', message: result.failure.message, fieldErrors: result.failure.fieldErrors } })
         return result.ok
       } finally { if (controller === active) controller = null }
     },

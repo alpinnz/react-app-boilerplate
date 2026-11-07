@@ -1,4 +1,5 @@
 import { createAuthorizedRequest } from '@/infrastructure/http/authorized-request'
+import type { AccessTokenProvider, SessionInvalidationHandler } from '@/infrastructure/http/authorized-request'
 import type { HttpClient } from '@/infrastructure/http/http-client'
 import type { UpdateUserInput } from '../../domain/values/update-user-input'
 import { parseChangeRoleResponse, parseDeleteResponse, parseUserDetailsResponse, parseUserResponse, parseUsersResponse } from '../dto/user.dto'
@@ -11,7 +12,7 @@ import { parseChangeRoleResponse, parseDeleteResponse, parseUserDetailsResponse,
  * @param onUnauthorized - Callback saat backend menolak access token.
  * @returns Operasi remote pengguna sebelum pemetaan ke entity domain.
  */
-export function createUserRemoteDataSource(http: HttpClient, getAccessToken: () => Promise<string>, onUnauthorized: () => void) {
+export function createUserRemoteDataSource(http: HttpClient, getAccessToken: AccessTokenProvider, onUnauthorized: SessionInvalidationHandler) {
   const request = createAuthorizedRequest(http, getAccessToken, onUnauthorized)
 
   return {
