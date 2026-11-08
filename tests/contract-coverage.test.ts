@@ -68,7 +68,7 @@ describe('remaining OpenAPI operations over HTTP', () => {
 
   afterAll(async () => { await new Promise<void>((resolve) => server.close(() => resolve())) })
 
-  it('sends registration, health, profile, role, and user detail requests to contracted paths', async () => {
+  it('given module operations, when calling their repositories, then sends requests to contracted paths', async () => {
     requests.length = 0
     const http = createHttpClient(baseUrl)
     const registrations = createRegistrationUseCases(createRegistrationRepository(http))
@@ -112,7 +112,7 @@ describe('remaining OpenAPI operations over HTTP', () => {
     expect(requests.filter((entry) => entry.authorization).every((entry) => entry.authorization === `Bearer ${'a'.repeat(43)}`)).toBe(true)
   })
 
-  it('preserves the backend role conflict message', async () => {
+  it('given a conflicting role name, when creation fails, then preserves the backend message', async () => {
     const http = createHttpClient(baseUrl)
     const roles = createRoleUseCases(createRoleRepository(http, async () => 'a'.repeat(43), () => undefined))
     expect(await roles.createRole({ name: 'duplicate', level: 20 }, 100)).toEqual({ ok: false, failure: { kind: 'conflict', message: 'conflict' } })

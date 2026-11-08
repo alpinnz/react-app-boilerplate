@@ -78,7 +78,7 @@ describe('API contract integration over HTTP', () => {
 
   afterAll(async () => { await new Promise<void>((resolve) => server.close(() => resolve())) })
 
-  it('sends the contracted auth, list, edit, delete, and logout requests', async () => {
+  it('given valid authentication and user operations, when they run, then sends the contracted requests', async () => {
     requests.length = 0
     const http = createHttpClient(baseUrl)
     const auth = createAuthRepository(http)
@@ -99,7 +99,7 @@ describe('API contract integration over HTTP', () => {
     ])
   })
 
-  it('maps invalid login responses to a safe credential message', async () => {
+  it('given invalid credentials, when login is rejected, then returns a safe credential message', async () => {
     const auth = createAuthRepository(createHttpClient(baseUrl))
     const response = await auth.login({ email: 'owner@example.test', password: 'wrongpass', rememberMe: false })
     expect(response).toEqual({
@@ -108,7 +108,7 @@ describe('API contract integration over HTTP', () => {
     })
   })
 
-  it('forwards the remember option and current locale to the API', async () => {
+  it('given a remember preference and active locale, when auth requests run, then forwards both to the API', async () => {
     requests.length = 0
     let language = 'en'
     const auth = createAuthRepository(createHttpClient(baseUrl, fetch, () => language))
@@ -121,7 +121,7 @@ describe('API contract integration over HTTP', () => {
     expect(requests.at(-1)?.language).toBe('id')
   })
 
-  it('maps login rate limiting to an actionable failure', async () => {
+  it('given a rate-limited login, when the API rejects it, then returns an actionable failure', async () => {
     const auth = createAuthRepository(createHttpClient(baseUrl))
     const response = await auth.login({ email: 'limited@example.test', password: 'Valid!Password1', rememberMe: false })
     expect(response).toEqual({
@@ -130,7 +130,7 @@ describe('API contract integration over HTTP', () => {
     })
   })
 
-  it('invalidates the session when a rotated refresh token is rejected', async () => {
+  it('given a rotated refresh token is rejected, when refreshing, then invalidates the session', async () => {
     const now = Date.now()
     const clock = vi.spyOn(Date, 'now').mockReturnValue(now)
     try {
@@ -147,7 +147,7 @@ describe('API contract integration over HTTP', () => {
     }
   })
 
-  it('clears the session when a protected endpoint rejects the access token', async () => {
+  it('given a protected endpoint rejects the access token, when requesting users, then clears the session', async () => {
     const http = createHttpClient(baseUrl)
     const auth = createAuthRepository(http)
     const invalidated = vi.fn()
@@ -160,7 +160,7 @@ describe('API contract integration over HTTP', () => {
     await expect(auth.getAccessToken()).rejects.toBeTruthy()
   })
 
-  it('shares one refresh across concurrent protected requests after 401', async () => {
+  it('given concurrent protected requests receive 401, when refreshing, then shares one refresh operation', async () => {
     const oldAccessToken = 'c'.repeat(43)
     const oldRefreshToken = 'd'.repeat(43)
     const newAccessToken = 'e'.repeat(43)
@@ -231,7 +231,7 @@ describe('API contract integration over HTTP', () => {
     expect(refreshCount).toBe(1)
   })
 
-  it('refreshes the issued token once if the login profile request returns 401', async () => {
+  it('given the login profile request returns 401, when retrying it, then refreshes the issued token once', async () => {
     const firstAccessToken = 'g'.repeat(43)
     const firstRefreshToken = 'h'.repeat(43)
     const refreshedAccessToken = 'i'.repeat(43)
@@ -274,7 +274,7 @@ describe('API contract integration over HTTP', () => {
     expect(calls).toEqual(['/auth/login', '/users/me', '/auth/refresh-token', '/users/me'])
   })
 
-  it('invalidates once and skips protected retries when the refresh token is rejected', async () => {
+  it('given refresh is rejected, when protected requests fail, then invalidates once without retrying them', async () => {
     requests.length = 0
     const http = createHttpClient(baseUrl)
     const auth = createAuthRepository(http)

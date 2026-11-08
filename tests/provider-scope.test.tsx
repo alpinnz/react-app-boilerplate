@@ -19,7 +19,7 @@ function Probe() {
   return <p>{users.data?.items[0]?.name ?? users.status.type}</p>
 }
 
-it('reloads after Strict Mode effect cleanup and ignores the first response', async () => {
+it('given Strict Mode cleans up the first request, when the provider remounts, then ignores the stale response', async () => {
   let completeFirst!: (value: Result<Page<User>, UserFailure>) => void
   const first = new Promise<Result<Page<User>, UserFailure>>((resolve) => { completeFirst = resolve })
   const secondUser: User = { id: '2', name: 'Data baru', email: 'new@example.test', phoneNumber: null, countryCode: null }

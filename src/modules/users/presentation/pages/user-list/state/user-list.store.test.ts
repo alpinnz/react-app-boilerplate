@@ -20,7 +20,7 @@ function deferred() {
 }
 
 describe('user list store', () => {
-  it('loads data and represents an empty result', async () => {
+  it('given populated and empty responses, when fetching users, then reflects success and no-data states', async () => {
     const getUsers = vi.fn<GetUsers>().mockResolvedValueOnce(success([alya])).mockResolvedValueOnce(success([]))
     const store = createUserListStore(getUsers)
     const loading = store.getState().fetchUsers()
@@ -31,7 +31,7 @@ describe('user list store', () => {
     expect(store.getState().users.status.type).toBe('noData')
   })
 
-  it('merges pages by ID and prevents duplicate requests for one cursor', async () => {
+  it('given another page has the current cursor, when loading more twice, then merges by ID and sends one request', async () => {
     const next = deferred()
     const getUsers = vi.fn<GetUsers>().mockResolvedValueOnce(success([alya], '1')).mockReturnValueOnce(next.promise)
     const store = createUserListStore(getUsers)
@@ -46,7 +46,7 @@ describe('user list store', () => {
     expect(getUsers).toHaveBeenCalledTimes(2)
   })
 
-  it('keeps a populated list when the next page is empty', async () => {
+  it('given the next page is empty, when appending it, then keeps the populated list', async () => {
     const getUsers = vi.fn<GetUsers>().mockResolvedValueOnce(success([alya], '2')).mockResolvedValueOnce(success([]))
     const store = createUserListStore(getUsers)
     await store.getState().fetchUsers()
@@ -55,7 +55,7 @@ describe('user list store', () => {
     expect(store.getState().users.status.type).toBe('success')
   })
 
-  it('ignores stale results even when a dependency ignores abort', async () => {
+  it('given a newer search completes first, when an older request resolves, then ignores the stale result', async () => {
     const oldRequest = deferred()
     const newRequest = deferred()
     const getUsers = vi.fn<GetUsers>().mockReturnValueOnce(oldRequest.promise).mockReturnValueOnce(newRequest.promise)
@@ -69,7 +69,7 @@ describe('user list store', () => {
     expect(store.getState().users.data?.items).toEqual([bima])
   })
 
-  it('keeps previous data on refresh failure and ignores work after cleanup', async () => {
+  it('given refresh fails or is cancelled, when requests settle, then retains the last valid data', async () => {
     const pending = deferred()
     const getUsers = vi.fn<GetUsers>()
       .mockResolvedValueOnce(success([alya]))
@@ -90,7 +90,7 @@ describe('user list store', () => {
     expect(store.getState().users.data?.items).toEqual([bima])
   })
 
-  it('isolates separate store instances', async () => {
+  it('given two store instances, when one loads users, then leaves the other isolated', async () => {
     const getUsers = vi.fn<GetUsers>().mockResolvedValue(success([alya]))
     const first = createUserListStore(getUsers)
     const second = createUserListStore(getUsers)

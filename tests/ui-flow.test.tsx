@@ -43,7 +43,7 @@ beforeAll(() => {
 afterEach(cleanup)
 
 describe('owner user flow', () => {
-  it('shows registration success in one toast and leaves a sign-in action', async () => {
+  it('given valid registration details, when registration succeeds, then shows one toast and a sign-in action', async () => {
     const user = userEvent.setup()
     const registration = { register: vi.fn().mockResolvedValue({ ok: true, data: 'new-user' }), createUser: vi.fn() }
     const dependencies = routerDependencies(vi.fn<GetUsers>(), vi.fn<UpdateUser>(), vi.fn<DeleteUser>(), registration)
@@ -71,7 +71,7 @@ describe('owner user flow', () => {
     expect(screen.getAllByRole('link', { name: 'Masuk' }).length).toBeGreaterThan(0)
   })
 
-  it('shows a rate-limit login failure in the toast without duplicating it inline', async () => {
+  it('given login is rate limited, when submission fails, then shows the failure once in a toast', async () => {
     const user = userEvent.setup()
     const message = 'Terlalu banyak percobaan masuk. Tunggu beberapa saat lalu coba lagi.'
     const dependencies = routerDependencies(vi.fn<GetUsers>(), vi.fn<UpdateUser>(), vi.fn<DeleteUser>())
@@ -97,7 +97,7 @@ describe('owner user flow', () => {
     expect(within(screen.getByRole('main')).queryByText(message)).toBeNull()
   })
 
-  it('logs in, edits another user, and deletes them', async () => {
+  it('given an owner session, when managing a user, then can edit and delete that user', async () => {
     const user = userEvent.setup()
     let users: User[] = [{ id: 'u1', name: 'Alya', email: 'alya@example.test', phoneNumber: null, countryCode: null }]
     const getUsers = vi.fn<GetUsers>().mockImplementation(async () => ({ ok: true, data: { items: users, nextCursor: null } }))
@@ -176,7 +176,7 @@ describe('owner user flow', () => {
     expect(logout).toHaveBeenCalledTimes(1)
   })
 
-  it('shows the list without write actions for an admin', async () => {
+  it('given an admin session, when viewing users, then hides write actions', async () => {
     const user = userEvent.setup()
     const target: User = { id: 'u1', name: 'Alya', email: 'alya@example.test', phoneNumber: null, countryCode: null }
     const getUsers = vi.fn<GetUsers>().mockResolvedValue({ ok: true, data: { items: [target], nextCursor: null } })
@@ -203,7 +203,7 @@ describe('owner user flow', () => {
     expect(userTable.queryByRole('button', { name: 'Hapus' })).toBeNull()
   })
 
-  it('sends staff to their account instead of the restricted user list', async () => {
+  it('given a staff session, when login completes, then opens the account page', async () => {
     const user = userEvent.setup()
     const getUsers = vi.fn<GetUsers>()
     const dependencies = routerDependencies(getUsers, vi.fn<UpdateUser>(), vi.fn<DeleteUser>())
@@ -238,7 +238,7 @@ describe('owner user flow', () => {
     expect(getUsers).not.toHaveBeenCalled()
   })
 
-  it('keeps login navigation free of unsaved-change prompts', async () => {
+  it('given a login form with a draft, when changing locale, then navigates without an unsaved-change prompt', async () => {
     const user = userEvent.setup()
     const dependencies = routerDependencies(vi.fn<GetUsers>(), vi.fn<UpdateUser>(), vi.fn<DeleteUser>())
     const router = createMemoryRouter([{ path: '*', element: <AppRouter {...dependencies} /> }], { initialEntries: ['/login'] })
@@ -268,7 +268,7 @@ describe('owner user flow', () => {
 })
 
 describe('role detail flow', () => {
-  it('shows useful read-only details for a built-in role', async () => {
+  it('given a built-in role, when viewing its details, then shows useful read-only information', async () => {
     const user = userEvent.setup()
     const dependencies = routerDependencies(vi.fn<GetUsers>(), vi.fn<UpdateUser>(), vi.fn<DeleteUser>())
     const roles = [

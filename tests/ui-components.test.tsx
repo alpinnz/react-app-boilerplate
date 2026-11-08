@@ -21,7 +21,7 @@ beforeAll(() => {
 })
 
 describe('TextField', () => {
-  it('allows password visibility to be toggled with an accessible control', async () => {
+  it('given a password field, when activating its visibility control, then toggles visibility accessibly', async () => {
     const user = userEvent.setup()
     render(
       <LocalizationProvider manifest={localization} storage={memoryStrategy()} initialLocale="id">
@@ -45,7 +45,7 @@ describe('TextField', () => {
 })
 
 describe('navigation accessible names', () => {
-  it('keeps the visible locale label in the language button\'s accessible name', async () => {
+  it('given a locale switcher, when changing languages, then keeps the visible locale in its accessible name', async () => {
     const user = userEvent.setup()
     render(
       <LocalizationProvider manifest={localization} storage={memoryStrategy()} initialLocale="id">
@@ -59,7 +59,7 @@ describe('navigation accessible names', () => {
     expect(screen.getByRole('button', { name: 'EN, Change language' }).textContent).toBe('EN')
   })
 
-  it('labels the account menu with its purpose and account name', () => {
+  it('given an authenticated account menu, when rendered, then names its purpose and account holder', () => {
     render(
       <LocalizationProvider manifest={localization} storage={memoryStrategy()} initialLocale="id">
         <TopNavigation
