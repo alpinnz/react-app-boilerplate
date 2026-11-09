@@ -28,7 +28,7 @@ This Vite SPA is a React application starter. The bundled account, auth, health,
 
 ## Localization
 
-Keep messages in `locales/<module>/{id,en}.json`. The directory name must match `@@module`; `@@locale` must match the language code. Run `pnpm run i18n:generate` after changing source messages, then run `pnpm run i18n:validate`. Do not edit `src/app/localization/generated/` by hand.
+Keep messages in `locales/<module>/{id,en}.json`. The directory name must match `@@module`; `@@locale` must match the language code. Run `npm run i18n:generate` after changing source messages, then run `npm run i18n:validate`. Do not edit `src/app/localization/generated/` by hand.
 
 ## Generated output
 

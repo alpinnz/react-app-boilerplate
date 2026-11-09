@@ -6,10 +6,10 @@ Repository ini menyertakan modul contoh untuk autentikasi, akun, pengguna, peran
 
 ## Quick start
 
-1. Gunakan Node.js dan pnpm sesuai field `engines` dan `packageManager` di `package.json`. Jika perintah `pnpm` belum tersedia, jalankan `corepack enable pnpm` sekali.
-2. Jalankan `pnpm install --frozen-lockfile`.
+1. Gunakan Node.js dan npm sesuai versi pada field `engines` dan `packageManager` di `package.json`.
+2. Jalankan `npm install`.
 3. Salin `.env.example` ke `.env.local`, lalu atur `VITE_API_BASE_URL` jika backend berjalan pada host lain.
-4. Jalankan `pnpm run dev` dan buka URL yang ditampilkan Vite.
+4. Jalankan `npm run dev` dan buka URL yang ditampilkan Vite.
 
 Repository ini tidak menyertakan backend. `VITE_API_BASE_URL` adalah origin backend tanpa `/api/v1`; HTTP client menambahkan prefix tersebut.
 
@@ -27,25 +27,25 @@ Setiap modul memiliki batas domain, data, presentation, dependency injection, da
 ## Perintah
 
 ```sh
-pnpm run dev
-pnpm run storybook
-pnpm run build-storybook
-pnpm run lint
-pnpm run test
-pnpm run build
-pnpm run assets:generate
-pnpm run assets:check
-pnpm run i18n:validate
-pnpm run docs:api
+npm run dev
+npm run storybook
+npm run build-storybook
+npm run lint
+npm run test
+npm run build
+npm run assets:generate
+npm run assets:check
+npm run i18n:validate
+npm run docs:api
 ```
 
-Perubahan sumber localization di `locales/<module>/{id,en}.json` perlu diikuti `pnpm run i18n:generate` dan `pnpm run i18n:validate`. Jangan edit output di `src/app/localization/generated/` secara manual. Tes memakai server HTTP lokal tiruan dan tidak memerlukan backend nyata.
+Perubahan sumber localization di `locales/<module>/{id,en}.json` perlu diikuti `npm run i18n:generate` dan `npm run i18n:validate`. Jangan edit output di `src/app/localization/generated/` secara manual. Tes memakai server HTTP lokal tiruan dan tidak memerlukan backend nyata.
 
 ## Localization, aset, dan desain
 
-Pesan Valfuse dikelompokkan berdasarkan modul di `locales/`. Setelah mengubah pesan, jalankan `pnpm run i18n:generate` dan `pnpm run i18n:validate`; jangan edit hasil di `src/app/localization/generated/` secara manual.
+Pesan Valfuse dikelompokkan berdasarkan modul di `locales/`. Setelah mengubah pesan, jalankan `npm run i18n:generate` dan `npm run i18n:validate`; jangan edit hasil di `src/app/localization/generated/` secara manual.
 
-Simpan aset statis di `public/`, lalu jalankan `pnpm run assets:generate`. Gunakan URL bertipe dari `src/shared/assets/generated/assets.ts` di komponen, dan jalankan `pnpm run assets:check` untuk memastikan registry tetap sesuai isi `public/`. Registry dibuat oleh `@valfuse-node/assets`; library ini memetakan aset ke URL dan tidak membuat atau mengubah file SVG. Jangan edit registry secara manual. Generator memerlukan Node.js 22.12.0 atau lebih baru; versi minimum proyek mengikuti batas toolchain di `package.json`.
+Simpan aset statis di `public/`, lalu jalankan `npm run assets:generate`. Gunakan URL bertipe dari `src/shared/assets/generated/assets.ts` di komponen, dan jalankan `npm run assets:check` untuk memastikan registry tetap sesuai isi `public/`. Registry dibuat oleh `@valfuse-node/assets`; library ini memetakan aset ke URL dan tidak membuat atau mengubah file SVG. Jangan edit registry secara manual. Generator memerlukan Node.js 22.12.0 atau lebih baru; versi minimum proyek mengikuti batas toolchain di `package.json`.
 
 Token warna, ukuran, dan surface berada di `src/app/styles/tokens/`; gunakan token semantik pada komponen. Lihat [docs/design-system.md](docs/design-system.md) dan [docs/project-structure.md](docs/project-structure.md).
 
